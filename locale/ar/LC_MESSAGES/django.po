@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-16 18:30+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\resturant\models.py:6
+msgid "Resturant english title"
+msgstr "اسم المطعم باللغة الانجليزية"
+
+#: .\resturant\models.py:7
+msgid "Resturant english description"
+msgstr "وصف المطعم باللغة الانجليزية"
+
+#: .\resturant\models.py:8
+msgid "opening sentence english title"
+msgstr "الحملة الافتتاحية باللغة الانجليزية"
+
+#: .\resturant\models.py:9
+msgid "Resturant english address"
+msgstr "عنوان المطعم باللغة الانجليزية"
+
+#: .\resturant\models.py:10 .\resturant\models.py:193
+msgid "phone number"
+msgstr "رقم الهاتف"
+
+#: .\resturant\models.py:11
+msgid "logo Image"
+msgstr "صورة الشعار "
+
+#: .\resturant\models.py:12
+msgid "demo url"
+msgstr "رابط الفيديو التعريفي"
+
+#: .\resturant\models.py:13
+msgid "Resturant Email Address"
+msgstr "البريد الالكتروني الخاص بالمطعم"
+
+#: .\resturant\models.py:15 .\resturant\models.py:48
+msgid "facebook url"
+msgstr "رابط صفحة الفيسبوك"
+
+#: .\resturant\models.py:16 .\resturant\models.py:49
+msgid "twitter url"
+msgstr "رابط صفحة التويتر"
+
+#: .\resturant\models.py:17 .\resturant\models.py:50
+msgid "instgram url"
+msgstr "رابط صفحة الانستجرام"
+
+#: .\resturant\models.py:18
+msgid "youtube url"
+msgstr "رابط صفحة اليوتيوب"
+
+#: .\resturant\models.py:20
+msgid "Resturant arabic title"
+msgstr "اسم المطعم باللغة العربية"
+
+#: .\resturant\models.py:21
+msgid "Resturant arabic description"
+msgstr "وصف المطعم باللغة العربية"
+
+#: .\resturant\models.py:22
+msgid "opening sentence arabic title"
+msgstr "الجملة الافتتاحية باللغة العربية"
+
+#: .\resturant\models.py:23
+msgid "Resturant arabic address"
+msgstr "عنوان المطعم بالغة العربية"
+
+#: .\resturant\models.py:26
+msgid "Resturant"
+msgstr "المطعم"
+
+#: .\resturant\models.py:31 .\resturant\models.py:33
+msgid "Resturant Site Images"
+msgstr "خلفيات موقع المطعم"
+
+#: .\resturant\models.py:38 .\resturant\models.py:40
+msgid "Resturant Galary Images"
+msgstr "معرض صور المطعم"
+
+#: .\resturant\models.py:45
+msgid "chif english name"
+msgstr "اسم الطباخ بالغة الانجليزية"
+
+#: .\resturant\models.py:46
+msgid "chif english proffesion"
+msgstr "مهمة الطباخ بالغة الانجليزية"
+
+#: .\resturant\models.py:47
+msgid "chif profile"
+msgstr "صورة الطباخ"
+
+#: .\resturant\models.py:51
+msgid "linkedIn url"
+msgstr "رابط لينكيدان"
+
+#: .\resturant\models.py:53
+msgid "chif arabic name"
+msgstr "اسم الطباخ بالغة العربية"
+
+#: .\resturant\models.py:54
+msgid "chif arabic proffesion"
+msgstr "مهمة الطباخ بالغة العربية"
+
+#: .\resturant\models.py:57
+msgid "Resturant Chifs"
+msgstr "طباخين المطعم"
+
+#: .\resturant\models.py:62
+msgid "english name"
+msgstr "الاسم باللغة الانجليزية"
+
+#: .\resturant\models.py:63
+msgid "english proffesion"
+msgstr "المهمة باللغة الانجليزية"
+
+#: .\resturant\models.py:64
+msgid "profile"
+msgstr "صورة"
+
+#: .\resturant\models.py:65
+msgid "english quote"
+msgstr "العبارة باللغة الانجليزية"
+
+#: .\resturant\models.py:66
+msgid "arabic name"
+msgstr "الاسم باللغة العربية"
+
+#: .\resturant\models.py:67
+msgid "arabic proffesion"
+msgstr "المهمة بالغة العربية"
+
+#: .\resturant\models.py:68
+msgid "arabic quote"
+msgstr "العبارة باللغة العربية"
+
+#: .\resturant\models.py:70
+msgid "ResturantTestimonials"
+msgstr "اراء الاخرين في المطعم"
+
+#: .\resturant\models.py:76 .\resturant\models.py:170
+#: .\resturant\models.py:190
+msgid "client"
+msgstr "العميل"
+
+#: .\resturant\models.py:77
+msgid "full_name"
+msgstr "الاسم بالكامل"
+
+#: .\resturant\models.py:78
+msgid "address"
+msgstr "العنوان"
+
+#: .\resturant\models.py:79 .\resturant\models.py:118
+msgid "image"
+msgstr "الصورة"
+
+#: .\resturant\models.py:80
+msgid "phone"
+msgstr "الهاتف"
+
+#: .\resturant\models.py:81
+msgid "join_on"
+msgstr "انضم في"
+
+#: .\resturant\models.py:83
+msgid "Resturant Client"
+msgstr "عملاء المطعم"
+
+#: .\resturant\models.py:89
+msgid "Full Name"
+msgstr "الاسم بالكامل"
+
+#: .\resturant\models.py:90
+msgid "Email Adress"
+msgstr "البريد الالكتروني"
+
+#: .\resturant\models.py:91
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: .\resturant\models.py:92
+msgid "Date"
+msgstr "التاريخ"
+
+#: .\resturant\models.py:93
+msgid "Time"
+msgstr "الوقت"
+
+#: .\resturant\models.py:94
+msgid "Number of people"
+msgstr "عدد الاشخاص"
+
+#: .\resturant\models.py:95
+msgid "Message"
+msgstr "الرسالة"
+
+#: .\resturant\models.py:97
+msgid "Resturant Table Reservasion"
+msgstr "حجز سفرة في المطعم"
+
+#: .\resturant\models.py:103 .\resturant\models.py:115
+#: .\resturant\models.py:116
+msgid "Resturant event english title"
+msgstr "عنوان الحدث في المطعم بالغة الانجليزية"
+
+#: .\resturant\models.py:104 .\resturant\models.py:117
+msgid "Resturant event english description"
+msgstr "عنوان المطعم باللغة الانجليزية"
+
+#: .\resturant\models.py:105 .\resturant\models.py:119
+#: .\resturant\models.py:120
+msgid "Resturant event arabic title"
+msgstr "عنوان الحدث في المطعم باللغة العربية"
+
+#: .\resturant\models.py:106 .\resturant\models.py:121
+msgid "Resturant event arabic description"
+msgstr "وصف المطعم بالغة العربية"
+
+#: .\resturant\models.py:107
+msgid "event image"
+msgstr "صورة الحدث"
+
+#: .\resturant\models.py:108
+msgid "Resturant event price"
+msgstr "سعر الحدث"
+
+#: .\resturant\models.py:110
+msgid "Resturant Events"
+msgstr "احداث المطعم"
+
+#: .\resturant\models.py:123
+msgid "Resturant Specials"
+msgstr "تخصصات المطعم"
+
+#: .\resturant\models.py:128
+msgid "Resturant WhyUs english title"
+msgstr "عنوان خدمات المطعم بالغة الانجليزية"
+
+#: .\resturant\models.py:129
+msgid "Resturant WhyUs english description"
+msgstr "وصف خدمات المطعم بالغة الانجليزية"
+
+#: .\resturant\models.py:130
+msgid "Resturant WhyUs arabic title"
+msgstr "عنوان خدمات المطعم بالغة العربية"
+
+#: .\resturant\models.py:131
+msgid "Resturant WhyUs arabic description"
+msgstr "وصف خدمات المطعم بالغة العربية"
+
+#: .\resturant\models.py:133
+msgid "Resturant WhyUs"
+msgstr "خدمات المطعم"
+
+#: .\resturant\models.py:138
+msgid "Resturant About Place english title"
+msgstr "عنوان عن مكان المطعم بالغة الانجليزية"
+
+#: .\resturant\models.py:139
+msgid "Resturant About Place english description"
+msgstr "وصف عن مكان المطعم بالغة الانجليزية"
+
+#: .\resturant\models.py:140
+msgid "Resturant About Place arabic title"
+msgstr "عنوان عن مكان المطعم بالغة العربية"
+
+#: .\resturant\models.py:141
+msgid "Resturant About Place arabic description"
+msgstr "وصف عن مكان المطعم بالغة العربية"
+
+#: .\resturant\models.py:142
+msgid "About Place image"
+msgstr "صورة عن المكان"
+
+#: .\resturant\models.py:144
+msgid "Resturant About Place"
+msgstr "عن مكان المطعم"
+
+#: .\resturant\models.py:149
+msgid "menu category english title"
+msgstr "قسم القائمة باللغة العربية"
+
+#: .\resturant\models.py:150
+msgid "menu category arabic title"
+msgstr "قسم القائمة بالغة الانجليزية"
+
+#: .\resturant\models.py:152
+msgid "Resturant Menu Category"
+msgstr "اقسام القائمة"
+
+#: .\resturant\models.py:158
+msgid "menu category"
+msgstr "قسم القائمة"
+
+#: .\resturant\models.py:159
+msgid "menu item english title"
+msgstr "عنوان منتج  في القائمة بالغة الانجليزية"
+
+#: .\resturant\models.py:160
+msgid "menu item english description"
+msgstr "وصف منتج  في القائمة بالغة الانجليزية"
+
+#: .\resturant\models.py:161
+msgid "menu item arabic title"
+msgstr "عنوان منتج  في القائمة بالغة العربية"
+
+#: .\resturant\models.py:162
+msgid "menu item arabic description"
+msgstr "وصف منتج  في القائمة بالغة العربية"
+
+#: .\resturant\models.py:163
+msgid "menu item price"
+msgstr "سعر منتج  في القائمة"
+
+#: .\resturant\models.py:165
+msgid "Resturant Menu"
+msgstr "قائمة المطعم"
+
+#: .\resturant\models.py:171 .\resturant\models.py:196
+msgid "total"
+msgstr "السعر الكلي"
+
+#: .\resturant\models.py:172 .\resturant\models.py:197
+msgid "created at"
+msgstr "تمت في"
+
+#: .\resturant\models.py:174 .\resturant\models.py:184
+msgid "Resturant Menu Cart"
+msgstr "طبق قائمة المطعم"
+
+#: .\resturant\models.py:179 .\resturant\models.py:189
+msgid "cart"
+msgstr "طبق"
+
+#: .\resturant\models.py:180
+msgid "item"
+msgstr "منتج"
+
+#: .\resturant\models.py:181
+msgid "rate"
+msgstr "السعر"
+
+#: .\resturant\models.py:182 .\resturant\models.py:195
+msgid "subtotal"
+msgstr "السعر الجزئي"
+
+#: .\resturant\models.py:191
+msgid "first name"
+msgstr "الاسم الاول"
+
+#: .\resturant\models.py:192
+msgid "last name"
+msgstr "الاسم الاخير"
+
+#: .\resturant\models.py:194
+msgid "email address"
+msgstr "البريد الالكتروني"
+
+#: .\resturant\models.py:198
+msgid "payment mode"
+msgstr "حالة الدفع"
+
+#: .\resturant\models.py:199
+msgid "payment id"
+msgstr "كود الدفع"
+
+#: .\resturant\models.py:204
+msgid "Resturant Menu Order"
+msgstr "طلب طبق من المطعم"
+
+#~ msgid "Resturant description arabic title"
+#~ msgstr "وصف المطعم باللغة العربية"
