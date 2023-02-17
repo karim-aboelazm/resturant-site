@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="ar">
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% if LANGUAGE_CODE == 'en' %}
+<html lang="en" dir='ltr'>
+{% else %}
+<html lang="ar" dir='rtl'>
+{% endif %}
+
 <head>
   <title>{% block title %}{% endblock title %}</title>
   {% include 'snippets/head.html' %}

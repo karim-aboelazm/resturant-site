@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
-
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block title %}
     REST
 {% endblock title %}
@@ -8,7 +8,7 @@
 {% block content %}
       
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+      <section id="about" class="about">
         <div class="container" data-aos="fade-up">
   
           <div class="row">
@@ -685,15 +685,10 @@
       <!-- ======= Contact Section ======= -->
       <section id="contact" class="contact">
         <div class="container" data-aos="fade-up">
-  
           <div class="section-title">
-            <h2>Contact</h2>
-            <p>Contact Us</p>
+            <h2>{% trans 'Contact' %}</h2>
+            <p>{% trans 'Contact Us' %}</p>
           </div>
-        </div>
-  
-        <div data-aos="fade-up">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
         </div>
   
         <div class="container" data-aos="fade-up">
@@ -701,36 +696,93 @@
           <div class="row mt-5">
   
             <div class="col-lg-4">
+              {% if LANGUAGE_CODE == 'en' %}
               <div class="info">
                 <div class="address">
                   <i class="bi bi-geo-alt"></i>
                   <h4>Location:</h4>
-                  <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-  
-                <div class="open-hours">
-                  <i class="bi bi-clock"></i>
-                  <h4>Open Hours:</h4>
-                  <p>
-                    Monday-Saturday:<br>
-                    11:00 AM - 2300 PM
-                  </p>
+                  {% if resturant.address_en %}
+                    <p>{{resturant.address_en}}</p>
+                  {% else %}
+                    <p>{% trans 'Resturant Address' %}</p>
+                  {% endif %}
                 </div>
   
                 <div class="email">
                   <i class="bi bi-envelope"></i>
                   <h4>Email:</h4>
-                  <p>info@example.com</p>
+                  {% if resturant.email_address %}
+                    <p>{{resturant.email_address}}</p>
+                  {% else %}
+                    <p>{% trans 'Resturant Email' %}</p>
+                  {% endif %} 
                 </div>
   
                 <div class="phone">
                   <i class="bi bi-phone"></i>
                   <h4>Call:</h4>
-                  <p>+1 5589 55488 55s</p>
+                  {% if resturant.phone_num %}
+                    <p>{{resturant.phone_num}}</p>
+                  {% else %}
+                    <p>{% trans 'Resturant Phone Number' %}</p>
+                  {% endif %} 
                 </div>
   
               </div>
+              {% else %}
+              <div class="info" style="text-align:right;">
+                <div class="row address">
+                  <div class="col-md-2">
+                    <i class="bi bi-geo-alt" stlye="position:relative;bottom:20px;"></i>
+                  </div>
+                  <div class="col-md-10 pt-2">
+                    <h4>{% trans 'Location' %} : 
+                      <span style="font-size: 14px;color: #bab3a6;"> 
+                        {% if resturant.address_ar %}
+                          {{resturant.address_ar}}
+                        {% else %}
+                          {% trans 'Resturant Address' %}
+                        {% endif %}
+                      </span> 
+                    </h4>
+                  </div>
+                </div>
   
+                <div class="row email">
+                  <div class="col-md-2">
+                    <i class="bi bi-envelope" stlye="position:relative;bottom:20px;"></i>
+                  </div>
+                  <div class="col-md-10 pt-2">
+                    <h4>{% trans 'Email' %} : 
+                      <span style="font-size: 14px;color: #bab3a6;"> 
+                        {% if resturant.email_address %}
+                          {{resturant.email_address}}
+                        {% else %}
+                          {% trans 'Resturant Email Address' %}
+                        {% endif %}
+                      </span> 
+                    </h4>
+                  </div>
+                </div>
+  
+                <div class="row phone">
+                  <div class="col-md-2">
+                    <i class="bi bi-phone" stlye="position:relative;bottom:20px;"></i>
+                  </div>
+                  <div class="col-md-10 pt-2">
+                    <h4>{% trans 'Call' %} : 
+                      <span style="font-size: 14px;color: #bab3a6;">
+                        {% if resturant.phone_num %}
+                          {{resturant.phone_num}}
+                        {% else %}
+                          {% trans 'Resturant Phone Number' %}
+                        {% endif %}
+                      </span> 
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
             </div>
   
             <div class="col-lg-8 mt-5 mt-lg-0">
@@ -738,24 +790,19 @@
               <form action="" method="post" role="form" class="php-email-form">
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="{% trans 'Your Name' %}" required>
                   </div>
                   <div class="col-md-6 form-group mt-3 mt-md-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="{% trans 'Your Email' %}" required>
                   </div>
                 </div>
                 <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="{% trans 'Subject' %}" required>
                 </div>
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
+                  <textarea class="form-control" name="message" rows="8" placeholder="{% trans 'Message' %}" required></textarea>
                 </div>
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+                <div class="text-center mt-3"><button type="submit">{% trans 'Send Message' %}</button></div>
               </form>
   
             </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 12:11+0200\n"
+"POT-Creation-Date: 2023-02-17 16:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,8 @@ msgstr "صورة الشعار "
 msgid "demo url"
 msgstr "رابط الفيديو التعريفي"
 
-#: .\resturant\models.py:13
+#: .\resturant\models.py:13 .\templates\snippets\footer.html:46
+#: .\templates\snippets\footer.html:83
 msgid "Resturant Email Address"
 msgstr "البريد الالكتروني الخاص بالمطعم"
 
@@ -219,7 +220,7 @@ msgstr "الوقت"
 msgid "Number of people"
 msgstr "عدد الاشخاص"
 
-#: .\resturant\models.py:95
+#: .\resturant\models.py:95 .\resturant\templates\home.html:803
 msgid "Message"
 msgstr "الرسالة"
 
@@ -396,6 +397,117 @@ msgstr "كود الدفع"
 #: .\resturant\models.py:204
 msgid "Resturant Menu Order"
 msgstr "طلب طبق من المطعم"
+
+#: .\resturant\templates\home.html:689 .\templates\snippets\header.html:70
+msgid "Contact"
+msgstr "التواصل"
+
+#: .\resturant\templates\home.html:690
+msgid "Contact Us"
+msgstr "التواصل"
+
+#: .\resturant\templates\home.html:739
+msgid "Location"
+msgstr "العنوان"
+
+#: .\resturant\templates\home.html:756 .\templates\snippets\footer.html:81
+#: .\templates\snippets\footer.html:83
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: .\resturant\templates\home.html:773
+msgid "Call"
+msgstr "الاتصال"
+
+#: .\resturant\templates\home.html:793
+msgid "Your Name"
+msgstr "الاسم"
+
+#: .\resturant\templates\home.html:796
+msgid "Your Email"
+msgstr "بريدك الالكتروني"
+
+#: .\resturant\templates\home.html:800
+msgid "Subject"
+msgstr "الموضوع"
+
+#: .\resturant\templates\home.html:805
+msgid "Send Message"
+msgstr "الرسالة"
+
+#: .\templates\snippets\footer.html:17 .\templates\snippets\footer.html:54
+#: .\templates\snippets\header.html:47 .\templates\snippets\header.html:55
+#: .\templates\snippets\header.html:88 .\templates\snippets\header.html:105
+msgid "Resturant Name"
+msgstr "اسم المطعم"
+
+#: .\templates\snippets\footer.html:26 .\templates\snippets\footer.html:63
+msgid "Resturant Description"
+msgstr "وصف المطعم"
+
+#: .\templates\snippets\footer.html:34 .\templates\snippets\footer.html:71
+msgid "Resturant Address"
+msgstr "عنوان المطعم"
+
+#: .\templates\snippets\footer.html:40 .\templates\snippets\footer.html:77
+msgid "Resturant Phone Number"
+msgstr "رقم الهاتف للمطعم"
+
+#: .\templates\snippets\footer.html:69 .\templates\snippets\footer.html:71
+msgid "Address"
+msgstr "العنوان"
+
+#: .\templates\snippets\footer.html:75 .\templates\snippets\footer.html:77
+msgid "Phone"
+msgstr "الهاتف"
+
+#: .\templates\snippets\header.html:63
+msgid "Home"
+msgstr "الرئيسية"
+
+#: .\templates\snippets\header.html:64
+msgid "About"
+msgstr "عن المطعم"
+
+#: .\templates\snippets\header.html:65
+msgid "Menu"
+msgstr "القائمة"
+
+#: .\templates\snippets\header.html:66
+msgid "Specials"
+msgstr "تخصصات"
+
+#: .\templates\snippets\header.html:67
+msgid "Events"
+msgstr "الاحداث"
+
+#: .\templates\snippets\header.html:68
+msgid "Chefs"
+msgstr "الطباخين"
+
+#: .\templates\snippets\header.html:69
+msgid "Gallery"
+msgstr "معرض الصور"
+
+#: .\templates\snippets\header.html:74
+msgid "Book a table"
+msgstr "حجز سفرة"
+
+#: .\templates\snippets\header.html:94 .\templates\snippets\header.html:112
+msgid "Resturant Opening Sentence"
+msgstr "الجملة الافتتاحية للمطعم"
+
+#: .\templates\snippets\header.html:97 .\templates\snippets\header.html:116
+msgid "Our Menu"
+msgstr "قائمة المطعم"
+
+#: .\templates\snippets\header.html:98 .\templates\snippets\header.html:117
+msgid "Book a Table"
+msgstr "حجز سفرة"
+
+#: .\templates\snippets\header.html:101
+msgid "Welcome to "
+msgstr "مرحبا بكم"
 
 #~ msgid "Resturant description arabic title"
 #~ msgstr "وصف المطعم باللغة العربية"
