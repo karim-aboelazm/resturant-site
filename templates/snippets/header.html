@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
  <!-- ======= Top Bar ======= -->
  <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -9,9 +9,25 @@
       </div>
 
       <div class="languages d-none d-md-flex align-items-center">
-        <ul>
-          <li>En</li>
-          <li><a href="#">De</a></li>
+        <ul style="display:flex;position:relative;top:10px;">
+          <li><form  action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for available_languages as languages %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+            <input name="language" type="hidden" value="en" />
+            <button type="submit" style="background: none;outline: none;border: none;color:#fff;" class="">En</button>
+          </form></li>
+          <li><form  action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for available_languages as languages %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+            <input name="language" type="hidden" value="ar" />
+            <button type="submit" style="background: none;outline: none;border: none;color:#fff;position: relative;bottom: 20px;left: 10px;" class="">Ar</button>
+          </form></li>
         </ul>
       </div>
     </div>

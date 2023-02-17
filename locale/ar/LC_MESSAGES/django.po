@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 18:30+0200\n"
+"POT-Creation-Date: 2023-02-17 12:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\resturant\admin.py:5
+msgid "Resturant Adminstration"
+msgstr "ادارة المطعم"
+
+#: .\resturant\admin.py:6
+msgid "Resturant Admin Portal"
+msgstr "مسؤول المطعم"
+
+#: .\resturant\admin.py:7
+msgid "Welcome to Our Admin"
+msgstr "مرحبا بكم"
 
 #: .\resturant\models.py:6
 msgid "Resturant english title"

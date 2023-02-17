@@ -63,13 +63,22 @@ WSGI_APPLICATION = "project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 
+DATABASES = {
+   'default': {
+       'ENGINE'  : env('DATABASE_ENGINE'),
+       'NAME'    : env('DATABASE_NAME'),
+       'USER'    : env('DATABASE_USER'),
+       'PASSWORD': env('DATABASE_PASS'), 
+       'HOST'    : env('DATABASE_HOST') ,      
+   }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -93,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "ar"
+LANGUAGE_CODE = "en-us"
 
 USE_I18N = True
 USE_L10N = False
