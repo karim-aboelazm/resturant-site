@@ -1,7 +1,7 @@
 {% extends 'auth_base.html' %}
 {% load static i18n bootstrap5 %}
 {% block title %}
-     my desh
+     {% trans 'my dish' %}
 {% endblock title %}
 
 {% block extre_head_urls %}
@@ -23,7 +23,7 @@
             <div class="col-md-10 card mx-auto p-5" style="background:none;border-color:#cda45e;">
                 <div class="row">
                     <div class="col-md-8 mb-5">
-                        <a href="/#menu" class="mb-5"><i class="fa fa-arrow-left" style="position: relative; top:2px; right:3px;" aria-hidden="true"></i>Menu</a>
+                        <a href="/#menu" class="mb-5"><i class="fa fa-arrow-left" style="position: relative; top:2px; right:3px;" aria-hidden="true"></i>{% trans 'Menu' %}</a>
                         <div class="mt-5"></div>
                         {% if cart.resturantmenucart_set.all %}
                         <ul class=" pr-5">
@@ -61,14 +61,14 @@
                         </ul>
                        
                         {% else %}
-                            <p class="text-center mt-5" style="font-size:22px">There are no Items in your Dish !</p>
+                            <p class="text-center mt-5" style="font-size:22px">{% trans 'There are no Items in your Dish' %}</p>
                             <p class="text-center" style="font-size:50px">&#128533;</p>
                         {% endif %}
                     </div>
                     <div class="col-md-4">
                         <img src="{% static '2.png' %}" class="" style="width:100%;" alt="">
                         <div class="text-buttom">
-                            <p style="padding-bottom: 5px; border-bottom: 2px solid;"><strong>Dish Total</strong></p>
+                            <p style="padding-bottom: 5px; border-bottom: 2px solid;"><strong>{% trans 'Dish Total' %}</strong></p>
                             {% if cart %}
                             <p>$ {{cart.total}}</p>
                             {% else %}
@@ -77,10 +77,10 @@
                             {% if cart.resturantmenucart_set.all %}
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <a class="btn btn-dark "  style="width:100%" href="{% url 'restu:check_out'%}"><i class="fa fa-money-check-alt mx-2"></i> Check Out</a>
+                                    <a class="btn btn-dark "  style="width:100%" href="{% url 'restu:check_out'%}"><i class="fa fa-money-check-alt mx-2"></i> {% trans 'Check Out' %}</a>
                                 </div>
                                 <div class="col-md-12">
-                                    <a class="btn btn-danger" style="width:100%"  href="{% url 'restu:empty_cart'%}"><i class="fa fa-trash"></i> Empty Cart</a>
+                                    <a class="btn btn-danger" style="width:100%"  href="{% url 'restu:empty_cart'%}"><i class="fa fa-trash"></i> {% trans 'Empty Cart' %}</a>
                                 </div>
                             </div>
                             {% endif %}
@@ -92,62 +92,78 @@
         </div>
     
     {% else %}
-    
-        <div class="row mb-5" style="">
-            <div class="col-md-8 card mx-auto p-5">
-                <div class="row">
-                    <div class="col-md-8 mb-5">
-                        <a href="{% url 'porto:courses'%}" class="text-muted mb-5"><i class="fa fa-arrow-left" style="position: relative; top:2px;" aria-hidden="true"></i> {% trans 'all courses' %}</a>
-                        <div class="mt-5"></div>
-                        {% if cart.cartcourse_set.all %}
-                        <ul class=" pr-5">
-                            {% for cp in cart.cartcourse_set.all  %}
-                            <li class="card p-3 mb-2" style="background-color: rgba(246, 236, 236, 0.612);list-style: none;">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="{{cp.course.poster.url}}" style="width: 100%;" alt="" srcset="">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <p> <strong>{% trans 'Course name' %} :</strong> {{cp.course.title_ar}}</p>
-                                        <p> <strong>{% trans 'Course price' %} :</strong> $ {{cp.rate}}</p>
-                                        <a href="{% url 'porto:manage_cart' cp.id%}?action=rcr" type="button" class="col-md-12 btn btn-danger"> {% trans 'Remove Course' %} <i class="fa fa-trash mx-2"></i> </a>
-                                    </div>
-                                </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                       
-                        {% else %}
-                        <p class="text-center" style="font-size:50px">&#128533;</p>
-                        <p class="text-center mt-5" style="font-size:22px">{% trans 'There are no courses in your cart' %} !</p>
-                        {% endif %}
-                    </div>
-                    <div class="col-md-4">
-                        <img src="{% static 'img/cart.png' %}" class="" style="width:100%;" alt="">
-                        <div class="text-buttom">
-                            <p style="padding-bottom: 5px; border-bottom: 2px solid;"><strong>{% trans 'Cart Total' %}</strong></p>
-                            {% if cart %}
-                            <p>$ {{cart.total}}</p>
-                            {% else %}
-                            <p>$ 00.0</p>
-                            {% endif %}
-                            {% if cart.cartcourse_set.all %}
+    <div class="row mb-5" style="">
+        <div class="col-md-10 card mx-auto p-5" style="background:none;border-color:#cda45e;">
+            <div class="row">
+                <div class="col-md-8 mb-5">
+                    <a href="/#menu" class="mb-5">{% trans 'Menu' %} <i class="fa fa-arrow-left" style="position: relative; top:2px; right:3px;" aria-hidden="true"></i></a>
+                    <div class="mt-5"></div>
+                    {% if cart.resturantmenucart_set.all %}
+                    <ul class=" pr-5">
+                        <p style="border-bottom:2px solid #cda45e;padding-bottom:8px;"><strong>{% trans 'Your dish content' %}</strong></p>
+                        {% for cp in cart.resturantmenucart_set.all  %}
+                        <li class="" style="list-style: none;">
                             <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <a class="btn btn-dark "  style="width:100%" href="{% url 'porto:check_out'%}"><i class="fas fa-money-check-alt mx-2"></i> {% trans 'Check Out' %}</a>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            {{cp.item.title_ar}}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{cp.quantity}} {% trans 'item' %}
+                                        </div>
+                                        <div class="col-md-2">
+                                            $ {{cp.rate}}
+                                        </div>
+                                        
+                                    </div>
+
                                 </div>
-                                <div class="col-md-12">
-                                    <a class="btn btn-danger" style="width:100%"  href="{% url 'porto:empty_cart'%}"><i class="fas fa-trash    "></i> {% trans 'Empty Cart' %}</a>
+                                <div class="col-md-3">
+                                    <div class="row" style = "display:flex;">
+                                        <div class="col-md-12">
+                                            <a href="{% url 'restu:manage_cart' cp.id%}?action=acr" type="button" class="col-md-3"> <i style="font-size:18px;" class="fa fa-plus"></i> </a>
+                                            <a href="{% url 'restu:manage_cart' cp.id%}?action=dcr" type="button" class="col-md-3"> <i style="font-size:18px;" class="fa fa-minus"></i> </a>
+                                            <a href="{% url 'restu:manage_cart' cp.id%}?action=rcr" type="button" class="col-md-3"> <i style="font-size:18px;" class="fa fa-trash"></i> </a>
+                                        </div>  
+                                    </div>
                                 </div>
                             </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    
+                        </li>
+                        {% endfor %}
+                    </ul>
+                   
+                    {% else %}
+                        <p class="text-center mt-5" style="font-size:22px">{% trans 'There are no Items in your Dish' %}</p>
+                        <p class="text-center" style="font-size:50px">&#128533;</p>
+                    {% endif %}
                 </div>
+                <div class="col-md-4">
+                    <img src="{% static '2.png' %}" class="" style="width:100%;" alt="">
+                    <div class="text-buttom">
+                        <p style="padding-bottom: 5px; border-bottom: 2px solid;"><strong>{% trans 'Dish Total' %}</strong></p>
+                        {% if cart %}
+                        <p>$ {{cart.total}}</p>
+                        {% else %}
+                        <p>$ 00.0</p>
+                        {% endif %}
+                        {% if cart.resturantmenucart_set.all %}
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <a class="btn btn-dark "  style="width:100%" href="{% url 'restu:check_out'%}"><i class="fa fa-money-check-alt mx-2"></i> {% trans 'Check Out' %}</a>
+                            </div>
+                            <div class="col-md-12">
+                                <a class="btn btn-danger" style="width:100%"  href="{% url 'restu:empty_cart'%}"><i class="fa fa-trash"></i> {% trans 'Empty Dish' %}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
             </div>
         </div>
-    
+    </div>
+     
     {% endif %}
     </div>
   </section>
