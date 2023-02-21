@@ -24,9 +24,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "bootstrap5",
     "resturant",
     
 ]
+
+PAYPAL_CLIENT_ID  = env('PAYPAL_CLIENT_ID')
+PAYPAL_SECRET_ID  = env('PAYPAL_SECRET_KEY')
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -79,6 +83,13 @@ DATABASES = {
        'HOST'    : env('DATABASE_HOST') ,      
    }
 }
+
+EMAIL_BACKEND       = env('EMAIL_BACKEND')
+EMAIL_HOST          = env('EMAIL_HOST')
+EMAIL_USE_TLS       = env('EMAIL_USE_TLS')
+EMAIL_PORT          = env('EMAIL_PORT')
+EMAIL_HOST_USER     = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

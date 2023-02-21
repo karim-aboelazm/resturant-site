@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static i18n %}
+{% load static i18n bootstrap5 %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block title %}
     REST
@@ -7,191 +7,182 @@
 
 {% block content %}
       
-    <!-- ======= About Section ======= -->
+      <!-- ======= About Section ======= -->
       <section id="about" class="about">
         <div class="container" data-aos="fade-up">
   
           <div class="row">
             <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
               <div class="about-img">
+                
+                {% if about_resturant.image %}
+                <img src="{{about_resturant.image.url}}" alt="">               
+                {% else %}
                 <img src="{% static '' %}img/about.jpg" alt="">
+                {% endif %}
+                  
               </div>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-              <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
-              </p>
+              {% if LANGUAGE_CODE == 'en' %}
+                {% if about_resturant.title_en %}
+                  <h3 class="mb-5">{{about_resturant.title_en|title}}</h3>
+                {% else %}
+                  <h3 class="mb-5">Resturant Title Place </h3>
+                {% endif %}
+                {% if about_resturant.description_en %}
+                  <p style="line-height:40px;" class="fst-italic">{{about_resturant.description_en}}</p>
+                {% else %}
+                  <p style="line-height:40px;" class="fst-italic">Resturant Place Description</p>
+                {% endif %}
+              {% else %}
+              {% if about_resturant.title_ar %}
+                  <h3 class="mb-5">{{about_resturant.title_ar}}</h3>
+                {% else %}
+                  <h3 class="mb-5">{% trans "Resturant Title Place" %} </h3>
+                {% endif %}
+                {% if about_resturant.description_ar %}
+                  <p style="line-height:40px;" class="fst-italic">{{about_resturant.description_ar}}</p>
+                {% else %}
+                  <p style="line-height:40px;" class="fst-italic">{% trans "Resturant Place Description" %}</p>
+                {% endif %}
+              {% endif %}
+
             </div>
           </div>
   
         </div>
-      </section><!-- End About Section -->
+      </section>
+      <!-- End About Section -->
   
       <!-- ======= Why Us Section ======= -->
       <section id="why-us" class="why-us">
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
-            <h2>Why Us</h2>
-            <p>Why Choose Our Restaurant</p>
+            <h2>{% trans "Why Us" %}</h2>
+            <p>{% trans "Why Choose Our Restaurant" %}</p>
           </div>
   
           <div class="row">
-  
-            <div class="col-lg-4">
-              <div class="box" data-aos="zoom-in" data-aos-delay="100">
-                <span>01</span>
-                <h4>Lorem Ipsum</h4>
-                <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+            {% if whyus_resturant|length > 0 %}
+              {% for quote in whyus_resturant|slice:":3"  %}
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                  <div class="box" data-aos="zoom-in" data-aos-delay="100" style="height:300px">
+                    <span>0{{forloop.counter}}</span>
+                    {% if LANGUAGE_CODE == 'en' %}
+                      {% if quote.title_en %}
+                        <h4>{{quote.title_en|title}}</h4>
+                      {% else %}
+                        <h4>why us quote title</h4>
+                      {% endif %}
+                      {% if quote.description_en %}
+                        <p>{{quote.description_en}}</p>
+                      {% else %}
+                        <p>why us quote description</p>
+                      {% endif %}
+                    {% else %}
+                      {% if quote.title_ar %}
+                        <h4>{{quote.title_ar}}</h4>
+                      {% else %}
+                        <h4>{% trans "why us quote title" %}</h4>
+                      {% endif %}
+                      {% if quote.description_ar %}
+                        <p>{{quote.description_ar}}</p>
+                      {% else %}
+                        <p>{% trans "why us quote description" %}</p>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}    
+            {% else %}
+              <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="box" data-aos="zoom-in" data-aos-delay="100">
+                  <span>01</span>
+                  <h4>{% trans "why us quote title" %}</h4>
+                  <p>{% trans "why us quote description" %}</p>
+                </div>
               </div>
-            </div>
-  
-            <div class="col-lg-4 mt-4 mt-lg-0">
-              <div class="box" data-aos="zoom-in" data-aos-delay="200">
-                <span>02</span>
-                <h4>Repellat Nihil</h4>
-                <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
-              </div>
-            </div>
-  
-            <div class="col-lg-4 mt-4 mt-lg-0">
-              <div class="box" data-aos="zoom-in" data-aos-delay="300">
-                <span>03</span>
-                <h4> Ad ad velit qui</h4>
-                <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
-              </div>
-            </div>
-  
+            {% endif %}
           </div>
   
         </div>
-      </section><!-- End Why Us Section -->
+      </section>
+      <!-- End Why Us Section -->
   
       <!-- ======= Menu Section ======= -->
       <section id="menu" class="menu section-bg">
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
-            <h2>Menu</h2>
-            <p>Check Our Tasty Menu</p>
+            <h2>{% trans 'Menu' %}</h2>
+            <p>{% trans 'Check Our Tasty Menu' %}</p>
           </div>
   
           <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-12 d-flex justify-content-center">
               <ul id="menu-flters">
-                <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-starters">Starters</li>
-                <li data-filter=".filter-salads">Salads</li>
-                <li data-filter=".filter-specialty">Specialty</li>
+                <li data-filter="*" class="filter-active">{% trans 'All' %}</li>
+                {% if LANGUAGE_CODE == 'en' %}
+                  {% if category_menu_rest|length > 0 %}
+                    {% for cat in category_menu_rest  %}
+                      <li data-filter=".filter-{{cat.title_en}}">{{cat.title_en|title}}</li>
+                    {% endfor %}
+                  {% else %}
+                    <li data-filter=".filter-salads">{% trans 'Category' %}</li>
+                  {% endif %}
+                {% else %}
+                  {% if category_menu_rest|length > 0 %}
+                    {% for cat in category_menu_rest  %}
+                      <li data-filter=".filter-{{cat.title_en}}">{{cat.title_ar|title}}</li>
+                    {% endfor %}
+                  {% else %}
+                    <li data-filter=".filter-salads">{% trans 'Category' %}</li>
+                  {% endif %}
+                {% endif %}
               </ul>
             </div>
           </div>
   
-          <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+          {% if LANGUAGE_CODE == 'en' %}
+            {% if category_menu_rest|length > 0 %}
+              <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+                {% for cat in category_menu_rest  %}
+                  {% for item in cat.resturantmenu_set.all  %}
+                      <div class="col-lg-6 menu-item filter-{{cat.title_en}} ">
+                        <div class="menu-content">
+                          <a href="{% url 'restu:add_to_cart' item.id %}">{% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</a>
+                          <span>{% if item.price %}${{item.price}}{% else %}$0.00{% endif %}</span>
+                        </div>
+                        <div class="menu-ingredients">
+                          {% if item.description_en %}{{item.description_en}}{% else %}{% trans 'Menu Item Description' %}{% endif %}
+                        </div>
+                      </div>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% else %}
+            {% if category_menu_rest|length > 0 %}
+              <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+                {% for cat in category_menu_rest  %}
+                  {% for item in cat.resturantmenu_set.all  %}
+                      <div class="col-lg-6 menu-item filter-{{cat.title_en}} ">
+                        <div class="menu-content">
+                          <a href="{% url 'restu:add_to_cart' item.id %}">{% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</a>
+                          <span>{% if item.price %}${{item.price}}{% else %}$0.00{% endif %}</span>
+                        </div>
+                        <div class="menu-ingredients">
+                          {% if item.description_ar %}{{item.description_ar}}{% else %}{% trans 'Menu Item Description' %}{% endif %}
+                        </div>
+                      </div>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endif %}
   
-            <div class="col-lg-6 menu-item filter-starters">
-              <img src="{% static '' %}img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Lobster Bisque</a><span>$5.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Lorem, deren, trataro, filede, nerada
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-specialty">
-              <img src="{% static '' %}img/menu/bread-barrel.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Bread Barrel</a><span>$6.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Lorem, deren, trataro, filede, nerada
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-starters">
-              <img src="{% static '' %}img/menu/cake.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Crab Cake</a><span>$7.95</span>
-              </div>
-              <div class="menu-ingredients">
-                A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-salads">
-              <img src="{% static '' %}img/menu/caesar.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Caesar Selections</a><span>$8.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Lorem, deren, trataro, filede, nerada
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-specialty">
-              <img src="{% static '' %}img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Tuscan Grilled</a><span>$9.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-starters">
-              <img src="{% static '' %}img/menu/mozzarella.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Mozzarella Stick</a><span>$4.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Lorem, deren, trataro, filede, nerada
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-salads">
-              <img src="{% static '' %}img/menu/greek-salad.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Greek Salad</a><span>$9.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Fresh spinach, crisp romaine, tomatoes, and Greek olives
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-salads">
-              <img src="{% static '' %}img/menu/spinach-salad.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Spinach Salad</a><span>$9.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-              </div>
-            </div>
-  
-            <div class="col-lg-6 menu-item filter-specialty">
-              <img src="{% static '' %}img/menu/lobster-roll.jpg" class="menu-img" alt="">
-              <div class="menu-content">
-                <a href="#">Lobster Roll</a><span>$12.95</span>
-              </div>
-              <div class="menu-ingredients">
-                Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-              </div>
-            </div>
-  
-          </div>
   
         </div>
       </section><!-- End Menu Section -->
@@ -201,348 +192,432 @@
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
-            <h2>Specials</h2>
-            <p>Check Our Specials</p>
+            <h2>{% trans "Specials" %}</h2>
+            <p>{% trans "Check Our Specials" %}</p>
           </div>
   
           <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-3">
               <ul class="nav nav-tabs flex-column">
-                <li class="nav-item">
-                  <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Modi sit est</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Unde praesentium sed</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Pariatur explicabo vel</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Nostrum qui quasi</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Iusto ut expedita aut</a>
-                </li>
+                {% if special_resturant|length > 0 %}
+                  {% for special in special_resturant  %}
+                    {% if LANGUAGE_CODE == 'en' %}
+                      {% if special.category_en %}
+                        <li class="nav-item">
+                          <a class="nav-link {% if forloop.first %} active show {% endif %}" data-bs-toggle="tab" href="#tab-{{forloop.counter}}">{{special.category_en}}</a>
+                        </li>
+                      {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link {% if forloop.first %} active show {% endif %}" data-bs-toggle="tab" href="#tab-{{forloop.counter}}">{% trans "Special English Category" %}</a>
+                        </li>
+                      {% endif %}
+                    {% else %}
+                      {% if special.category_ar %}
+                        <li class="nav-item">
+                          <a class="nav-link {% if forloop.first %} active show {% endif %}" data-bs-toggle="tab" href="#tab-{{forloop.counter}}">{{special.category_ar}}</a>
+                        </li>
+                      {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link {% if forloop.first %} active show {% endif %}" data-bs-toggle="tab" href="#tab-{{forloop.counter}}">{% trans "Special Arabic Category" %}</a>
+                        </li>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}      
+                {% else %}
+                    {% if LANGUAGE_CODE == 'en' %}
+                      <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">{% trans "Special English Category" %}</a>
+                      </li>
+                    {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">{% trans "Special Arabic Category" %}</a>
+                      </li>
+                    {% endif %}
+                {% endif %}
               </ul>
             </div>
             <div class="col-lg-9 mt-4 mt-lg-0">
               <div class="tab-content">
-                <div class="tab-pane active show" id="tab-1">
-                  <div class="row">
-                    <div class="col-lg-8 details order-2 order-lg-1">
-                      <h3>Architecto ut aperiam autem id</h3>
-                      <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                      <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-                    </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="{% static '' %}img/specials-1.png" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="tab-2">
-                  <div class="row">
-                    <div class="col-lg-8 details order-2 order-lg-1">
-                      <h3>Et blanditiis nemo veritatis excepturi</h3>
-                      <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                      <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
-                    </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="{% static '' %}img/specials-2.png" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="tab-3">
-                  <div class="row">
-                    <div class="col-lg-8 details order-2 order-lg-1">
-                      <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
-                      <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
-                      <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
-                    </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="{% static '' %}img/specials-3.png" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="tab-4">
-                  <div class="row">
-                    <div class="col-lg-8 details order-2 order-lg-1">
-                      <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
-                      <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
-                      <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
-                    </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="{% static '' %}img/specials-4.png" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="tab-5">
-                  <div class="row">
-                    <div class="col-lg-8 details order-2 order-lg-1">
-                      <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
-                      <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
-                      <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
-                    </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="{% static '' %}img/specials-5.png" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                </div>
+                {% if special_resturant|length > 0 %}
+                  {% for special in special_resturant  %}
+                    {% if LANGUAGE_CODE == 'en' %}
+                      <div class="tab-pane {% if forloop.first %} active show {% endif %}" id="tab-{{forloop.counter}}">
+                        <div class="row">
+                          <div class="col-lg-8 details order-2 order-lg-1">
+                            {% if special.title_en %}
+                              <h3>{{special.title_en}}</h3>
+                            {% else %}
+                              <h3>{% trans 'Special English Title' %}</h3>
+                            {% endif %}
+                            {% if special.description_en %}
+                              <p class="fst-italic">{{special.description_en}}</p>
+                            {% else %}
+                              <p class="fst-italic">{% trans 'Special English Description' %}</p>
+                            {% endif %}
+                          </div>
+                          <div class="col-lg-4 text-center order-1 order-lg-2">
+                            {% if special.image %}
+                              <img src="{{special.image.url}}" alt="" class="img-fluid">
+                            {% else %}
+                              <img src="{% static '' %}img/specials-1.png" alt="" class="img-fluid">
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    {% else %}
+                      <div class="tab-pane {% if forloop.first %} active show {% endif %}" id="tab-{{forloop.counter}}">
+                        <div class="row">
+                          <div class="col-lg-8 details order-2 order-lg-1">
+                            {% if special.title_ar %}
+                              <h3>{{special.title_ar}}</h3>
+                            {% else %}
+                              <h3>{% trans 'Special Arabic Title' %}</h3>
+                            {% endif %}
+                            {% if special.description_ar %}
+                              <p class="fst-italic">{{special.description_ar}}</p>
+                            {% else %}
+                              <p class="fst-italic">{% trans 'Special Arabic Description' %}</p>
+                            {% endif %}
+                          </div>
+                          <div class="col-lg-4 text-center order-1 order-lg-2">
+                            {% if special.image %}
+                              <img src="{{special.image.url}}" alt="" class="img-fluid">
+                            {% else %}
+                              <img src="{% static '' %}img/specials-1.png" alt="" class="img-fluid">
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                    {% if LANGUAGE_CODE == 'en' %}
+                      <div class="tab-pane active show " id="tab-1">
+                        <div class="row">
+                          <div class="col-lg-8 details order-2 order-lg-1">
+                              <h3>{% trans 'Special English Title' %}</h3>
+                              <p class="fst-italic">{% trans 'Special English Description' %}</p>
+                          </div>
+                          <div class="col-lg-4 text-center order-1 order-lg-2">
+                              <img src="{% static '' %}img/specials-1.png" alt="" class="img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    {% else %}
+                      <div class="tab-pane active show " id="tab-1">
+                        <div class="row">
+                          <div class="col-lg-8 details order-2 order-lg-1">
+                              <h3>{% trans 'Special Arabic Title' %}</h3>
+                              <p class="fst-italic">{% trans 'Special Arabic Description' %}</p>
+                          </div>
+                          <div class="col-lg-4 text-center order-1 order-lg-2">
+                              <img src="{% static '' %}img/specials-1.png" alt="" class="img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                {% endif %}
               </div>
             </div>
           </div>
   
         </div>
-      </section><!-- End Specials Section -->
+      </section>
+      <!-- End Specials Section -->
   
       <!-- ======= Events Section ======= -->
       <section id="events" class="events">
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
-            <h2>Events</h2>
-            <p>Organize Your Events in our Restaurant</p>
+            <h2>{% trans "Events" %}</h2>
+            <p>{% trans "Organize Your Events in our Restaurant" %}</p>
           </div>
   
           <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
             <div class="swiper-wrapper">
-  
-              <div class="swiper-slide">
-                <div class="row event-item">
-                  <div class="col-lg-6">
-                    <img src="{% static '' %}img/event-birthday.jpg" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-lg-6 pt-4 pt-lg-0 content">
-                    <h3>Birthday Parties</h3>
-                    <div class="price">
-                      <p><span>$189</span></p>
+              {% if events_resturant|length > 0 %}
+                {% for event in events_resturant %}
+                  {% if LANGUAGE_CODE == 'en' %}
+                    <div class="swiper-slide">
+                      <div class="row event-item">
+                        <div class="col-lg-6">
+                          {% if event.image %}
+                            <img src="{{event.image.url}}" class="img-fluid" alt="">
+                          {% else %}
+                            <img src="{% static '' %}img/event-birthday.jpg" class="img-fluid" alt="">
+                          {% endif %}
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 content">
+                          {% if event.title_en %}
+                            <h3>{{event.title_en}}</h3>
+                          {% else %}
+                            <h3>{% trans 'Event English Title' %}</h3>
+                          {% endif %}
+                          <div class="price">
+                            <p>
+                              {% if event.price %}
+                                <span>${{event.price}}</span>
+                              {% else %}
+                                <span>$0.00</span>
+                              {% endif %}
+                            </p>
+                          </div>
+                          {% if event.description_en %}
+                            <p class="fst-italic">{{event.description_en}}</p>
+                          {% else %}
+                            <p class="fst-italic">{% trans 'Event English Description' %}</p>
+                          {% endif %}
+                        </div>
+                      </div>
                     </div>
-                    <p class="fst-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                    <ul>
-                      <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                      <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                      <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    </ul>
-                    <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur
-                    </p>
+                  {% else %}
+                    <div class="swiper-slide">
+                      <div class="row event-item">
+                        <div class="col-lg-6">
+                          {% if event.image %}
+                            <img src="{{event.image.url}}" class="img-fluid" alt="">
+                          {% else %}
+                            <img src="{% static '' %}img/event-birthday.jpg" class="img-fluid" alt="">
+                          {% endif %}
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 content">
+                          {% if event.title_ar %}
+                            <h3>{{event.title_ar}}</h3>
+                          {% else %}
+                            <h3>{% trans 'Event Arabic Title' %}</h3>
+                          {% endif %}
+                          <div class="price">
+                            <p>
+                              {% if event.price %}
+                                <span>${{event.price}}</span>
+                              {% else %}
+                                <span>$0.00</span>
+                              {% endif %}
+                            </p>
+                          </div>
+                          {% if event.description_ar %}
+                            <p class="fst-italic">{{event.description_ar}}</p>
+                          {% else %}
+                            <p class="fst-italic">{% trans 'Event Arabic Description' %}</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                <div class="swiper-slide">
+                  <div class="row event-item">
+                    <div class="col-lg-6">
+                      <img src="{% static '' %}img/event-private.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content">
+                      <h3>{% trans 'Event English Title' %}</h3>
+                      <div class="price">
+                        <p><span>$0.00</span></p>
+                      </div>
+                      <p class="fst-italic">{% trans 'Event English Description' %}</p>
+                    </div>
                   </div>
                 </div>
-              </div><!-- End testimonial item -->
-  
-              <div class="swiper-slide">
-                <div class="row event-item">
-                  <div class="col-lg-6">
-                    <img src="{% static '' %}img/event-private.jpg" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-lg-6 pt-4 pt-lg-0 content">
-                    <h3>Private Parties</h3>
-                    <div class="price">
-                      <p><span>$290</span></p>
-                    </div>
-                    <p class="fst-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                    <ul>
-                      <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                      <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                      <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    </ul>
-                    <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur
-                    </p>
-                  </div>
-                </div>
-              </div><!-- End testimonial item -->
-  
-              <div class="swiper-slide">
-                <div class="row event-item">
-                  <div class="col-lg-6">
-                    <img src="{% static '' %}img/event-custom.jpg" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-lg-6 pt-4 pt-lg-0 content">
-                    <h3>Custom Parties</h3>
-                    <div class="price">
-                      <p><span>$99</span></p>
-                    </div>
-                    <p class="fst-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                    <ul>
-                      <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                      <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                      <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    </ul>
-                    <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur
-                    </p>
-                  </div>
-                </div>
-              </div><!-- End testimonial item -->
-  
+              {% endif %}
             </div>
             <div class="swiper-pagination"></div>
           </div>
-  
         </div>
-      </section><!-- End Events Section -->
+      </section>
+      <!-- End Events Section -->
   
       <!-- ======= Book A Table Section ======= -->
       <section id="book-a-table" class="book-a-table">
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
-            <h2>Reservation</h2>
-            <p>Book a Table</p>
+            <h2>{% trans 'Reservation' %}</h2>
+            <p>{% trans 'Book a Table' %}</p>
           </div>
   
-          <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+          <form action="/" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            {% csrf_token %}
             <div class="row">
               <div class="col-lg-4 col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                <div class="validate"></div>
+                <input type="text" name="full_name" class="form-control" id="name" placeholder="{% trans 'Your Name' %}" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-                <div class="validate"></div>
+                <input type="email" class="form-control" name="email_address" id="email" placeholder="{% trans 'Your Email' %}" data-rule="email" data-msg="Please enter a valid email">
+                
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                <div class="validate"></div>
+                <input type="text" class="form-control" name="phone_number" id="phone" placeholder="{% trans 'Phone Number' %}" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3">
-                <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                <div class="validate"></div>
+                <input type="text" name="date" class="form-control" id="date" placeholder="{% trans 'Date' %}" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3">
-                <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                <div class="validate"></div>
+                <input type="text" class="form-control" name="time" id="time" placeholder="{% trans 'Time' %}" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3">
-                <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-                <div class="validate"></div>
+                <input type="number" class="form-control" name="number_of_people" id="people" placeholder="{% trans 'Number of people' %}" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                
               </div>
             </div>
             <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-              <div class="validate"></div>
+              <textarea class="form-control" name="message" rows="5" placeholder="{% trans 'Message' %}"></textarea>
+              
             </div>
-            <div class="mb-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Book a Table</button></div>
+            
+            <div class="text-center"><button type="submit">{% trans 'Book a Table' %}</button></div>
           </form>
   
         </div>
-      </section><!-- End Book A Table Section -->
+      </section>
+      <!-- End Book A Table Section -->
   
       <!-- ======= Testimonials Section ======= -->
       <section id="testimonials" class="testimonials section-bg">
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
-            <h2>Testimonials</h2>
-            <p>What they're saying about us</p>
+            <h2>{% trans 'Testimonials' %}</h2>
+            <p>{% trans "What they're saying about us" %}</p>
           </div>
   
           <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
             <div class="swiper-wrapper">
-  
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
+              {% if test_resturant|length > 0 %}
+                {% for test in test_resturant %}
+                  {% if LANGUAGE_CODE == 'en' %}
+                    <div class="swiper-slide">
+                      <div class="testimonial-item">
+                        <p>
+                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                          {% if test.quote_en %}
+                            {{test.quote_en}}
+                          {% else %}
+                            {% trans 'Testimonial English Quote' %}
+                          {% endif %}
+                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                        {% if test.profile %}
+                          <img src="{{test.profile.url}}" class="testimonial-img" alt="">
+                        {% else %}
+                          <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                        {% endif %}
+                        {% if test.name_en %}
+                          <h3>{{test.name_en}}</h3>
+                        {% else %}
+                          <h3>{% trans 'Person Name' %}</h3>
+                        {% endif %}
+                        {% if test.proffesion_en %}
+                          <h4>{{test.proffesion_en}}</h4>
+                        {% else %}
+                          <h4>{% trans 'proffesion' %}</h4>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% else %}
+                    <div class="swiper-slide">
+                      <div class="testimonial-item">
+                        <p>
+                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                          {% if test.quote_ar %}
+                            {{test.quote_ar}}
+                          {% else %}
+                            {% trans 'Testimonial Arabic Quote' %}
+                          {% endif %}
+                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        </p>
+                        {% if test.profile %}
+                          <img src="{{test.profile.url}}" class="testimonial-img mx-auto" alt="">
+                        {% else %}
+                          <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                        {% endif %}
+                        {% if test.name_ar %}
+                          <h3>{{test.name_ar}}</h3>
+                        {% else %}
+                          <h3>{% trans 'Person Name' %}</h3>
+                        {% endif %}
+                        {% if test.proffesion_ar %}
+                          <h4>{{test.proffesion_ar}}</h4>
+                        {% else %}
+                          <h4>{% trans 'proffesion' %}</h4>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {% if LANGUAGE_CODE == 'en' %}
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <p>
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      {% trans 'Testimonial Arabic Quote' %}
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    </p>
+                      <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                      <h3>{% trans 'Person Name' %}</h3>
+                      <h4>{% trans 'proffesion' %}</h4>
+                  </div>
                 </div>
-              </div><!-- End testimonial item -->
-  
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img src="{% static '' %}img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
+                {% else %}
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        {% trans 'Testimonial Arabic Quote' %}
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                      <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                      <h3>{% trans 'Person Name' %}</h3>
+                      <h4>{% trans 'proffesion' %}</h4>
+                  </div>
                 </div>
-              </div><!-- End testimonial item -->
-  
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img src="{% static '' %}img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
-                </div>
-              </div><!-- End testimonial item -->
-  
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img src="{% static '' %}img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
-                </div>
-              </div><!-- End testimonial item -->
-  
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img src="{% static '' %}img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                </div>
-              </div><!-- End testimonial item -->
-  
+                {% endif %}
+              {% endif %}
             </div>
             <div class="swiper-pagination"></div>
           </div>
   
         </div>
-      </section><!-- End Testimonials Section -->
+      </section>
+      <!-- End Testimonials Section -->
   
       <!-- ======= Gallery Section ======= -->
       <section id="gallery" class="gallery">
   
         <div class="container" data-aos="fade-up">
           <div class="section-title">
-            <h2>Gallery</h2>
-            <p>Some photos from Our Restaurant</p>
+            <h2>{% trans 'Gallery' %}</h2>
+            <p>{% trans 'Some photos from Our Restaurant' %}</p>
           </div>
         </div>
   
         <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
   
           <div class="row g-0">
-  
+            {% if galary_resturant|length > 0 %}
+              {% for galary in galary_resturant %}
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  {% if galary.image %}
+                    <a href="{{galary.image.url}}" class="gallery-lightbox" data-gall="gallery-item">
+                      <img src="{{galary.image.url}}" alt="" class="img-fluid">
+                    </a>
+                  {% else %}
+                    <a href="{% static '' %}img/gallery/gallery-1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                      <img src="{% static '' %}img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+              {% endfor %}  
+            {% else %}
             <div class="col-lg-3 col-md-4">
               <div class="gallery-item">
                 <a href="{% static '' %}img/gallery/gallery-1.jpg" class="gallery-lightbox" data-gall="gallery-item">
@@ -550,266 +625,212 @@
                 </a>
               </div>
             </div>
+            {% endif %}
   
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static '' %}img/gallery/gallery-2.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static '' %}img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-  
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static '' %}img/gallery/gallery-3.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static '' %}img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-  
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static '' %}img/gallery/gallery-4.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static '' %}img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-  
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static '' %}img/gallery/gallery-5.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static '' %}img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-  
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static '' %}img/gallery/gallery-6.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static '' %}img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-  
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static '' %}img/gallery/gallery-7.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static '' %}img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-  
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static '' %}img/gallery/gallery-8.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static '' %}img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
   
           </div>
   
         </div>
-      </section><!-- End Gallery Section -->
+      </section>
+      <!-- End Gallery Section -->
   
       <!-- ======= Chefs Section ======= -->
       <section id="chefs" class="chefs">
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
-            <h2>Chefs</h2>
-            <p>Our Proffesional Chefs</p>
+            <h2>{% trans 'Chefs' %}</h2>
+            <p>{% trans 'Our Proffesional Chefs' %}</p>
           </div>
   
           <div class="row">
-  
-            <div class="col-lg-4 col-md-6">
-              <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                <img src="{% static '' %}img/chefs/chefs-1.jpg" class="img-fluid" alt="">
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>Walter White</h4>
-                    <span>Master Chef</span>
+            {% if chifs_resturant|length > 0 %}
+              {% for chif in chifs_resturant %}
+                {% if LANGUAGE_CODE == 'en' %}
+                  <div class="col-lg-4 col-md-6">
+                    <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                      <img src="{% if chif.chif_profile %}{{chif.chif_profile.url}}{% else %}{% static '' %}img/chefs/chefs-1.jpg{% endif %}" class="img-fluid" alt="">
+                      <div class="member-info">
+                        <div class="member-info-content">
+                          <h4>{% if chif.chif_name_en %}{{chif.chif_name_en}}{% else %}{% trans 'Chif Name' %}{% endif %}</h4>
+                          <span>{% if chif.chif_proffesion_en %}{{chif.chif_proffesion_en}}{% else %}{% trans 'Chif proffesion' %}{% endif %}</span>
+                        </div>
+                        <div class="social">
+                          <a href="{% if chif.facebook_url %}{{chif.facebook_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-facebook"></i></a>
+                          <a href="{% if chif.twitter_url %}{{chif.twitter_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-twitter"></i></a>
+                          <a href="{% if chif.instgram_url %}{{chif.instgram_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-instagram"></i></a>
+                          <a href="{% if chif.linkedin_url %}{{chif.linkedin_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                {% else %}
+                  <div class="col-lg-4 col-md-6">
+                    <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                      <img src="{% if chif.chif_profile %}{{chif.chif_profile.url}}{% else %}{% static '' %}img/chefs/chefs-1.jpg{% endif %}" class="img-fluid" alt="">
+                      <div class="member-info">
+                        <div class="member-info-content">
+                          <h4>{% if chif.chif_name_ar %}{{chif.chif_name_ar}}{% else %}{% trans 'Chif Name' %}{% endif %}</h4>
+                          <span>{% if chif.chif_proffesion_ar %}{{chif.chif_proffesion_ar}}{% else %}{% trans 'Chif proffesion' %}{% endif %}</span>
+                        </div>
+                        <div class="social">
+                          <a href="{% if chif.facebook_url %}{{chif.facebook_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-facebook"></i></a>
+                          <a href="{% if chif.twitter_url %}{{chif.twitter_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-twitter"></i></a>
+                          <a href="{% if chif.instgram_url %}{{chif.instgram_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-instagram"></i></a>
+                          <a href="{% if chif.linkedin_url %}{{chif.linkedin_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <img src="{% static '' %}img/chefs/chefs-1.jpg" class="img-fluid" alt="">
+                  <div class="member-info">
+                    <div class="member-info-content">
+                      <h4>{% trans 'Chif Name' %}</h4>
+                      <span>{% trans 'Chif proffesion' %}</span>
+                    </div>
+                    <div class="social">
+                      <a href="#"><i class="bi bi-facebook"></i></a>
+                      <a href="#"><i class="bi bi-twitter"></i></a>
+                      <a href="#"><i class="bi bi-instagram"></i></a>
+                      <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-  
-            <div class="col-lg-4 col-md-6">
-              <div class="member" data-aos="zoom-in" data-aos-delay="200">
-                <img src="{% static '' %}img/chefs/chefs-2.jpg" class="img-fluid" alt="">
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>Sarah Jhonson</h4>
-                    <span>Patissier</span>
-                  </div>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-lg-4 col-md-6">
-              <div class="member" data-aos="zoom-in" data-aos-delay="300">
-                <img src="{% static '' %}img/chefs/chefs-3.jpg" class="img-fluid" alt="">
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>William Anderson</h4>
-                    <span>Cook</span>
-                  </div>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
+            {% endif %}
           </div>
   
         </div>
-      </section><!-- End Chefs Section -->
-  
+      </section>
+      <!-- End Chefs Section -->
+
       <!-- ======= Contact Section ======= -->
-      <section id="contact" class="contact">
-        <div class="container" data-aos="fade-up">
-          <div class="section-title">
-            <h2>{% trans 'Contact' %}</h2>
-            <p>{% trans 'Contact Us' %}</p>
-          </div>
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>{% trans 'Contact' %}</h2>
+          <p>{% trans 'Contact Us' %}</p>
         </div>
-  
-        <div class="container" data-aos="fade-up">
-  
-          <div class="row mt-5">
-  
-            <div class="col-lg-4">
+      </div>
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
               {% if LANGUAGE_CODE == 'en' %}
-              <div class="info">
                 <div class="address">
-                  <i class="bi bi-geo-alt"></i>
-                  <h4>Location:</h4>
-                  {% if resturant.address_en %}
-                    <p>{{resturant.address_en}}</p>
-                  {% else %}
-                    <p>{% trans 'Resturant Address' %}</p>
-                  {% endif %}
+                  <div class="row">
+                    <div class="col-md-1">
+                      <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="col-md-11 pt-3">
+                      <h4>{% trans 'Location' %} :</h4>
+                      <p>{% if resturant.address_en %}{{resturant.address_en}}{% else %}{% trans 'Resturant Location' %}{% endif %}</p>
+                    </div>
+                  </div>
                 </div>
-  
+
                 <div class="email">
-                  <i class="bi bi-envelope"></i>
-                  <h4>Email:</h4>
-                  {% if resturant.email_address %}
-                    <p>{{resturant.email_address}}</p>
-                  {% else %}
-                    <p>{% trans 'Resturant Email' %}</p>
-                  {% endif %} 
+                  <div class="row">
+                    <div class="col-md-1">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="col-md-11 pt-3">
+                      <h4>{% trans 'Email' %} :</h4>
+                      <p>{% if resturant.email_address %}{{resturant.email_address}}{% else %}{% trans 'Resturant Email Address' %}{% endif %}</p>
+                    </div>
+                  </div>
                 </div>
-  
+
                 <div class="phone">
-                  <i class="bi bi-phone"></i>
-                  <h4>Call:</h4>
-                  {% if resturant.phone_num %}
-                    <p>{{resturant.phone_num}}</p>
-                  {% else %}
-                    <p>{% trans 'Resturant Phone Number' %}</p>
-                  {% endif %} 
+                  <div class="row">
+                    <div class="col-md-1">
+                      <i class="bi bi-phone"></i>
+                    </div>
+                    <div class="col-md-11 pt-3">
+                      <h4>{% trans 'Call' %} :</h4>
+                      <p>{% if resturant.phone_num %}{{resturant.phone_num}}{% else %}{% trans 'Resturant Phone Number' %}{% endif %}</p>
+                    </div>
+                  </div>
                 </div>
-  
-              </div>
               {% else %}
-              <div class="info" style="text-align:right;">
-                <div class="row address">
-                  <div class="col-md-2">
-                    <i class="bi bi-geo-alt" stlye="position:relative;bottom:20px;"></i>
-                  </div>
-                  <div class="col-md-10 pt-2">
-                    <h4>{% trans 'Location' %} : 
-                      <span style="font-size: 14px;color: #bab3a6;"> 
-                        {% if resturant.address_ar %}
-                          {{resturant.address_ar}}
-                        {% else %}
-                          {% trans 'Resturant Address' %}
-                        {% endif %}
-                      </span> 
-                    </h4>
+                <div class="address">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="col-md-11 pt-3">
+                      <h4>{% trans 'Location' %} :</h4>
+                      <p>{% if resturant.address_ar %}{{resturant.address_ar}}{% else %}{% trans 'Resturant Location' %}{% endif %}</p>
+                    </div>
                   </div>
                 </div>
-  
-                <div class="row email">
-                  <div class="col-md-2">
-                    <i class="bi bi-envelope" stlye="position:relative;bottom:20px;"></i>
-                  </div>
-                  <div class="col-md-10 pt-2">
-                    <h4>{% trans 'Email' %} : 
-                      <span style="font-size: 14px;color: #bab3a6;"> 
-                        {% if resturant.email_address %}
-                          {{resturant.email_address}}
-                        {% else %}
-                          {% trans 'Resturant Email Address' %}
-                        {% endif %}
-                      </span> 
-                    </h4>
+
+                <div class="email">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="col-md-11 pt-3">
+                      <h4>{% trans 'Email' %} :</h4>
+                      <p>{% if resturant.email_address %}{{resturant.email_address}}{% else %}{% trans 'Resturant Email Address' %}{% endif %}</p>
+                    </div>
                   </div>
                 </div>
-  
-                <div class="row phone">
-                  <div class="col-md-2">
-                    <i class="bi bi-phone" stlye="position:relative;bottom:20px;"></i>
-                  </div>
-                  <div class="col-md-10 pt-2">
-                    <h4>{% trans 'Call' %} : 
-                      <span style="font-size: 14px;color: #bab3a6;">
-                        {% if resturant.phone_num %}
-                          {{resturant.phone_num}}
-                        {% else %}
-                          {% trans 'Resturant Phone Number' %}
-                        {% endif %}
-                      </span> 
-                    </h4>
+
+                <div class="phone">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <i class="bi bi-phone"></i>
+                    </div>
+                    <div class="col-md-11 pt-3">
+                      <h4>{% trans 'Call' %} :</h4>
+                      <p>{% if resturant.phone_num %}{{resturant.phone_num}}{% else %}{% trans 'Resturant Phone Number' %}{% endif %}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
               {% endif %}
             </div>
-  
-            <div class="col-lg-8 mt-5 mt-lg-0">
-  
-              <form action="" method="post" role="form" class="php-email-form">
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="{% trans 'Your Name' %}" required>
-                  </div>
-                  <div class="col-md-6 form-group mt-3 mt-md-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="{% trans 'Your Email' %}" required>
-                  </div>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="{% trans 'Subject' %}" required>
-                </div>
-                <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="8" placeholder="{% trans 'Message' %}" required></textarea>
-                </div>
-                <div class="text-center mt-3"><button type="submit">{% trans 'Send Message' %}</button></div>
-              </form>
-  
-            </div>
-  
+
           </div>
-  
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="/" id="send-email-form" method="post" class="php-email-form">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="{% trans 'Your Name' %}" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="{% trans 'Your Email' %}" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="{% trans 'Subject' %}" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="8" placeholder="{% trans 'Message' %}" required></textarea>
+              </div>
+              <div class="text-center"><button type="submit">{% trans 'Send Message' %}</button></div>
+            </form>
+
+          </div>
+
         </div>
-      </section><!-- End Contact Section -->
+
+      </div>
+    </section>
+    <!-- End Contact Section -->
+  
+
 {% endblock content %}
     

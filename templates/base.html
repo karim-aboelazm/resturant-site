@@ -16,6 +16,33 @@
 <body>
   {% include 'snippets/header.html' %}
   <main id="main">{% block content %}{% endblock content %}</main>
+  
+  <a href="https://api.whatsapp.com/send?phone={% if resturant.phone_num %}{{resturant.phone_num}}{% else %}#{% endif %}&text=&nbsp;" class="float" target="_blank">
+    <i class="bx bxl-whatsapp" style="position:relative;top:10px;"></i>
+  </a> 
+  <style>
+      a{
+          text-decoration: none;
+      }
+      .float{
+          position:fixed;
+          width:60px;
+          height:60px;
+          bottom:90px;
+          right:30px;
+          background-color:#25d366;
+          color:#FFF;
+          border-radius:50px;
+          text-align:center;
+          font-size:30px;
+          box-shadow: 2px 2px 3px #999;
+          z-index:100;
+      }
+
+      .my-float{
+          margin-top:16px;    
+      }
+  </style>
   {% include 'snippets/footer.html' %}
   {% include 'snippets/scripts.html' %}
   {% block extre_scripts_urls %}{% endblock extre_scripts_urls %}

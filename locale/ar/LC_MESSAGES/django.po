@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 16:11+0200\n"
+"POT-Creation-Date: 2023-02-20 15:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,8 @@ msgstr "صورة الشعار "
 msgid "demo url"
 msgstr "رابط الفيديو التعريفي"
 
-#: .\resturant\models.py:13 .\templates\snippets\footer.html:46
+#: .\resturant\models.py:13 .\resturant\templates\home.html:748
+#: .\resturant\templates\home.html:784 .\templates\snippets\footer.html:46
 #: .\templates\snippets\footer.html:83
 msgid "Resturant Email Address"
 msgstr "البريد الالكتروني الخاص بالمطعم"
@@ -109,15 +110,15 @@ msgstr "معرض صور المطعم"
 
 #: .\resturant\models.py:45
 msgid "chif english name"
-msgstr "اسم الطباخ بالغة الانجليزية"
+msgstr "اسم الطاهي  بالغة الانجليزية"
 
 #: .\resturant\models.py:46
 msgid "chif english proffesion"
-msgstr "مهمة الطباخ بالغة الانجليزية"
+msgstr "مهمة الطاهي  بالغة الانجليزية"
 
 #: .\resturant\models.py:47
 msgid "chif profile"
-msgstr "صورة الطباخ"
+msgstr "صورة الطاهي "
 
 #: .\resturant\models.py:51
 msgid "linkedIn url"
@@ -125,15 +126,15 @@ msgstr "رابط لينكيدان"
 
 #: .\resturant\models.py:53
 msgid "chif arabic name"
-msgstr "اسم الطباخ بالغة العربية"
+msgstr "اسم الطاهي  بالغة العربية"
 
 #: .\resturant\models.py:54
 msgid "chif arabic proffesion"
-msgstr "مهمة الطباخ بالغة العربية"
+msgstr "مهمة الطاهي  بالغة العربية"
 
 #: .\resturant\models.py:57
 msgid "Resturant Chifs"
-msgstr "طباخين المطعم"
+msgstr "طهاه  المطعم"
 
 #: .\resturant\models.py:62
 msgid "english name"
@@ -204,23 +205,24 @@ msgstr "الاسم بالكامل"
 msgid "Email Adress"
 msgstr "البريد الالكتروني"
 
-#: .\resturant\models.py:91
+#: .\resturant\models.py:91 .\resturant\templates\home.html:453
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: .\resturant\models.py:92
+#: .\resturant\models.py:92 .\resturant\templates\home.html:457
 msgid "Date"
 msgstr "التاريخ"
 
-#: .\resturant\models.py:93
+#: .\resturant\models.py:93 .\resturant\templates\home.html:461
 msgid "Time"
 msgstr "الوقت"
 
-#: .\resturant\models.py:94
+#: .\resturant\models.py:94 .\resturant\templates\home.html:465
 msgid "Number of people"
 msgstr "عدد الاشخاص"
 
-#: .\resturant\models.py:95 .\resturant\templates\home.html:803
+#: .\resturant\models.py:95 .\resturant\templates\home.html:470
+#: .\resturant\templates\home.html:821
 msgid "Message"
 msgstr "الرسالة"
 
@@ -228,35 +230,57 @@ msgstr "الرسالة"
 msgid "Resturant Table Reservasion"
 msgstr "حجز سفرة في المطعم"
 
-#: .\resturant\models.py:103 .\resturant\models.py:115
-#: .\resturant\models.py:116
+#: .\resturant\models.py:103
 msgid "Resturant event english title"
-msgstr "عنوان الحدث في المطعم بالغة الانجليزية"
+msgstr "عنوان المناسبة في المطعم بالغة الانجليزية"
 
-#: .\resturant\models.py:104 .\resturant\models.py:117
+#: .\resturant\models.py:104
 msgid "Resturant event english description"
 msgstr "عنوان المطعم باللغة الانجليزية"
 
-#: .\resturant\models.py:105 .\resturant\models.py:119
-#: .\resturant\models.py:120
+#: .\resturant\models.py:105
 msgid "Resturant event arabic title"
-msgstr "عنوان الحدث في المطعم باللغة العربية"
+msgstr "عنوان المناسبة في المطعم باللغة العربية"
 
-#: .\resturant\models.py:106 .\resturant\models.py:121
+#: .\resturant\models.py:106
 msgid "Resturant event arabic description"
 msgstr "وصف المطعم بالغة العربية"
 
 #: .\resturant\models.py:107
 msgid "event image"
-msgstr "صورة الحدث"
+msgstr "صورة المناسبة"
 
 #: .\resturant\models.py:108
 msgid "Resturant event price"
-msgstr "سعر الحدث"
+msgstr "سعر المناسبة"
 
 #: .\resturant\models.py:110
 msgid "Resturant Events"
-msgstr "احداث المطعم"
+msgstr "مناسبات المطعم"
+
+#: .\resturant\models.py:115
+msgid "Resturant special english category"
+msgstr "قسم التخصص باللغة الانجليزية"
+
+#: .\resturant\models.py:116
+msgid "Resturant special english title"
+msgstr "اسم التخصص باللغة الانجليزية"
+
+#: .\resturant\models.py:117
+msgid "Resturant special english description"
+msgstr "وصف التخصص باللغة الانجليزية"
+
+#: .\resturant\models.py:119
+msgid "Resturant special arabic category"
+msgstr "اسم التخصص باللغة العربية"
+
+#: .\resturant\models.py:120
+msgid "Resturant special arabic title"
+msgstr "اسم التخصص باللغة العربية"
+
+#: .\resturant\models.py:121
+msgid "Resturant special arabic description"
+msgstr "وصف التخصص باللغة العربية"
 
 #: .\resturant\models.py:123
 msgid "Resturant Specials"
@@ -398,42 +422,221 @@ msgstr "كود الدفع"
 msgid "Resturant Menu Order"
 msgstr "طلب طبق من المطعم"
 
-#: .\resturant\templates\home.html:689 .\templates\snippets\header.html:70
-msgid "Contact"
-msgstr "التواصل"
+#: .\resturant\templates\home.html:42
+msgid "Resturant Title Place"
+msgstr "عنوان مكان المطعم"
 
-#: .\resturant\templates\home.html:690
-msgid "Contact Us"
-msgstr "التواصل"
+#: .\resturant\templates\home.html:47
+msgid "Resturant Place Description"
+msgstr "وصف مكان المطعم"
 
-#: .\resturant\templates\home.html:739
-msgid "Location"
-msgstr "العنوان"
+#: .\resturant\templates\home.html:63
+msgid "Why Us"
+msgstr "لماذا نحن"
 
-#: .\resturant\templates\home.html:756 .\templates\snippets\footer.html:81
-#: .\templates\snippets\footer.html:83
-msgid "Email"
-msgstr "البريد الالكتروني"
+#: .\resturant\templates\home.html:64
+msgid "Why Choose Our Restaurant"
+msgstr "لماذا يجب عليك اختيار مطعمنا"
 
-#: .\resturant\templates\home.html:773
-msgid "Call"
-msgstr "الاتصال"
+#: .\resturant\templates\home.html:88 .\resturant\templates\home.html:103
+msgid "why us quote title"
+msgstr "عنوان احد خدماتنا"
 
-#: .\resturant\templates\home.html:793
+#: .\resturant\templates\home.html:93 .\resturant\templates\home.html:104
+msgid "why us quote description"
+msgstr "وصف احد خدماتنا"
+
+#: .\resturant\templates\home.html:119 .\templates\snippets\header.html:65
+msgid "Menu"
+msgstr "القائمة"
+
+#: .\resturant\templates\home.html:120
+msgid "Check Our Tasty Menu"
+msgstr "قائمتنا اللذيذة"
+
+#: .\resturant\templates\home.html:126
+msgid "All"
+msgstr "الكل"
+
+#: .\resturant\templates\home.html:133 .\resturant\templates\home.html:141
+msgid "Category"
+msgstr "قسم القائمة"
+
+#: .\resturant\templates\home.html:155 .\resturant\templates\home.html:173
+msgid "Menu Item Title"
+msgstr "اسم منتج  في القائمة"
+
+#: .\resturant\templates\home.html:159 .\resturant\templates\home.html:177
+msgid "Menu Item Description"
+msgstr "وصف منتج  في القائمة "
+
+#: .\resturant\templates\home.html:195 .\templates\snippets\header.html:66
+msgid "Specials"
+msgstr "تخصصات"
+
+#: .\resturant\templates\home.html:196
+msgid "Check Our Specials"
+msgstr "تخصصات المطعم"
+
+#: .\resturant\templates\home.html:211 .\resturant\templates\home.html:229
+msgid "Special English Category"
+msgstr "اقسام تخصصنا بالغة العربية"
+
+#: .\resturant\templates\home.html:221 .\resturant\templates\home.html:233
+msgid "Special Arabic Category"
+msgstr "اقسام تخصصنا بالغة الانجليزية"
+
+#: .\resturant\templates\home.html:250 .\resturant\templates\home.html:298
+msgid "Special English Title"
+msgstr "اسم التخصص باللغة الانجليزية"
+
+#: .\resturant\templates\home.html:255 .\resturant\templates\home.html:299
+msgid "Special English Description"
+msgstr "وصف التخصص باللغة الانجليزية"
+
+#: .\resturant\templates\home.html:274 .\resturant\templates\home.html:310
+msgid "Special Arabic Title"
+msgstr "اسم التخصص باللغة العربية"
+
+#: .\resturant\templates\home.html:279 .\resturant\templates\home.html:311
+msgid "Special Arabic Description"
+msgstr "وصف التخصص باللغة العربية"
+
+#: .\resturant\templates\home.html:333 .\templates\snippets\header.html:67
+msgid "Events"
+msgstr "المناسبات"
+
+#: .\resturant\templates\home.html:334
+msgid "Organize Your Events in our Restaurant"
+msgstr "نظم مناسباتك في مطعمنا"
+
+#: .\resturant\templates\home.html:355 .\resturant\templates\home.html:416
+msgid "Event English Title"
+msgstr "اسم المناسبة باللغة الانجليزية"
+
+#: .\resturant\templates\home.html:369 .\resturant\templates\home.html:420
+msgid "Event English Description"
+msgstr "وصف المناسبة باللغة الانجليزية"
+
+#: .\resturant\templates\home.html:388
+msgid "Event Arabic Title"
+msgstr "اسم المناسبة باللغة العربية"
+
+#: .\resturant\templates\home.html:402
+msgid "Event Arabic Description"
+msgstr "وصف المناسبة باللغة العربية"
+
+#: .\resturant\templates\home.html:437
+#, fuzzy
+#| msgid "Resturant"
+msgid "Reservation"
+msgstr "المطعم"
+
+#: .\resturant\templates\home.html:438 .\resturant\templates\home.html:474
+#: .\templates\snippets\header.html:98 .\templates\snippets\header.html:117
+msgid "Book a Table"
+msgstr "حجز سفرة"
+
+#: .\resturant\templates\home.html:445 .\resturant\templates\home.html:811
 msgid "Your Name"
 msgstr "الاسم"
 
-#: .\resturant\templates\home.html:796
+#: .\resturant\templates\home.html:449 .\resturant\templates\home.html:814
 msgid "Your Email"
 msgstr "بريدك الالكتروني"
 
-#: .\resturant\templates\home.html:800
+#: .\resturant\templates\home.html:486
+msgid "Testimonials"
+msgstr "اراء الاخرين في المطعم"
+
+#: .\resturant\templates\home.html:487
+msgid "What they're saying about us"
+msgstr "ماذا يقولون عنا الاخرون"
+
+#: .\resturant\templates\home.html:502
+msgid "Testimonial English Quote"
+msgstr "رأي الاخرون باللغة الانجليزية"
+
+#: .\resturant\templates\home.html:514 .\resturant\templates\home.html:543
+#: .\resturant\templates\home.html:564 .\resturant\templates\home.html:577
+msgid "Person Name"
+msgstr "اسم الشخص"
+
+#: .\resturant\templates\home.html:519 .\resturant\templates\home.html:548
+#: .\resturant\templates\home.html:565 .\resturant\templates\home.html:578
+msgid "proffesion"
+msgstr "الوظيفة"
+
+#: .\resturant\templates\home.html:531 .\resturant\templates\home.html:560
+#: .\resturant\templates\home.html:573
+msgid "Testimonial Arabic Quote"
+msgstr "رأي الاخرون باللغة العربية"
+
+#: .\resturant\templates\home.html:596 .\templates\snippets\header.html:69
+msgid "Gallery"
+msgstr "معرض الصور"
+
+#: .\resturant\templates\home.html:597
+msgid "Some photos from Our Restaurant"
+msgstr "بعض الصور من مطعمنا"
+
+#: .\resturant\templates\home.html:642 .\templates\snippets\header.html:68
+msgid "Chefs"
+msgstr "الطهاه"
+
+#: .\resturant\templates\home.html:643
+msgid "Our Proffesional Chefs"
+msgstr "الطهاه  المحترفون"
+
+#: .\resturant\templates\home.html:655 .\resturant\templates\home.html:673
+#: .\resturant\templates\home.html:693
+msgid "Chif Name"
+msgstr "اسم الطاهي "
+
+#: .\resturant\templates\home.html:656 .\resturant\templates\home.html:674
+#: .\resturant\templates\home.html:694
+msgid "Chif proffesion"
+msgstr "التخصص"
+
+#: .\resturant\templates\home.html:717 .\templates\snippets\header.html:70
+msgid "Contact"
+msgstr "التواصل"
+
+#: .\resturant\templates\home.html:718
+msgid "Contact Us"
+msgstr "التواصل"
+
+#: .\resturant\templates\home.html:735 .\resturant\templates\home.html:771
+msgid "Location"
+msgstr "العنوان"
+
+#: .\resturant\templates\home.html:736 .\resturant\templates\home.html:772
+#, fuzzy
+#| msgid "Resturant Description"
+msgid "Resturant Location"
+msgstr "وصف المطعم"
+
+#: .\resturant\templates\home.html:747 .\resturant\templates\home.html:783
+#: .\templates\snippets\footer.html:81 .\templates\snippets\footer.html:83
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: .\resturant\templates\home.html:759 .\resturant\templates\home.html:795
+msgid "Call"
+msgstr "الاتصال"
+
+#: .\resturant\templates\home.html:760 .\resturant\templates\home.html:796
+#: .\templates\snippets\footer.html:40 .\templates\snippets\footer.html:77
+msgid "Resturant Phone Number"
+msgstr "رقم الهاتف للمطعم"
+
+#: .\resturant\templates\home.html:818
 msgid "Subject"
 msgstr "الموضوع"
 
-#: .\resturant\templates\home.html:805
+#: .\resturant\templates\home.html:823
 msgid "Send Message"
-msgstr "الرسالة"
+msgstr "ارسال الرسالة"
 
 #: .\templates\snippets\footer.html:17 .\templates\snippets\footer.html:54
 #: .\templates\snippets\header.html:47 .\templates\snippets\header.html:55
@@ -448,10 +651,6 @@ msgstr "وصف المطعم"
 #: .\templates\snippets\footer.html:34 .\templates\snippets\footer.html:71
 msgid "Resturant Address"
 msgstr "عنوان المطعم"
-
-#: .\templates\snippets\footer.html:40 .\templates\snippets\footer.html:77
-msgid "Resturant Phone Number"
-msgstr "رقم الهاتف للمطعم"
 
 #: .\templates\snippets\footer.html:69 .\templates\snippets\footer.html:71
 msgid "Address"
@@ -469,26 +668,6 @@ msgstr "الرئيسية"
 msgid "About"
 msgstr "عن المطعم"
 
-#: .\templates\snippets\header.html:65
-msgid "Menu"
-msgstr "القائمة"
-
-#: .\templates\snippets\header.html:66
-msgid "Specials"
-msgstr "تخصصات"
-
-#: .\templates\snippets\header.html:67
-msgid "Events"
-msgstr "الاحداث"
-
-#: .\templates\snippets\header.html:68
-msgid "Chefs"
-msgstr "الطباخين"
-
-#: .\templates\snippets\header.html:69
-msgid "Gallery"
-msgstr "معرض الصور"
-
 #: .\templates\snippets\header.html:74
 msgid "Book a table"
 msgstr "حجز سفرة"
@@ -501,13 +680,12 @@ msgstr "الجملة الافتتاحية للمطعم"
 msgid "Our Menu"
 msgstr "قائمة المطعم"
 
-#: .\templates\snippets\header.html:98 .\templates\snippets\header.html:117
-msgid "Book a Table"
-msgstr "حجز سفرة"
-
 #: .\templates\snippets\header.html:101
 msgid "Welcome to "
 msgstr "مرحبا بكم"
+
+#~ msgid "Resturant Email"
+#~ msgstr "البريد الالكتروني الخاص بالمطعم"
 
 #~ msgid "Resturant description arabic title"
 #~ msgstr "وصف المطعم باللغة العربية"

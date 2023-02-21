@@ -73,7 +73,7 @@ class ResturantTestimonials(models.Model):
         return self.name_en
     
 class ResturantClient(models.Model):
-    client    = models.OneToOneField(User,verbose_name=_("client"), on_delete=models.CASCADE)
+    user      = models.OneToOneField(User,verbose_name=_("client"), on_delete=models.CASCADE)
     full_name = models.CharField(_("full_name"),max_length=200)
     address   = models.CharField(_("address"),max_length=200, null=True, blank=True)
     image     = models.ImageField(_("image"),upload_to='resturant_client/',null=True, blank=True)
@@ -86,13 +86,13 @@ class ResturantClient(models.Model):
         return self.full_name
 
 class ResturantTableReservasion(models.Model):
-    full_name    = models.CharField(_("Full Name"), max_length=255)
-    email_address = models.EmailField(_("Email Adress"))
-    phone_number  = models.CharField(_("Phone Number"), max_length=20)
-    date          = models.DateField(_('Date'))
-    time          = models.TimeField(_("Time"))
+    full_name        = models.CharField(_("Full Name"), max_length=255)
+    email_address    = models.EmailField(_("Email Adress"))
+    phone_number     = models.CharField(_("Phone Number"), max_length=20)
+    date             = models.CharField(_('Date'), max_length=10)
+    time             = models.CharField(_("Time"), max_length=10)
     number_of_people = models.PositiveIntegerField(_('Number of people'))
-    message         = models.TextField(_('Message'))
+    message          = models.TextField(_('Message'))
     class Meta:
         verbose_name_plural = _('Resturant Table Reservasion')
     
@@ -112,17 +112,17 @@ class ResturantEvents(models.Model):
         return self.title_en
 
 class ResturantSpecials(models.Model):
-    short_title_en  = models.CharField(_('Resturant event english title'),max_length=255)
-    full_title_en   = models.CharField(_('Resturant event english title'),max_length=255)
-    description_en  = models.TextField(_('Resturant event english description'))
+    category_en     = models.CharField(_('Resturant special english category'),max_length=255)
+    title_en        = models.CharField(_('Resturant special english title'),max_length=255)
+    description_en  = models.TextField(_('Resturant special english description'))
     image           = models.ImageField(_("image"),upload_to='resturant/specials/',null=True, blank=True)
-    short_title_ar  = models.CharField(_('Resturant event arabic title'),max_length=255)
-    full_title_ar   = models.CharField(_('Resturant event arabic title'),max_length=255)
-    description_ar  = models.TextField(_('Resturant event arabic description'))
+    category_ar     = models.CharField(_('Resturant special arabic category'),max_length=255)
+    title_ar        = models.CharField(_('Resturant special arabic title'),max_length=255)
+    description_ar  = models.TextField(_('Resturant special arabic description'))
     class Meta:
             verbose_name_plural = _('Resturant Specials')
     def __str__(self):
-        return self.short_title_en
+        return self.category_en
 
 class ResturantWhyUs(models.Model):
     title_en        = models.CharField(_('Resturant WhyUs english title'),max_length=255)
@@ -171,7 +171,7 @@ class ResturantCart(models.Model):
     total = models.PositiveIntegerField(_('total'),default=0)
     created_at = models.DateTimeField(_('created at'),auto_now_add=True)
     class Meta:
-        verbose_name_plural=_('Resturant Menu Cart')
+        verbose_name_plural=_('Resturant Cart')
     def __str__ (self):
         return "Cart : " + str(self.id)
 
@@ -179,6 +179,7 @@ class ResturantMenuCart(models.Model):
     cart = models.ForeignKey(ResturantCart,on_delete=models.CASCADE,verbose_name=_('cart'))
     item = models.ForeignKey(ResturantMenu , on_delete = models.CASCADE,verbose_name=_('item'))
     rate = models.PositiveIntegerField(_('rate'))            
+    quantity = models.PositiveIntegerField(default=1)
     subtotal = models.PositiveIntegerField(_('subtotal')) 
     class Meta:
         verbose_name_plural = _('Resturant Menu Cart')

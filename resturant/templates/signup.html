@@ -1,0 +1,46 @@
+{% extends 'auth_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    client Login
+{% endblock title %}
+
+
+{% block content %}
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-4 mx-auto mt-lg-0">
+                <img src="{% static '1.png'%}" class="w-100"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9 mx-auto mt-lg-0">
+            <form id="send-email-form" method="post" class="php-email-form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="username" class="form-control" id="name" placeholder="{% trans 'Username' %}" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="full_name" class="form-control" id="name" placeholder="{% trans 'Full Name' %}" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <input type="email" name="email" class="form-control" id="name" placeholder="{% trans 'Email Address' %}" required>
+                    </div>
+                    <div class="col-md-12 form-group mt-3 mt-md-0">
+                        <input type="password" class="form-control" name="password" id="email" placeholder="{% trans 'Your password' %}" required>
+                    </div>
+                    <div class="col-md-12 form-group mt-3 mt-md-0">
+                        <input type="text" class="form-control" name="address" id="email" placeholder="{% trans 'Your Address' %}" required>
+                    </div>
+                </div>
+                <div class="text-center my-3"><button type="submit">{% trans 'Sign up' %}</button></div>
+                <div class="text-center text-muted">{% trans "If you already have an account " %} <a href="{% url 'restu:client_login' %}">{% trans ' login now ' %}</a></div>
+            </form>
+
+            </div>         
+        </div>
+    </div>
+  </section>
+{% endblock content %}
+    
