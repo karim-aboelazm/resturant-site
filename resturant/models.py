@@ -160,14 +160,14 @@ class ResturantMenu(models.Model):
     description_en  = models.TextField(_('menu item english description'))
     title_ar        = models.CharField(_('menu item arabic title'),max_length=255)
     description_ar  = models.TextField(_('menu item arabic description'))
-    price           = models.DecimalField(_('menu item price'),max_digits=5,decimal_places=2)
+    price           = models.DecimalField(_('menu item price'),max_digits=5,decimal_places=3)
     class Meta:
         verbose_name_plural = _('Resturant Menu')
     def __str__(self):
         return self.title_en
 
 class ResturantCart(models.Model):
-    user = models.ForeignKey(User,on_delete = models.SET_NULL, blank = True, null=True,verbose_name=_('client'))
+    user = models.ForeignKey(User,on_delete = models.CASCADE, blank = True, null=True,verbose_name=_('client'))
     total = models.PositiveIntegerField(_('total'),default=0)
     created_at = models.DateTimeField(_('created at'),auto_now_add=True)
     class Meta:
@@ -179,7 +179,7 @@ class ResturantMenuCart(models.Model):
     cart = models.ForeignKey(ResturantCart,on_delete=models.CASCADE,verbose_name=_('cart'))
     item = models.ForeignKey(ResturantMenu , on_delete = models.CASCADE,verbose_name=_('item'))
     rate = models.PositiveIntegerField(_('rate'))            
-    quantity = models.PositiveIntegerField(default=1)
+    quantity = models.PositiveIntegerField(_('quantity'),default=1)
     subtotal = models.PositiveIntegerField(_('subtotal')) 
     class Meta:
         verbose_name_plural = _('Resturant Menu Cart')

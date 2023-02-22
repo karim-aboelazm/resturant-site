@@ -62,7 +62,7 @@
                                 <tr>
                                     <td class="text-center text-white">{{forloop.counter}}</td>
                                     <td class="text-center text-white">{{cp.item.title_en}}</td>
-                                    <td class="text-center text-white">$ {{cp.rate}}</td>
+                                    <td class="text-center text-white">R.O {{cp.rate}}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -73,7 +73,7 @@
                                     {% trans 'Grand Total' %}
                                 </div>
                                 <div class="col-md-6">
-                                    <span class="text-left">$ {{cart.total}}</span>
+                                    <span class="text-left">R.O {{cart.total}}</span>
                                 </div>
                             </div>
                                 
@@ -131,7 +131,7 @@
                                 <tr>
                                     <td class="text-center text-white">{{forloop.counter}}</td>
                                     <td class="text-center text-white">{{cp.item.title_ar}}</td>
-                                    <td class="text-center text-white">$ {{cp.rate}}</td>
+                                    <td class="text-center text-white"> {{cp.rate}} ريال</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -142,7 +142,7 @@
                                     {% trans 'Grand Total' %} :
                                 </div>
                                 <div class="col-md-6">
-                                    <span class="text-left">$ {{cart.total}}</span>
+                                    <span class="text-left">{{cart.total}} ريال</span>
                                 </div>
                             </div>
                         </h6>
@@ -167,7 +167,7 @@
     <!-- Include the PayPal JavaScript SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id={{client_id}}&currency=USD"></script>
     <script>
-        var total = '{{cart.total}}';
+        var total = '{{price_in_usd}}';
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
             style:{

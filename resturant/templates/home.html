@@ -153,7 +153,7 @@
                       <div class="col-lg-6 menu-item filter-{{cat.title_en}} ">
                         <div class="menu-content">
                           <a href="{% url 'restu:add_to_cart' item.id %}">{% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</a>
-                          <span>{% if item.price %}${{item.price}}{% else %}$0.00{% endif %}</span>
+                          <span>{% if item.price %}{{item.price}}0 R.O {% else %} 0.000 R.O{% endif %}</span>
                         </div>
                         <div class="menu-ingredients">
                           {% if item.description_en %}{{item.description_en}}{% else %}{% trans 'Menu Item Description' %}{% endif %}
@@ -171,7 +171,7 @@
                       <div class="col-lg-6 menu-item filter-{{cat.title_en}} ">
                         <div class="menu-content">
                           <a href="{% url 'restu:add_to_cart' item.id %}">{% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</a>
-                          <span>{% if item.price %}${{item.price}}{% else %}$0.00{% endif %}</span>
+                          <span>{% if item.price %}{{item.price}}0 ريال {% else %}ريال 0.000 {% endif %}</span>
                         </div>
                         <div class="menu-ingredients">
                           {% if item.description_ar %}{{item.description_ar}}{% else %}{% trans 'Menu Item Description' %}{% endif %}
@@ -325,109 +325,6 @@
       </section>
       <!-- End Specials Section -->
   
-      <!-- ======= Events Section ======= -->
-      <section id="events" class="events">
-        <div class="container" data-aos="fade-up">
-  
-          <div class="section-title">
-            <h2>{% trans "Events" %}</h2>
-            <p>{% trans "Organize Your Events in our Restaurant" %}</p>
-          </div>
-  
-          <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper-wrapper">
-              {% if events_resturant|length > 0 %}
-                {% for event in events_resturant %}
-                  {% if LANGUAGE_CODE == 'en' %}
-                    <div class="swiper-slide">
-                      <div class="row event-item">
-                        <div class="col-lg-6">
-                          {% if event.image %}
-                            <img src="{{event.image.url}}" class="img-fluid" alt="">
-                          {% else %}
-                            <img src="{% static '' %}img/event-birthday.jpg" class="img-fluid" alt="">
-                          {% endif %}
-                        </div>
-                        <div class="col-lg-6 pt-4 pt-lg-0 content">
-                          {% if event.title_en %}
-                            <h3>{{event.title_en}}</h3>
-                          {% else %}
-                            <h3>{% trans 'Event English Title' %}</h3>
-                          {% endif %}
-                          <div class="price">
-                            <p>
-                              {% if event.price %}
-                                <span>${{event.price}}</span>
-                              {% else %}
-                                <span>$0.00</span>
-                              {% endif %}
-                            </p>
-                          </div>
-                          {% if event.description_en %}
-                            <p class="fst-italic">{{event.description_en}}</p>
-                          {% else %}
-                            <p class="fst-italic">{% trans 'Event English Description' %}</p>
-                          {% endif %}
-                        </div>
-                      </div>
-                    </div>
-                  {% else %}
-                    <div class="swiper-slide">
-                      <div class="row event-item">
-                        <div class="col-lg-6">
-                          {% if event.image %}
-                            <img src="{{event.image.url}}" class="img-fluid" alt="">
-                          {% else %}
-                            <img src="{% static '' %}img/event-birthday.jpg" class="img-fluid" alt="">
-                          {% endif %}
-                        </div>
-                        <div class="col-lg-6 pt-4 pt-lg-0 content">
-                          {% if event.title_ar %}
-                            <h3>{{event.title_ar}}</h3>
-                          {% else %}
-                            <h3>{% trans 'Event Arabic Title' %}</h3>
-                          {% endif %}
-                          <div class="price">
-                            <p>
-                              {% if event.price %}
-                                <span>${{event.price}}</span>
-                              {% else %}
-                                <span>$0.00</span>
-                              {% endif %}
-                            </p>
-                          </div>
-                          {% if event.description_ar %}
-                            <p class="fst-italic">{{event.description_ar}}</p>
-                          {% else %}
-                            <p class="fst-italic">{% trans 'Event Arabic Description' %}</p>
-                          {% endif %}
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
-              {% else %}
-                <div class="swiper-slide">
-                  <div class="row event-item">
-                    <div class="col-lg-6">
-                      <img src="{% static '' %}img/event-private.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 content">
-                      <h3>{% trans 'Event English Title' %}</h3>
-                      <div class="price">
-                        <p><span>$0.00</span></p>
-                      </div>
-                      <p class="fst-italic">{% trans 'Event English Description' %}</p>
-                    </div>
-                  </div>
-                </div>
-              {% endif %}
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </section>
-      <!-- End Events Section -->
   
       <!-- ======= Book A Table Section ======= -->
       <section id="book-a-table" class="book-a-table">
@@ -478,115 +375,6 @@
       </section>
       <!-- End Book A Table Section -->
   
-      <!-- ======= Testimonials Section ======= -->
-      <section id="testimonials" class="testimonials section-bg">
-        <div class="container" data-aos="fade-up">
-  
-          <div class="section-title">
-            <h2>{% trans 'Testimonials' %}</h2>
-            <p>{% trans "What they're saying about us" %}</p>
-          </div>
-  
-          <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper-wrapper">
-              {% if test_resturant|length > 0 %}
-                {% for test in test_resturant %}
-                  {% if LANGUAGE_CODE == 'en' %}
-                    <div class="swiper-slide">
-                      <div class="testimonial-item">
-                        <p>
-                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                          {% if test.quote_en %}
-                            {{test.quote_en}}
-                          {% else %}
-                            {% trans 'Testimonial English Quote' %}
-                          {% endif %}
-                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                        </p>
-                        {% if test.profile %}
-                          <img src="{{test.profile.url}}" class="testimonial-img" alt="">
-                        {% else %}
-                          <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                        {% endif %}
-                        {% if test.name_en %}
-                          <h3>{{test.name_en}}</h3>
-                        {% else %}
-                          <h3>{% trans 'Person Name' %}</h3>
-                        {% endif %}
-                        {% if test.proffesion_en %}
-                          <h4>{{test.proffesion_en}}</h4>
-                        {% else %}
-                          <h4>{% trans 'proffesion' %}</h4>
-                        {% endif %}
-                      </div>
-                    </div>
-                  {% else %}
-                    <div class="swiper-slide">
-                      <div class="testimonial-item">
-                        <p>
-                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                          {% if test.quote_ar %}
-                            {{test.quote_ar}}
-                          {% else %}
-                            {% trans 'Testimonial Arabic Quote' %}
-                          {% endif %}
-                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        </p>
-                        {% if test.profile %}
-                          <img src="{{test.profile.url}}" class="testimonial-img mx-auto" alt="">
-                        {% else %}
-                          <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                        {% endif %}
-                        {% if test.name_ar %}
-                          <h3>{{test.name_ar}}</h3>
-                        {% else %}
-                          <h3>{% trans 'Person Name' %}</h3>
-                        {% endif %}
-                        {% if test.proffesion_ar %}
-                          <h4>{{test.proffesion_ar}}</h4>
-                        {% else %}
-                          <h4>{% trans 'proffesion' %}</h4>
-                        {% endif %}
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
-              {% else %}
-                {% if LANGUAGE_CODE == 'en' %}
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <p>
-                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      {% trans 'Testimonial Arabic Quote' %}
-                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    </p>
-                      <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                      <h3>{% trans 'Person Name' %}</h3>
-                      <h4>{% trans 'proffesion' %}</h4>
-                  </div>
-                </div>
-                {% else %}
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <p>
-                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        {% trans 'Testimonial Arabic Quote' %}
-                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                    </p>
-                      <img src="{% static '' %}img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                      <h3>{% trans 'Person Name' %}</h3>
-                      <h4>{% trans 'proffesion' %}</h4>
-                  </div>
-                </div>
-                {% endif %}
-              {% endif %}
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-  
-        </div>
-      </section>
-      <!-- End Testimonials Section -->
   
       <!-- ======= Gallery Section ======= -->
       <section id="gallery" class="gallery">
@@ -634,80 +422,6 @@
       </section>
       <!-- End Gallery Section -->
   
-      <!-- ======= Chefs Section ======= -->
-      <section id="chefs" class="chefs">
-        <div class="container" data-aos="fade-up">
-  
-          <div class="section-title">
-            <h2>{% trans 'Chefs' %}</h2>
-            <p>{% trans 'Our Proffesional Chefs' %}</p>
-          </div>
-  
-          <div class="row">
-            {% if chifs_resturant|length > 0 %}
-              {% for chif in chifs_resturant %}
-                {% if LANGUAGE_CODE == 'en' %}
-                  <div class="col-lg-4 col-md-6">
-                    <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                      <img src="{% if chif.chif_profile %}{{chif.chif_profile.url}}{% else %}{% static '' %}img/chefs/chefs-1.jpg{% endif %}" class="img-fluid" alt="">
-                      <div class="member-info">
-                        <div class="member-info-content">
-                          <h4>{% if chif.chif_name_en %}{{chif.chif_name_en}}{% else %}{% trans 'Chif Name' %}{% endif %}</h4>
-                          <span>{% if chif.chif_proffesion_en %}{{chif.chif_proffesion_en}}{% else %}{% trans 'Chif proffesion' %}{% endif %}</span>
-                        </div>
-                        <div class="social">
-                          <a href="{% if chif.facebook_url %}{{chif.facebook_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-facebook"></i></a>
-                          <a href="{% if chif.twitter_url %}{{chif.twitter_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-twitter"></i></a>
-                          <a href="{% if chif.instgram_url %}{{chif.instgram_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-instagram"></i></a>
-                          <a href="{% if chif.linkedin_url %}{{chif.linkedin_url}}{% else %}#{% endif %}" tartget = "_blank"><i class="bi bi-linkedin"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                {% else %}
-                  <div class="col-lg-4 col-md-6">
-                    <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                      <img src="{% if chif.chif_profile %}{{chif.chif_profile.url}}{% else %}{% static '' %}img/chefs/chefs-1.jpg{% endif %}" class="img-fluid" alt="">
-                      <div class="member-info">
-                        <div class="member-info-content">
-                          <h4>{% if chif.chif_name_ar %}{{chif.chif_name_ar}}{% else %}{% trans 'Chif Name' %}{% endif %}</h4>
-                          <span>{% if chif.chif_proffesion_ar %}{{chif.chif_proffesion_ar}}{% else %}{% trans 'Chif proffesion' %}{% endif %}</span>
-                        </div>
-                        <div class="social">
-                          <a href="{% if chif.facebook_url %}{{chif.facebook_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-facebook"></i></a>
-                          <a href="{% if chif.twitter_url %}{{chif.twitter_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-twitter"></i></a>
-                          <a href="{% if chif.instgram_url %}{{chif.instgram_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-instagram"></i></a>
-                          <a href="{% if chif.linkedin_url %}{{chif.linkedin_url}}{% else %}#{% endif %}" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                {% endif %}
-              {% endfor %}
-            {% else %}
-              <div class="col-lg-4 col-md-6">
-                <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                  <img src="{% static '' %}img/chefs/chefs-1.jpg" class="img-fluid" alt="">
-                  <div class="member-info">
-                    <div class="member-info-content">
-                      <h4>{% trans 'Chif Name' %}</h4>
-                      <span>{% trans 'Chif proffesion' %}</span>
-                    </div>
-                    <div class="social">
-                      <a href="#"><i class="bi bi-facebook"></i></a>
-                      <a href="#"><i class="bi bi-twitter"></i></a>
-                      <a href="#"><i class="bi bi-instagram"></i></a>
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          </div>
-  
-        </div>
-      </section>
-      <!-- End Chefs Section -->
 
       <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">

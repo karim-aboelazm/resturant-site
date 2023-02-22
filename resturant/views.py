@@ -12,6 +12,8 @@ from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.views import PasswordChangeView
 from .utils import password_reset_token
 
+
+
 class RestMixin():
     def dispatch(self, request, *args, **kwargs):
         cart_id = request.session.get("cart_id")
@@ -256,7 +258,7 @@ class AddToCartView(RestMixin,TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["resturant"]         = Resturant.objects.latest('id')
+        context["resturant"]= Resturant.objects.latest('id')
         item_id = kwargs['pk']
         item_obj = ResturantMenu.objects.get(id=item_id)
         context["item"] = item_obj
@@ -276,6 +278,7 @@ class AddToCartView(RestMixin,TemplateView):
                                                          rate=item_obj.price,quantity=1,
                                                          subtotal=item_obj.price)
                 cart.total += item_obj.price
+                cart.user = self.request.user
                 cart.save()
         else:
             cart = ResturantCart.objects.create(total=0)
@@ -284,6 +287,7 @@ class AddToCartView(RestMixin,TemplateView):
                                                          rate=item_obj.price,quantity=1,
                                                          subtotal=item_obj.price)
             cart.total += item_obj.price
+            cart.user = self.request.user
             cart.save()
         return context
 
@@ -357,6 +361,21 @@ class CheckOutView(RestMixin, FormView):
             return redirect("/client-login/?next=/check-out/")
         return super().dispatch(request, *args, **kwargs)
     
+    def convert_omr_to_usd(self):
+        import requests
+        from bs4 import BeautifulSoup
+        url = 'https://www.google.com/search?q=omr+to+usd'
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        # Find the input element for the target currency (USD)
+        target_currency_input = soup.find('input', {'class': 'a61j6'})
+        if target_currency_input:
+            return float(target_currency_input.get('value'))
+        else:
+            return 1.0
+        
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["resturant"] = Resturant.objects.latest('id')
@@ -368,6 +387,7 @@ class CheckOutView(RestMixin, FormView):
         else:
             cart_obj = None
         context["cart"] = cart_obj
+        context["price_in_usd"] = float(context["cart"].total*self.convert_omr_to_usd())
         return context
     
     def form_valid(self,form):
