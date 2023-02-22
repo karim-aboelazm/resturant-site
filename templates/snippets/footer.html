@@ -12,9 +12,9 @@
               {% if LANGUAGE_CODE == 'en' %}
               
               {% if resturant.title_en %}
-                <h3>{{resturant.title_en|title}}</h3>
+                <h1>{{resturant.title_en|title}}</h1>
               {% else %}
-                <h3>{% trans 'Resturant Name' %}</h3>
+                <h1>{% trans 'Resturant Name' %}</h1>
               {% endif %}
               
               {% if resturant.description_en %}
@@ -49,9 +49,9 @@
               {% else %}
 
               {% if resturant.title_ar %}
-                <h3>{{resturant.title_ar}}</h3>
+                <h1 style="font-weight:600;">{{resturant.title_ar}}</h1>
               {% else %}
-                <h3>{% trans 'Resturant Name' %}</h3>
+                <h1 style="font-weight:600;">{% trans 'Resturant Name' %}</h1>
               {% endif %}
 
               {% if resturant.description_ar %}

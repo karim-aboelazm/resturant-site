@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 15:46+0200\n"
+"POT-Creation-Date: 2023-02-22 11:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgstr "الجملة الافتتاحية باللغة العربية"
 msgid "Resturant arabic address"
 msgstr "عنوان المطعم بالغة العربية"
 
-#: .\resturant\models.py:26
+#: .\resturant\models.py:26 .\resturant\templates\home.html:5
 msgid "Resturant"
 msgstr "المطعم"
 
@@ -515,6 +515,7 @@ msgstr "اذا تذكرت كلمة المرور الخاصة بكم "
 msgid " login now "
 msgstr "قم بتسجيل الدخول الأن"
 
+#: .\resturant\templates\check_out.html:4
 #: .\resturant\templates\check_out.html:28
 #: .\resturant\templates\check_out.html:97
 msgid "Checkout Now"
@@ -542,6 +543,7 @@ msgstr "الاسم الاخير"
 #: .\resturant\templates\check_out.html:40
 #: .\resturant\templates\check_out.html:108
 #: .\resturant\templates\check_out.html:109
+#: .\resturant\templates\forgot_password.html:33
 #: .\resturant\templates\signup.html:29
 msgid "Email Address"
 msgstr "البريد الالكتروني"
@@ -589,38 +591,42 @@ msgstr "تنبيه"
 msgid "All Fields Are Mandatory"
 msgstr "جميع الحقول مطلوبة"
 
-#: .\resturant\templates\check_out.html:184
-msgid "error"
-msgstr "خطـــأ"
-
 #: .\resturant\templates\check_out.html:229
 msgid "Your order has been paid successfully"
 msgstr "تم دفع طلبك بنجاح"
 
-#: .\resturant\templates\check_out.html:229
-msgid "success"
-msgstr "نجاح"
+#: .\resturant\templates\forgot_password.html:20
+msgid "Password reset link is sent to your email check your inbox immediately"
+msgstr "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني ، تحقق من صندوق الوارد الخاص بك على الفور"
 
-#: .\resturant\templates\forgot_password.html:31
+#: .\resturant\templates\forgot_password.html:24
+msgid "Someting went wrong please enter your email again"
+msgstr "حدث خطأ ما الرجاء إدخال البريد الإلكتروني الخاص بك مرة أخرى"
+
+#: .\resturant\templates\forgot_password.html:28
+msgid "Forget Password"
+msgstr "نسيت كلمة المرور"
+
+#: .\resturant\templates\forgot_password.html:36
 msgid "Reset"
 msgstr "اعادة"
 
-#: .\resturant\templates\forgot_password.html:32
+#: .\resturant\templates\forgot_password.html:37
 #: .\resturant\templates\login.html:30
 msgid "If you don't have an account "
 msgstr "اذا لم يكن لديكم حساب"
 
-#: .\resturant\templates\forgot_password.html:32
+#: .\resturant\templates\forgot_password.html:37
 #: .\resturant\templates\login.html:30
 msgid " sign up now "
 msgstr "قم بإنشاء حساب جديد"
 
-#: .\resturant\templates\forgot_password.html:33
+#: .\resturant\templates\forgot_password.html:38
 #: .\resturant\templates\login.html:31
 msgid "If you forgot your password "
 msgstr "اذا نسيت كلمة المرور الخاصة بكم"
 
-#: .\resturant\templates\forgot_password.html:33
+#: .\resturant\templates\forgot_password.html:38
 #: .\resturant\templates\login.html:31
 msgid " reset it now "
 msgstr " اعادة كلمة المرور الأن"
@@ -934,6 +940,12 @@ msgstr "قائمة المطعم"
 #: .\templates\snippets\header.html:136
 msgid "Welcome to "
 msgstr "مرحبا بكم"
+
+#~ msgid "error"
+#~ msgstr "خطـــأ"
+
+#~ msgid "success"
+#~ msgstr "نجاح"
 
 #~ msgid "Resturant Email"
 #~ msgstr "البريد الالكتروني الخاص بالمطعم"

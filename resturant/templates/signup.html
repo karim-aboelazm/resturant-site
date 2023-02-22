@@ -9,14 +9,14 @@
 <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
         <div class="row">
-            <div class="col-lg-4 mx-auto mt-lg-0">
+            <div class="col-lg-3 mx-auto mt-lg-0">
                 <img src="{% static '1.png'%}" class="w-100"/>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-9 mx-auto mt-lg-0">
-                <h1 class="py-3 text-center" style="font-family:inherit">{% trans 'Sign Up' %}</h1>
-            <form id="send-email-form" method="post" class="php-email-form">
+                <h3 class="text-center" style="font-family:inherit">{% trans 'Sign Up' %}</h3>
+            <form id="send-email-form" method="post" class="php-email-form pt-3">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-md-4 form-group">

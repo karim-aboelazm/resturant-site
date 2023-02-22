@@ -85,6 +85,7 @@ class ResturantClientRegisterView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["resturant"]         = Resturant.objects.latest('id')
         return context
     
     def form_valid(self, form):
@@ -111,6 +112,7 @@ class ResturantClientLoginView(FormView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["resturant"]         = Resturant.objects.latest('id')
         return context
 
     def form_valid(self,form):
@@ -131,6 +133,7 @@ class ResturantClientLoginView(FormView):
             return self.success_url
 
 # customer profile
+'''
 class ResturantClientProfileView(RestMixin,TemplateView):
     template_name = "profile.html"
     def dispatch(self, request, *args, **kwargs):
@@ -156,7 +159,6 @@ class ResturantClientProfileView(RestMixin,TemplateView):
         context["client_items"] = list(set(context["client_items"]))[::-1]
         return context
 
-# customer update profile
 class UpdateProfileView(RestMixin,UpdateView):
     model = ResturantClient
     form_class = ProfileUpdateForm
@@ -173,6 +175,7 @@ class UpdateProfileView(RestMixin,UpdateView):
     def get_success_url(self, *args, **kwargs):
         success_url = reverse_lazy('restu:client_profile')
         return success_url
+'''
 
 class ForgotPasswordView(FormView):
     template_name = 'forgot_password.html'
@@ -201,6 +204,7 @@ class ForgotPasswordView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["resturant"]         = Resturant.objects.latest('id')
         return context
 
 class ResetPasswordView(FormView):
@@ -220,6 +224,7 @@ class ResetPasswordView(FormView):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["resturant"]         = Resturant.objects.latest('id')
        
         return context
     
@@ -234,12 +239,24 @@ class ResetPasswordView(FormView):
 class ChangePasswordView(PasswordChangeView):
     template_name = 'change_password.html'
     success_url = '/'         
-    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["resturant"]         = Resturant.objects.latest('id')
+        return context
+
 # add product to my cart
 class AddToCartView(RestMixin,TemplateView):
     template_name = "add_to_cart.html"
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user.resturantclient:
+            pass
+        else:
+            return redirect("/client-login/?next=/")
+        return super().dispatch(request, *args, **kwargs)
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["resturant"]         = Resturant.objects.latest('id')
         item_id = kwargs['pk']
         item_obj = ResturantMenu.objects.get(id=item_id)
         context["item"] = item_obj
@@ -275,6 +292,7 @@ class CartView(RestMixin,TemplateView):
     template_name = "cart.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["resturant"]         = Resturant.objects.latest('id')
         cart_id = self.request.session.get('cart_id',None)
         if cart_id:
             cart = ResturantCart.objects.get(id=cart_id)
@@ -313,7 +331,7 @@ class ManageCartView(RestMixin,View):
             cp_obj.delete()
         else:
             pass
-        return redirect('/my-cart/')
+        return redirect('/my-dish/')
 
 # empty the cart form orders 
 class EmptyCartView(RestMixin,View):
@@ -324,7 +342,7 @@ class EmptyCartView(RestMixin,View):
             cart.resturantmenucart_set.all().delete()
             cart.total = 0
             cart.save()
-        return redirect('/my-cart/')
+        return redirect('/my-dish/')
     
 # check out page view
 class CheckOutView(RestMixin, FormView):
@@ -338,9 +356,10 @@ class CheckOutView(RestMixin, FormView):
         else:
             return redirect("/client-login/?next=/check-out/")
         return super().dispatch(request, *args, **kwargs)
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["resturant"] = Resturant.objects.latest('id')
         context["profile"] = ResturantClient.objects.get(user=self.request.user)
         context["client_id"] = settings.PAYPAL_CLIENT_ID
         cart_id = self.request.session.get('cart_id',None)

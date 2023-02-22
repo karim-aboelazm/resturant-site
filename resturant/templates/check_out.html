@@ -1,7 +1,7 @@
 {% extends 'auth_base.html' %}
 {% load static i18n bootstrap5 %}
 {% block title %}
-     Check out
+     {% trans 'Checkout Now' %}
 {% endblock title %}
 
 {% block extre_head_urls %}
@@ -45,7 +45,7 @@
                         </div>  
                 </div>
                 <div class="col-md-5 card mx-auto p-5 mb-5" style="background:none;border-color:#cda45e;">
-                    <h6>{% trans 'Order Summary' %}</h6>
+                    <h3 class="text-center">{% trans 'Order Summary' %}</h3>
                     <hr>
 
                     {% if cart.resturantmenucart_set.all %}
@@ -114,7 +114,7 @@
                         </div>  
                 </div>
                 <div class="col-md-5 card mx-auto p-5 mb-5" style="background:none;border-color:#cda45e;">
-                    <h6>{% trans 'Order Summary' %}</h6>
+                    <h3 class="text-center">{% trans 'Order Summary' %}</h3>
                     <hr>
 
                     {% if cart.resturantmenucart_set.all %}
@@ -181,7 +181,7 @@
                 var phone_number   = $("[name='phone_num']").val();
                 var token          = $("[name='csrfmiddlewaretoken']").val();
                 if(first_name == "" || last_name == "" || email_address == "" || phone_number == ""){
-                    swal("{% trans 'alart' %}", "{% trans 'All Fields Are Mandatory' %}", "{% trans 'error' %}");
+                    swal("{% trans 'alart' %}", "{% trans 'All Fields Are Mandatory' %}", "error");
                     return false;
                 }
                 else{
@@ -226,7 +226,7 @@
                         url:"/check-out/",
                         data:data,
                         success : function (responsec){
-                            swal("{% trans 'Congratulations' %}","{% trans 'Your order has been paid successfully' %}","{% trans 'success' %}").then((value)=>{
+                            swal("{% trans 'Congratulations' %}","{% trans 'Your order has been paid successfully' %}","success").then((value)=>{
                                 document.getElementById("PayForm").submit();
                             });
                         }
