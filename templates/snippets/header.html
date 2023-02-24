@@ -26,6 +26,12 @@
                     {% trans 'Login' %}
                 </span>
             </a>
+            <a href="{% url 'restu:admin_login'%}" class="account-link">
+              <i class="fas fa-sign-in-alt text-white"></i>
+               <span class="mx-3 text-white">
+                   {% trans 'Login as admin' %}
+               </span>
+           </a>
           {%endif%}
           
           {% if user.is_authenticated and request.user.resturantclient%}

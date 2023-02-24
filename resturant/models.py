@@ -27,6 +27,13 @@ class Resturant(models.Model):
     def __str__(self):
         return self.title_en
 
+class ResturantAdmins(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=_('username'))
+    full_name = models.CharField(_('full name'),max_length=100)
+    mobile = models.CharField(_('phone number'),max_length=20)
+    def __str__(self):
+        return f"Resturant Admin : {self.user.username}"
+
 class ResturantSiteImages(models.Model):
     image = models.ImageField(_('Resturant Site Images'),upload_to='resturant/site_images/')
     class Meta:
@@ -93,6 +100,7 @@ class ResturantTableReservasion(models.Model):
     time             = models.CharField(_("Time"), max_length=10)
     number_of_people = models.PositiveIntegerField(_('Number of people'))
     message          = models.TextField(_('Message'))
+    confirm          = models.BooleanField(_('Confirm'), default=False)
     class Meta:
         verbose_name_plural = _('Resturant Table Reservasion')
     
@@ -187,6 +195,15 @@ class ResturantMenuCart(models.Model):
         return "Cart : " + str(self.cart.id) +" ResturantMenuCart : "+ str(self.id)
 
 class ResturantMenuOrder(models.Model):
+    # order status
+    ORDER_STATUS = (
+        (_("Order Received"),_("Order Received")),
+        (_("Order Processing"),_("Order Processing")),
+        (_("Order On The Way"),_("Order On The Way")),
+        (_("Order Completed"),_("Order Completed")),
+        (_("Order Canceled"),_("Order Canceled")),
+        )
+
     cart = models.OneToOneField(ResturantCart,on_delete=models.CASCADE,verbose_name=_('cart'))
     user = models.ForeignKey(User,on_delete = models.SET_NULL, blank = True, null=True,verbose_name=_('client'))
     first_name = models.CharField(_('first name'),max_length=200,null=True) 
@@ -195,6 +212,7 @@ class ResturantMenuOrder(models.Model):
     email = models.EmailField(_('email address'),null=True , blank = True)
     subtotal = models.PositiveIntegerField(_('subtotal'))
     total = models.PositiveIntegerField(_('total'))
+    order_status = models.CharField(_('order status'),max_length=50,choices = ORDER_STATUS,default=_("Order Received"))
     created_at = models.DateTimeField(_('created at'),auto_now_add = True)
     payment_mode = models.CharField(_('payment mode'),max_length=200,null=True)  
     payment_id = models.CharField(_('payment id'),max_length=200,null=True) 

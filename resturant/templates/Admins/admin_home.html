@@ -1,0 +1,84 @@
+{% extends 'admin_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    {% trans 'Admin Home' %}
+{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5" >
+    <div class="row mt-5" style="padding:100px; auto">
+      <div class="col-md-12 card mt-5" style="background:none;border-color:#cda45e;">
+        <h3 class="text-center pt-5" style="font-family:inherits;">{% trans 'Pending Orders' %}</h3><hr>
+        <table class="table table-bordered text-white" >
+          <thead>
+            <tr>
+              <th>{% trans 'SN' %}</th>
+              <th>{% trans 'Ordered Number' %}</th>
+              <th>{% trans 'Customer' %}</th>
+              <th>{% trans 'Ordered On' %}</th>
+              <th>{% trans 'Amount' %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in all_orders|slice:"0:20"  %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>
+                  {% if order.order_status == 'Order Completed' or order.order_status == "الطلب تم بنجاح" %}
+                    <a href="{% url 'restu:admin_order_detail' order.id %}">
+                      {% trans 'ORDER' %}_{{order.id}} <i class="fa fa-check-double"></i>
+                    </a>
+                  {% else %}
+                  <a href="{% url 'restu:admin_order_detail' order.id %}">
+                    {% trans 'ORDER' %}_{{order.id}}
+                  </a>
+                  {% endif %}
+                  
+                </td> 
+                <td>{{order.user.first_name}} {{order.user.last_name}}</td>
+                <td>{{order.created_at|timesince}} {% trans 'ago' %}</td>
+                <td>{{order.total}} {% trans 'R.O' %}</td>
+              </tr>
+            {% endfor %}
+          </tbody> 
+        </table>
+      </div>
+    </div>
+    <div class="row mt-5" style="padding:100px; auto">
+      <div class="col-md-12 card mt-5" style="background:none;border-color:#cda45e;">
+        <h3 class="text-center pt-5" style="font-family:inherits;">{% trans 'Pending Tables' %}</h3><hr>
+        <table class="table table-bordered text-white" >
+          <thead>
+            <tr>
+              <th>{% trans 'SN' %}</th>
+              <th>{% trans 'Table Number' %}</th>
+              <th>{% trans 'Reserved by' %}</th>
+              <th>{% trans 'Phone Number' %}</th>
+              <th>{% trans 'Confirmation' %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for table in all_tables|slice:"0:20"  %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url 'restu:admin_table_detail' table.id %}">{% trans 'Table' %}_{{table.id}}</a></td> 
+                <td>{{table.full_name}}</td>
+                <td>{{table.phone_number}}</td>
+                <td>
+                  <form class='php-email-form' method="post" action="{% url 'restu:admin_table_confirm' table.id %}">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-12 form-group">
+                        <button class="col-md-12" type="submit" style="background:#cda45e;border-radius:25px; color:white;" >{% trans 'Confirm' %}</button>
+                      </div>
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody> 
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

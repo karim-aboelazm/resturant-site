@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% if LANGUAGE_CODE == 'en' %}
+<html lang="en" dir='ltr'>
+{% else %}
+<html lang="ar" dir='rtl'>
+{% endif %}
+
+<head>
+  <title>{% block title %}{% endblock title %}</title>
+  {% include 'snippets/head.html' %}
+  {% block extre_head_urls %}{% endblock extre_head_urls %}
+</head>
+<body>
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+
+      <div class="contact-info d-flex align-items-center">
+        <div class="user_option_box">
+          {% if user.is_authenticated and request.user.resturantadmins%}
+            <a href="" class="account-link mx-3 text-white">
+              <i class="fa fa-user text-white" aria-hidden="true"></i>
+              <span class="">
+                  {{request.user.username}}
+              </span>
+            </a>
+            <a href="{% url 'restu:admin_logout' %}"><i class="fas fa-power-off text-white"></i></a>
+          {%endif%}
+        </div>
+      </div>
+
+      <div class="languages d-none d-md-flex align-items-center">
+        <ul style="display:flex;position:relative;top:10px;">
+          {% if LANGUAGE_CODE == 'en' %}
+          <li><form  action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for available_languages as languages %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+            <input name="language" type="hidden" value="ar" />
+            <button type="submit" style="background: none;outline: none;border: none;color:#fff;position: relative;bottom: 10px;left: 10px;" class="">Ar</button>
+          </form></li>
+          {% else %}
+          <li><form  action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for available_languages as languages %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+            <input name="language" type="hidden" value="en" />
+            <button type="submit" style="background: none;outline: none;border: none;color:#fff;position: relative;bottom: 10px;" class="">En</button>
+          </form></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% get_current_language as LANGUAGE_CODE %}
+  
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-cente mb-5" style="background: rgba(12, 11, 9, 1);">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+      {% if LANGUAGE_CODE == 'en' %}
+        <h1 class="logo me-auto me-lg-0">
+          {% if resturant.title_en %}
+            <a href="/"><img src="{% if resturant.logo %}
+            {{resturant.logo.url}}
+            {% else %}
+            {% static '1.png' %}
+            {% endif %}" class="w-100"/></a>
+            {% else %}
+            <a href="/">{% trans 'Resturant Logo' %}</a>
+          {% endif %}
+        </h1>
+        {% else %}
+        <h1 class="logo me-auto me-lg-0">
+          {% if resturant.title_ar %}
+            <a href="/"><img src="{% if resturant.logo %}
+            {{resturant.logo.url}}
+            {% else %}
+            {% static '1.png' %}
+            {% endif %}"/></a>
+          {% else %}
+            <a href="/">{% trans 'Resturant Logo' %}</a>
+          {% endif %}
+        </h1>
+      {% endif %}
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="{% static '' %}img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'restu:admin_home' %}">{% trans 'Home' %}</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'restu:admin_all_order' %}">{% trans 'All Orders' %}</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'restu:admin_menu_list' %}">{% trans 'Menu' %}</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'restu:admin_table_list' %}">{% trans 'All Tables' %}</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'restu:admin_add_menu_items' %}">{% trans 'Add Menu Items' %}</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'restu:admin_add_menu_category' %}">{% trans 'Add Menu Category' %}</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'restu:home' %}">{% trans 'Visit Site' %}</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  {% block content %}{% endblock content %}
+
+ 
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% include 'snippets/scripts.html' %}
+  {% block extre_scripts_urls %}{% endblock extre_scripts_urls %}
+</body>
+</html>

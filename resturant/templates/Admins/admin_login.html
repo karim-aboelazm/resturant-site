@@ -1,7 +1,7 @@
 {% extends 'auth_base.html' %}
 {% load static i18n bootstrap5 %}
 {% block title %}
-    {% trans 'client Login' %}
+    {% trans 'Admin Login' %}
 {% endblock title %}
 
 
@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col-lg-5 mx-auto mt-lg-0">
-                <h1 class="text-center" style="font-family:inherit">{% trans 'Login' %}</h1>
+                <h1 class="text-center" style="font-family:inherit">{% trans 'Login as admin' %}</h1>
                 <form action="" id="send-email-form" method="post" class="php-email-form pt-4">
                     {% csrf_token %}
                     <div class="row">
@@ -26,11 +26,8 @@
                         <input type="password" class="form-control" name="password" id="email" placeholder="{% trans 'Your password' %}" required>
                     </div>
                     </div>
-                    <div class="text-center my-3"><button type="submit">{% trans 'Login' %}</button></div>
-                    <div class="text-center text-muted">{% trans "If you don't have an account " %} <a href="{% url 'restu:client_register' %}">{% trans ' sign up now ' %}</a></div>
-                    <div class="text-center text-muted">{% trans "If you forgot your password " %} <a href="{% url 'restu:forgot_password' %}">{% trans ' reset it now ' %}</a></div>
+                    <div class="text-center my-3"><button type="submit">{% trans 'Login as admin' %}</button></div>
                 </form>
-
             </div>         
         </div>
     </div>

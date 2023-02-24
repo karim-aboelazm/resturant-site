@@ -7,22 +7,24 @@ admin.site.site_title = _("Resturant Admin Portal")
 admin.site.index_title = _("Welcome to Our Admin")
 
 rest_models=[
-Resturant,
-ResturantSiteImages,
-ResturantGalaryImages,
-ResturantChifs,
-ResturantTestimonials,
-ResturantClient,
-ResturantTableReservasion,
-ResturantEvents,
-ResturantSpecials,
-ResturantWhyUs,
-ResturantAboutPlace,
-ResturantMenuCategory,
-ResturantMenu,
-ResturantCart,
-ResturantMenuCart,
-ResturantMenuOrder,
+    Resturant,
+    ResturantAdmins,
+    ResturantSiteImages,
+    ResturantGalaryImages,
+    ResturantChifs,
+    ResturantTestimonials,
+    ResturantClient,
+    ResturantTableReservasion,
+    ResturantEvents,
+    ResturantSpecials,
+    ResturantWhyUs,
+    ResturantAboutPlace,
+    ResturantMenuCategory,
+    ResturantMenu,
+    ResturantCart,
+    ResturantMenuCart,
+    ResturantMenuOrder,
 ]
+
 for model in rest_models:
     admin.site.register(model)

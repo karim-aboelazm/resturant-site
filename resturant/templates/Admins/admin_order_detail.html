@@ -1,0 +1,125 @@
+{% extends 'admin_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    {% trans 'Admin Order Details' %}
+{% endblock title %}
+
+{% block content %}
+<section id="contact" class="contact">
+    <div class="row" style="padding:100px; auto">
+        <div class="col-md-9 mx-auto p-5 card" style="background:none;border-color:#cda45e;">
+            <h2 class="">{% trans 'Order Details' %}</h2><hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">{% trans 'Order Number' %} : </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{order_object.id}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">{% trans 'Order Status' %} : </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p> {{order_object.order_status}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">{% trans 'Order On' %} : </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{% if LANGUAGE_CODE == 'en' %}
+                            {{order_object.created_at}} ( {{order_object.created_at|timesince}} {% trans 'ago' %} )
+                        {% else %}
+                        {{order_object.created_at}} ( {% trans 'ago' %} {{order_object.created_at|timesince}}  )
+                        {% endif %}</p>
+                         
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">{% trans 'Client Info' %} : </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{order_object.user.first_name}} {{order_object.user.last_name}} , {{order_object.phone_num}} , {{order_object.email}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">{% trans 'Shipping Address' %} : </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{order_object.user.resturantclient.address}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">{% trans 'Payment Information' %} : </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p> {{order_object.payment_mode}}, ({% if order_object.payment_id %} {% trans 'Payment Completed' %} {%else%} {% trans 'Not Paid' %} {% endif %}) </p>
+                    </div>
+                </div>              
+                <hr>
+                <h4>{% trans 'Order Items' %}</h4>
+                <div class="row">
+                    <div class="col-md-7">
+                        <table class="table table-striped table-bordered text-white" >
+                            <thead>
+                              <tr>
+                                <th class="text-white">{% trans 'SN' %}</th>
+                                <th class="text-white">{% trans 'item' %}</th>
+                                <th class="text-white">{% trans 'Price' %}</th>
+                                <th class="text-white">{% trans 'quantity' %}</th>
+                                <th class="text-white">{% trans 'subtotal' %}</th>
+                              </tr>
+                            </thead>
+                             <tbody>
+                              {% for order in order_object.cart.resturantmenucart_set.all  %}
+                                <tr>
+                                  <td class="text-white">{{forloop.counter}}</td> 
+                                  <td class="text-white">
+                                    {% if LANGUAGE_CODE == 'en' %}
+                                        {{order.item.title_en}}
+                                    {% else %}
+                                        {{order.item.title_ar}}
+                                    {% endif %}
+                                  </td>
+                                  <td class="text-white">{{order.rate}} {% trans 'R.O' %} </td>
+                                  <td class="text-white">{{order.quantity}}</td>
+                                  <td class="text-white">{{order.subtotal}} {% trans 'R.O' %}</td>
+                                </tr>
+                              {% endfor %}
+                                <tr>
+                                    <th colspan="4" class="text-right">{% trans 'total' %} : </th>
+                                    <th>{{order_object.total}} {% trans 'R.O' %}</th>
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                    <div class="col-md-5">
+                        <form class='php-email-form' action="{% url 'restu:admin_order_status_change' order_object.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <select class="col-md-12 form-select" aria-label="Default select example" name="status">
+                                        {% for i,j in all_status %}
+                                            <option value="{{i}}" {% if i == order_object.order_status %}selected{% endif %}>{{j}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-12 form-group mt-3">
+                                    <button class="col-md-12" type="submit" >{% trans 'Change' %}</button>
+                                </div>
+                            </div>
+                            </form>
+                    </div>
+                </div>
+                
+                
+        </div>
+    </div>
+</section>
+{% endblock content %}

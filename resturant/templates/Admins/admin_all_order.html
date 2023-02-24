@@ -1,0 +1,50 @@
+{% extends 'admin_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    {% trans 'Admin All Orders' %}
+{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5" >
+    <div class="row mt-5" style="padding:100px; auto">
+      <div class="col-md-12 card mt-5" style="background:none;border-color:#cda45e;">
+        <h3 class="text-center pt-5" style="font-family:inherits;">{% trans 'All Orders' %}</h3><hr>
+        <table class="table table-bordered text-white" >
+          <thead>
+            <tr>
+              <th>{% trans 'SN' %}</th>
+              <th>{% trans 'Ordered Number' %}</th>
+              <th>{% trans 'Customer' %}</th>
+              <th>{% trans 'Ordered On' %}</th>
+              <th>{% trans 'Amount' %}</th>
+              <th>{% trans 'order status' %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in all_orders  %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>
+                  {% if order.order_status == 'Order Completed' or order.order_status == "الطلب تم بنجاح" %}
+                    <a href="{% url 'restu:admin_order_detail' order.id %}">
+                      {% trans 'ORDER' %}_{{order.id}} <i class="fa fa-check-double text-white"></i>
+                    </a>
+                  {% else %}
+                  <a href="{% url 'restu:admin_order_detail' order.id %}">
+                    {% trans 'ORDER' %}_{{order.id}}
+                  </a>
+                  {% endif %}
+                  
+                </td> 
+                <td>{{order.user.first_name}} {{order.user.last_name}}</td>
+                <td>{{order.created_at|timesince}} {% trans 'ago' %}</td>
+                <td>{{order.total}} {% trans 'R.O' %}</td>
+                <td>{% trans order.order_status %}</td>
+              </tr>
+            {% endfor %}
+          </tbody> 
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

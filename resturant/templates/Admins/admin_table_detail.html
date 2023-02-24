@@ -1,0 +1,77 @@
+{% extends 'admin_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    {% trans 'Admin Table Details' %}
+{% endblock title %}
+
+{% block content %}
+<section id="contact" class="contact">
+    <div class="row" style="padding:100px; auto">
+        <div class="col-md-9 mx-auto p-5 card" style="background:none;border-color:#cda45e;">
+            <h2 class="">{% trans 'Table Details' %}</h2><hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="font-weight-bold">{% trans 'Table Number' %} : </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{table_object.id}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="font-weight-bold">{% trans 'Table Reserved By ' %} : </p>
+                </div>
+                <div class="col-md-6">
+                    <p> {{table_object.full_name}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="font-weight-bold">{% trans 'Client Info' %} : </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{table_object.email_address}} , {{table_object.phone_number}}</p>     
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="font-weight-bold">{% trans 'Date' %} : </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{table_object.date}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="font-weight-bold">{% trans 'Time' %} : </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{table_object.time}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="font-weight-bold">{% trans 'Number Of People' %} : </p>
+                </div>
+                <div class="col-md-6">
+                    <p> 
+                    {% if LANGUAGE_CODE == 'en' %}
+                        {{table_object.number_of_people}} {% trans 'Persons' %}
+                    {% else %}
+                        {% trans 'Persons' %} {{table_object.number_of_people}}
+                    {% endif %}
+                    </p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="font-weight-bold">{% trans 'Client Message' %} : </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{table_object.message}}</p>
+                </div>
+            </div>             
+        </div>
+    </div>
+</section>
+{% endblock content %}

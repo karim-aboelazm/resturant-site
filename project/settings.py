@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
 PAYPAL_CLIENT_ID  = env('PAYPAL_CLIENT_ID')
 PAYPAL_SECRET_ID  = env('PAYPAL_SECRET_KEY')
+PAYPAL_MODE       = env('PAYPAL_MODE')
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

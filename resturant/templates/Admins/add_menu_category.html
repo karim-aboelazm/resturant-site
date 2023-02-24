@@ -1,0 +1,31 @@
+{% extends 'admin_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    {% trans 'Admin Add Category' %}
+{% endblock title %}
+
+
+{% block content %}
+<section id="contact" class="contact" style="margin:150px auto;">
+    <div class="container p-0" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-8 mx-auto card mt-lg-0 p-3" style="background:none;border-color:#cda45e;">
+                <h1 class="text-center" style="font-family:inherit">{% trans 'Add New Category' %}</h1>
+                <form action="" id="send-email-form" method="post" class="php-email-form pt-4">
+                    {% csrf_token %}
+                    <div class="row">
+                    <div class="col-md-12 form-group">
+                        <input type="text" name="title_en" class="form-control" id="name" placeholder="{% trans 'Category english title' %}" required>
+                    </div>
+                    <div class="col-md-12 form-group mt-3 mt-md-0">
+                        <input type="text" class="form-control" name="title_ar" id="email" placeholder="{% trans 'Category arabic title' %}" required>
+                    </div>
+                        <div class="col-md-8 mx-auto text-center my-3"><button class="col-md-12" type="submit" class="">{% trans 'Add' %}</button></div>
+                    </div>
+                </form>
+            </div>         
+        </div>
+    </div>
+  </section>
+{% endblock content %}
+    

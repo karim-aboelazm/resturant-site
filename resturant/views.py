@@ -1,18 +1,160 @@
-from django.views.generic import TemplateView,FormView,CreateView,UpdateView
-from .forms import *
-from django.core.mail import send_mail
-from django.conf import settings
-from django.shortcuts import render,redirect
-from resturant.models import * 
-from django.urls import reverse_lazy
-from django.views import View
-from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404,redirect,reverse
+from django.views.generic import TemplateView,View,CreateView,FormView,DetailView,ListView,UpdateView
 from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.views import PasswordChangeView
+from django.utils.translation import gettext_lazy as _
+from django.shortcuts import render,redirect,reverse
+from django.shortcuts import render,redirect
 from .utils import password_reset_token
+from django.core.mail import send_mail
+from django.urls import reverse_lazy
+from django.conf import settings
+from resturant.models import * 
+from django.views import View
+from .forms import *
 
+# ----------------------------------------------------
+# ----------------------------------------------------
 
+class AdminRequiredMixin(object):
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and ResturantAdmins.objects.filter(user=request.user).exists():
+            pass
+        else:
+            return redirect("/admin-login/")
+        return super().dispatch(request, *args, **kwargs)
+
+class AdminLoginView(FormView):
+    template_name = "Admins/admin_login.html"
+    form_class = AdminLoginForm
+    success_url = reverse_lazy('restu:admin_home')
+    
+    def form_valid(self, form):
+        user_name = form.cleaned_data.get('username')
+        pass_word = form.cleaned_data['password']
+        usr = authenticate(username=user_name,password=pass_word)
+        if usr is not None and ResturantAdmins.objects.filter(user=usr).exists():
+            login(self.request, usr)
+        else:
+            return render(self.request,self.template_name,{'form':self.form_class})
+        return super().form_valid(form)
+
+class AdminHomeView(AdminRequiredMixin,TemplateView):
+    template_name = "Admins/admin_home.html"
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and ResturantAdmins.objects.filter(user=request.user).exists():
+            pass
+        else:
+            return redirect("/admin-login/?next=/admin-home/")
+        return super().dispatch(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["all_orders"] = ResturantMenuOrder.objects.filter(order_status = "Order Received").order_by('-id')
+        context["all_tables"] = ResturantTableReservasion.objects.filter(confirm=False).order_by('-id')
+        context["resturant"]  = Resturant.objects.latest('id') 
+        return context
+
+class AdminOrderDetailView(AdminRequiredMixin,DetailView):
+    template_name = "Admins/admin_order_detail.html"
+    model = ResturantMenuOrder
+    context_object_name = "order_object"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        ORDER_STATUS = (
+        (_("Order Received"),_("Order Received")),
+        (_("Order Processing"),_("Order Processing")),
+        (_("Order On The Way"),_("Order On The Way")),
+        (_("Order Completed"),_("Order Completed")),
+        (_("Order Canceled"),_("Order Canceled")),
+        )
+        context["all_status"] = ORDER_STATUS
+        context["resturant"]  = Resturant.objects.latest('id')
+        return context
+ 
+class AdminTableDetailView(AdminRequiredMixin,DetailView):
+    template_name = "Admins/admin_table_detail.html"
+    model = ResturantTableReservasion
+    context_object_name = "table_object"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["resturant"]  = Resturant.objects.latest('id')
+        return context
+
+class AdminAllOrderView(AdminRequiredMixin,ListView):
+    template_name = "Admins/admin_all_order.html"
+    queryset = ResturantMenuOrder.objects.all().order_by('-id')
+    context_object_name = "all_orders"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["resturant"]  = Resturant.objects.latest('id')
+        return context
+
+class AdminTableConfirmationView(AdminRequiredMixin,View):
+    def post(self,request, *args, **kwargs):
+        table_id = self.kwargs['pk']
+        table_object = ResturantTableReservasion.objects.get(id=table_id)
+        table_object.confirm = True
+        table_object.save()
+        return redirect(reverse_lazy('restu:admin_home'))
+
+class AdminOrderStatusChangeView(AdminRequiredMixin,View):
+    def post(self,request, *args, **kwargs):
+        order_id = self.kwargs['pk']
+        order_object = ResturantMenuOrder.objects.get(id=order_id)
+        updated_status = request.POST.get('status')
+        order_object.order_status = updated_status
+        order_object.save()
+        return redirect(reverse_lazy('restu:admin_order_detail',kwargs={'pk':order_id}))
+    
+class AdminMenuList(AdminRequiredMixin,ListView):
+    template_name = 'Admins/admin_menu_list.html'
+    queryset = ResturantMenuCategory.objects.all()
+    context_object_name = "all_menu_category"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["resturant"]  = Resturant.objects.latest('id')
+        return context
+
+class AdminTablesList(AdminRequiredMixin,ListView):
+    template_name = 'Admins/admin_tables_list.html'
+    queryset = ResturantTableReservasion.objects.all()
+    context_object_name = "all_tables"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["resturant"]  = Resturant.objects.latest('id')
+        return context
+
+class AdminCategoryAdd(AdminRequiredMixin,CreateView):
+    template_name = "Admins/add_menu_category.html"
+    form_class = CategoryForm
+    success_url = reverse_lazy("restu:admin_menu_list")
+    def form_valid(self,form):
+        form.save()
+        return super().form_valid(form)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["resturant"]  = Resturant.objects.latest('id')
+        return context
+
+class AdminMenuAdd(AdminRequiredMixin,CreateView):
+    template_name = "Admins/add_menu_item.html"
+    form_class = MenuForm
+    success_url = reverse_lazy("restu:admin_menu_list")
+    def form_valid(self,form):
+        form.save()
+        return super().form_valid(form)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["resturant"]  = Resturant.objects.latest('id')
+        return context
+
+class AdminLogoutView(View):
+    def get(self,request):
+        logout(request)
+        return redirect('restu:home')
+
+# ----------------------------------------------------
+# ----------------------------------------------------
 
 class RestMixin():
     def dispatch(self, request, *args, **kwargs):
@@ -26,7 +168,7 @@ class RestMixin():
         return super().dispatch(request, *args, **kwargs)
     
 class HomePageView(FormView):
-    template_name = 'home.html' 
+    template_name = 'Resturant/home.html' 
     form_class =  TableReservasionForm
     success_url = '/'
     
@@ -78,10 +220,9 @@ class HomePageView(FormView):
                 return redirect(self.success_url)
         
         return super().form_valid(form2)
-   
-# customer registeration
+
 class ResturantClientRegisterView(CreateView):
-    template_name = 'signup.html'
+    template_name = 'Clients/signup.html'
     form_class = ResturantClientRegisterForm
     success_url = '/'
     
@@ -100,15 +241,13 @@ class ResturantClientRegisterView(CreateView):
         login(self.request , user)
         return super().form_valid(form)
 
-# customer logout
 class ResturantClientLogoutView(View):
     def get(self,request):
         logout(request)
         return redirect('restu:home')
 
-# customer logout
 class ResturantClientLoginView(FormView):
-    template_name = 'login.html'
+    template_name = 'Clients/login.html'
     form_class = ResturantClientLoginForm
     success_url = reverse_lazy('restu:home')
     
@@ -134,7 +273,6 @@ class ResturantClientLoginView(FormView):
         else:
             return self.success_url
 
-# customer profile
 '''
 class ResturantClientProfileView(RestMixin,TemplateView):
     template_name = "profile.html"
@@ -180,7 +318,7 @@ class UpdateProfileView(RestMixin,UpdateView):
 '''
 
 class ForgotPasswordView(FormView):
-    template_name = 'forgot_password.html'
+    template_name = 'Clients/forgot_password.html'
     form_class = PasswordForm
     success_url = "/forgot-password/?m=s"
     def form_valid(self,form):
@@ -210,7 +348,7 @@ class ForgotPasswordView(FormView):
         return context
 
 class ResetPasswordView(FormView):
-    template_name = 'reset_password.html'
+    template_name = 'Clients/reset_password.html'
     form_class = PasswordResetForm
     success_url = '/client-login/'
     
@@ -239,16 +377,15 @@ class ResetPasswordView(FormView):
         return super().form_valid(form)
 
 class ChangePasswordView(PasswordChangeView):
-    template_name = 'change_password.html'
+    template_name = 'Clients/change_password.html'
     success_url = '/'         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["resturant"]         = Resturant.objects.latest('id')
         return context
 
-# add product to my cart
 class AddToCartView(RestMixin,TemplateView):
-    template_name = "add_to_cart.html"
+    template_name = "Menu/add_to_cart.html"
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated and request.user.resturantclient:
             pass
@@ -291,9 +428,8 @@ class AddToCartView(RestMixin,TemplateView):
             cart.save()
         return context
 
-# my cart page view
 class CartView(RestMixin,TemplateView):
-    template_name = "cart.html"
+    template_name = "Menu/cart.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["resturant"]         = Resturant.objects.latest('id')
@@ -305,7 +441,6 @@ class CartView(RestMixin,TemplateView):
         context["cart"] = cart 
         return context
 
-# manage in items that are in cart 
 class ManageCartView(RestMixin,View):
     def get(self,request,*args, **kwargs):
         cp_id = self.kwargs['pk']
@@ -337,7 +472,6 @@ class ManageCartView(RestMixin,View):
             pass
         return redirect('/my-dish/')
 
-# empty the cart form orders 
 class EmptyCartView(RestMixin,View):
     def get(self, request, *args, **kwargs):
         cart_id = request.session.get('cart_id',None)
@@ -347,10 +481,9 @@ class EmptyCartView(RestMixin,View):
             cart.total = 0
             cart.save()
         return redirect('/my-dish/')
-    
-# check out page view
+
 class CheckOutView(RestMixin, FormView):
-    template_name = "check_out.html"
+    template_name = "Menu/check_out.html"
     form_class = CheckOutForm
     success_url = reverse_lazy('restu:home')
     

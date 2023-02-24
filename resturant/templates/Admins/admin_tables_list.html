@@ -1,0 +1,41 @@
+{% extends 'admin_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    {% trans 'Admin All Tables' %}
+{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5" >
+    <div class="row mt-5" style="padding:100px; auto">
+      <div class="col-md-12 card mt-5" style="background:none;border-color:#cda45e;">
+        <h3 class="text-center pt-5" style="font-family:inherits;">{% trans 'All Tables' %}</h3><hr>
+        <table class="table table-bordered text-white" >
+          <thead>
+            <tr>
+                <th>{% trans 'SN' %}</th>
+                <th>{% trans 'Table Number' %}</th>
+                <th>{% trans 'Reserved by' %}</th>
+                <th>{% trans 'Phone Number' %}</th>
+                <th>{% trans 'Confirmation' %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for table in all_tables  %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url 'restu:admin_table_detail' table.id %}">{% trans 'Table' %}_{{table.id}}</a></td> 
+                <td>{{table.full_name}}</td>
+                <td>{{table.phone_number}}</td>
+                <td>{% if table.confirm %}
+                    {% trans 'had confirmed' %}
+                {% else %}
+                    {% trans 'had not confirmed yet' %}
+                {% endif %}</td>
+              </tr>
+            {% endfor %}
+          </tbody> 
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

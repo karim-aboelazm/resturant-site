@@ -1,0 +1,40 @@
+{% extends 'admin_base.html' %}
+{% load static i18n bootstrap5 %}
+{% block title %}
+    {% trans 'Admin Menu' %}
+{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5" style="padding:120px; auto" >
+    <h1 class="text-center" style="font-family:inherits;">{% trans 'Menu' %}</h1>
+    
+    {% for cat in all_menu_category %}
+        <div class="row mt-5" >
+            <div class="col-md-12 card mt-5" style="background:none;border-color:#cda45e;">
+                <h3 class="text-center pt-5" style="font-family:inherits;">{% if LANGUAGE_CODE == 'en' %}{{cat.title_en}}{% else %}{{cat.title_ar}}{% endif %}</h3><hr>
+                <table class="table table-bordered text-white" >
+                    <thead>
+                    <tr>
+                        <th>{% trans 'SN' %}</th>
+                        <th>{% trans 'Title' %}</th>
+                        <th>{% trans 'Description' %}</th>
+                        <th>{% trans 'price' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in cat.resturantmenu_set.all  %}  
+                    <tr>                     
+                        <td>{{forloop.counter}}</td>
+                        <td>{% if LANGUAGE_CODE == 'en' %}{{item.title_en}}{% else %}{{item.title_ar}}{% endif %}</td> 
+                        <td style="max-width:150px;"><p class="text-muted" style="font-size:15px;">{% if LANGUAGE_CODE == 'en' %}{{item.description_en}}{% else %}{{item.description_ar}}{% endif %}</p></td> 
+                        <td>{{item.price}} {% trans 'R.O' %}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody> 
+                </table>
+            </div>    
+        </div>
+    {% endfor %}
+            
+  </div>
+{% endblock content %}

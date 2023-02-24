@@ -11,7 +11,7 @@ class ContactForm(forms.Form):
 class TableReservasionForm(forms.ModelForm):
     class Meta:
         model = ResturantTableReservasion
-        fields = '__all__'
+        fields = ['full_name','email_address','phone_number','date','time','number_of_people','message']
 
 class ResturantClientRegisterForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput())
@@ -93,3 +93,17 @@ class CheckOutForm(forms.ModelForm):
             'phone_num',
             'email',
         ]
+
+class AdminLoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput())
+    password = forms.CharField(widget=forms.PasswordInput())
+
+class MenuForm(forms.ModelForm):
+    class Meta:
+        model = ResturantMenu
+        fields = '__all__'
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = ResturantMenuCategory
+        fields = '__all__'
