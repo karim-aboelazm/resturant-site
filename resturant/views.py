@@ -175,8 +175,8 @@ class HomePageView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form2']             = ContactForm()
-        context["resturant"]         = Resturant.objects.latest('id')
-        context["about_resturant"]   = ResturantAboutPlace.objects.latest('id')
+        context["resturant"]         = Resturant.objects.latest('id') if Resturant.objects.latest('id').exists() else None
+        context["about_resturant"]   = ResturantAboutPlace.objects.latest('id') if ResturantAboutPlace.objects.latest('id').exists() else None
         context["whyus_resturant"]   = ResturantWhyUs.objects.all().order_by('-id')
         context["special_resturant"] = ResturantSpecials.objects.all().order_by('-id')
         context["events_resturant"]  = ResturantEvents.objects.all().order_by('-id')

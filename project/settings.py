@@ -24,14 +24,28 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "bootstrap5",
     "resturant",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
+    "django.contrib.sites",
+    "dj_rest_auth.registration",
     
 ]
 
 PAYPAL_CLIENT_ID  = env('PAYPAL_CLIENT_ID')
 PAYPAL_SECRET_ID  = env('PAYPAL_SECRET_KEY')
 PAYPAL_MODE       = env('PAYPAL_MODE')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication']
+}
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
