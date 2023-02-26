@@ -1,7 +1,12 @@
+#--------------------------------------------------------
+#    Importing Libraries and using py files in project
+#--------------------------------------------------------
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
+# Resturant Table in database
 class Resturant(models.Model):
     title_en            = models.CharField(_('Resturant english title'),max_length=255)
     description_en      = models.TextField(_('Resturant english description'))
@@ -27,6 +32,7 @@ class Resturant(models.Model):
     def __str__(self):
         return self.title_en
 
+# ResturantAdmins Table in database
 class ResturantAdmins(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=_('username'))
     full_name = models.CharField(_('full name'),max_length=100)
@@ -34,6 +40,7 @@ class ResturantAdmins(models.Model):
     def __str__(self):
         return f"Resturant Admin : {self.user.username}"
 
+# ResturantSiteImages Table in database
 class ResturantSiteImages(models.Model):
     image = models.ImageField(_('Resturant Site Images'),upload_to='resturant/site_images/')
     class Meta:
@@ -41,6 +48,7 @@ class ResturantSiteImages(models.Model):
     def __str__(self):
         return f"Site Image : {self.id}"
 
+# ResturantGalaryImages Table in database
 class ResturantGalaryImages(models.Model):
     image = models.ImageField(_('Resturant Galary Images'),upload_to='resturant/galary_images/')
     class Meta:
@@ -48,6 +56,7 @@ class ResturantGalaryImages(models.Model):
     def __str__(self):
         return f"Galary Image : {self.id}"
 
+# ResturantChifs Table in database
 class ResturantChifs(models.Model):
     chif_name_en       = models.CharField(_("chif english name"),max_length=200)
     chif_proffesion_en = models.CharField(_("chif english proffesion"),max_length=200)
@@ -65,6 +74,7 @@ class ResturantChifs(models.Model):
     def __str__(self):
         return self.chif_name_en
 
+# ResturantTestimonials Table in database
 class ResturantTestimonials(models.Model):
     name_en         = models.CharField(_("english name"),max_length=200)
     proffesion_en   = models.CharField(_("english proffesion"),max_length=200)
@@ -78,7 +88,8 @@ class ResturantTestimonials(models.Model):
     
     def __str__(self):
         return self.name_en
-    
+
+# ResturantClient Table in database    
 class ResturantClient(models.Model):
     user      = models.OneToOneField(User,verbose_name=_("client"), on_delete=models.CASCADE)
     full_name = models.CharField(_("full_name"),max_length=200)
@@ -92,6 +103,7 @@ class ResturantClient(models.Model):
     def __str__(self):
         return self.full_name
 
+# ResturantTableReservasion Table in database
 class ResturantTableReservasion(models.Model):
     full_name        = models.CharField(_("Full Name"), max_length=255)
     email_address    = models.EmailField(_("Email Adress"))
@@ -107,6 +119,7 @@ class ResturantTableReservasion(models.Model):
     def __str__(self):
         return f"Table Reseved By : {self.full_name}"
 
+# ResturantEvents Table in database
 class ResturantEvents(models.Model):
     title_en        = models.CharField(_('Resturant event english title'),max_length=255)
     description_en  = models.TextField(_('Resturant event english description'))
@@ -119,6 +132,7 @@ class ResturantEvents(models.Model):
     def __str__(self):
         return self.title_en
 
+# ResturantSpecials Table in database
 class ResturantSpecials(models.Model):
     category_en     = models.CharField(_('Resturant special english category'),max_length=255)
     title_en        = models.CharField(_('Resturant special english title'),max_length=255)
@@ -132,6 +146,7 @@ class ResturantSpecials(models.Model):
     def __str__(self):
         return self.category_en
 
+# ResturantWhyUs Table in database
 class ResturantWhyUs(models.Model):
     title_en        = models.CharField(_('Resturant WhyUs english title'),max_length=255)
     description_en  = models.CharField(_('Resturant WhyUs english description'),max_length=255)
@@ -141,7 +156,8 @@ class ResturantWhyUs(models.Model):
             verbose_name_plural = _('Resturant WhyUs')
     def __str__(self):
         return self.title_en
-    
+
+# ResturantAboutPlace Table in database    
 class ResturantAboutPlace(models.Model):
     title_en        = models.CharField(_('Resturant About Place english title'),max_length=255)
     description_en  = models.TextField(_('Resturant About Place english description'))
@@ -153,6 +169,7 @@ class ResturantAboutPlace(models.Model):
     def __str__(self):
         return self.title_en
 
+# ResturantMenuCategory Table in database
 class ResturantMenuCategory(models.Model):
     title_en = models.CharField(_('menu category english title'),max_length=255)
     title_ar = models.CharField(_('menu category arabic title'),max_length=255)
@@ -162,6 +179,7 @@ class ResturantMenuCategory(models.Model):
     def __str__(self):
         return self.title_en
 
+# ResturantMenu Table in database
 class ResturantMenu(models.Model):
     category        = models.ForeignKey(ResturantMenuCategory,on_delete=models.CASCADE,verbose_name=_('menu category'))
     title_en        = models.CharField(_('menu item english title'),max_length=255)
@@ -174,6 +192,7 @@ class ResturantMenu(models.Model):
     def __str__(self):
         return self.title_en
 
+# ResturantCart Table in database
 class ResturantCart(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE, blank = True, null=True,verbose_name=_('client'))
     total = models.PositiveIntegerField(_('total'),default=0)
@@ -183,6 +202,7 @@ class ResturantCart(models.Model):
     def __str__ (self):
         return "Cart : " + str(self.id)
 
+# ResturantMenuCart Table in database
 class ResturantMenuCart(models.Model):
     cart = models.ForeignKey(ResturantCart,on_delete=models.CASCADE,verbose_name=_('cart'))
     item = models.ForeignKey(ResturantMenu , on_delete = models.CASCADE,verbose_name=_('item'))
@@ -194,6 +214,7 @@ class ResturantMenuCart(models.Model):
     def __str__ (self):
         return "Cart : " + str(self.cart.id) +" ResturantMenuCart : "+ str(self.id)
 
+# ResturantMenuOrder Table in database
 class ResturantMenuOrder(models.Model):
     # order status
     ORDER_STATUS = (
