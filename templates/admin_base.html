@@ -67,12 +67,8 @@
       {% if LANGUAGE_CODE == 'en' %}
         <h1 class="logo me-auto me-lg-0">
           {% if resturant.title_en %}
-            <a href="/"><img src="{% if resturant.logo %}
-            {{resturant.logo.url}}
-            {% else %}
-            {% static '1.png' %}
-            {% endif %}" class="w-100"/></a>
-            {% else %}
+            <a href="/"><img src="{% if resturant.logo %}{{resturant.logo.url}}{% else %}{% static '1.png' %}{% endif %}" class="w-100"/></a>
+             {% else %}
             <a href="/">{% trans 'Resturant Logo' %}</a>
           {% endif %}
         </h1>
