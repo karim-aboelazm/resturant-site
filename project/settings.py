@@ -12,7 +12,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1','baba-voss.herokuapp.com','www.babavoss.site','babavoss.site']
 
 
 # Application definition
