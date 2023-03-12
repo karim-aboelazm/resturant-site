@@ -33,13 +33,13 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 {{cp.item.title_en}}
                                             </div>
                                             <div class="col-md-4">
-                                                {{cp.quantity}} item
+                                                {{cp.quantity}} {% trans 'item' %}
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-4">
                                                 {% trans 'O.R' %} {{cp.rate}}
                                             </div>
                                             
@@ -112,7 +112,7 @@
                                         <div class="col-md-4">
                                             {{cp.quantity}} {% trans 'item' %}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             {% trans 'R.O' %} {{cp.rate}}
                                         </div>
                                         
