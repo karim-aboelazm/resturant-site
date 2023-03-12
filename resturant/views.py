@@ -505,7 +505,7 @@ class CheckOutView(RestMixin, FormView):
         # Find the input element for the target currency (USD)
         target_currency_input = soup.find('input', {'class': 'a61j6'})
         if target_currency_input:
-            return target_currency_input.get('value')
+            return float(target_currency_input.get('value'))
         else:
             return 0.000
         
@@ -521,7 +521,7 @@ class CheckOutView(RestMixin, FormView):
         else:
             cart_obj = None
         context["cart"] = cart_obj
-        context["price_in_usd"] = Decimal(context["cart"].total*self.convert_omr_to_usd())
+        context["price_in_usd"] = context["cart"].total*Decimal(self.convert_omr_to_usd())
         return context
     
     def form_valid(self,form):
