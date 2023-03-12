@@ -504,7 +504,7 @@ class CheckOutView(RestMixin, FormView):
         # Find the input element for the target currency (USD)
         target_currency_input = soup.find('input', {'class': 'a61j6'})
         if target_currency_input:
-            return float(target_currency_input.get('value'))
+            return target_currency_input.get('value')
         else:
             return 0.000
         
