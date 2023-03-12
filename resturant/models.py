@@ -186,7 +186,7 @@ class ResturantMenu(models.Model):
     description_en  = models.TextField(_('menu item english description'))
     title_ar        = models.CharField(_('menu item arabic title'),max_length=255)
     description_ar  = models.TextField(_('menu item arabic description'))
-    price           = models.DecimalField(_('menu item price'),max_digits=5,decimal_places=3)
+    price           = models.DecimalField(_('menu item price'),max_digits=6,decimal_places=3)
     class Meta:
         verbose_name_plural = _('Resturant Menu')
     def __str__(self):
@@ -195,7 +195,7 @@ class ResturantMenu(models.Model):
 # ResturantCart Table in database
 class ResturantCart(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE, blank = True, null=True,verbose_name=_('client'))
-    total = models.PositiveIntegerField(_('total'),default=0)
+    total = models.DecimalField(_('total'),max_digits=6,decimal_places=3,default=0.0)
     created_at = models.DateTimeField(_('created at'),auto_now_add=True)
     class Meta:
         verbose_name_plural=_('Resturant Cart')
@@ -206,9 +206,9 @@ class ResturantCart(models.Model):
 class ResturantMenuCart(models.Model):
     cart = models.ForeignKey(ResturantCart,on_delete=models.CASCADE,verbose_name=_('cart'))
     item = models.ForeignKey(ResturantMenu , on_delete = models.CASCADE,verbose_name=_('item'))
-    rate = models.PositiveIntegerField(_('rate'))            
+    rate = models.DecimalField(_('rate'),max_digits=6,decimal_places=3,default=0.0)            
     quantity = models.PositiveIntegerField(_('quantity'),default=1)
-    subtotal = models.PositiveIntegerField(_('subtotal')) 
+    subtotal = models.DecimalField(_('subtotal'),max_digits=6,decimal_places=3,default=0.0) 
     class Meta:
         verbose_name_plural = _('Resturant Menu Cart')
     def __str__ (self):
@@ -232,7 +232,7 @@ class ResturantMenuOrder(models.Model):
     phone_num = models.CharField(_('phone number'),max_length=15)
     email = models.EmailField(_('email address'),null=True , blank = True)
     subtotal = models.PositiveIntegerField(_('subtotal'))
-    total = models.PositiveIntegerField(_('total'))
+    total = models.DecimalField(_('total'),max_digits=6,decimal_places=3,default=0.0)
     order_status = models.CharField(_('order status'),max_length=50,choices = ORDER_STATUS,default=_("Order Received"))
     created_at = models.DateTimeField(_('created at'),auto_now_add = True)
     payment_mode = models.CharField(_('payment mode'),max_length=200,null=True)  

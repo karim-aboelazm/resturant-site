@@ -40,7 +40,7 @@
                                                 {{cp.quantity}} item
                                             </div>
                                             <div class="col-md-2">
-                                                $ {{cp.rate}}
+                                                {% trans 'O.R' %} {{cp.rate}}
                                             </div>
                                             
                                         </div>
@@ -70,9 +70,9 @@
                         <div class="text-buttom">
                             <p style="padding-bottom: 5px; border-bottom: 2px solid;"><strong>{% trans 'Dish Total' %}</strong></p>
                             {% if cart %}
-                            <p>$ {{cart.total}}</p>
+                            <p>{% trans 'R.O' %} {{cart.total}}</p>
                             {% else %}
-                            <p>$ 00.0</p>
+                            <p>{% trans 'R.O' %} 00.0</p>
                             {% endif %}
                             {% if cart.resturantmenucart_set.all %}
                             <div class="row">
@@ -113,7 +113,7 @@
                                             {{cp.quantity}} {% trans 'item' %}
                                         </div>
                                         <div class="col-md-2">
-                                            $ {{cp.rate}}
+                                            {% trans 'R.O' %} {{cp.rate}}
                                         </div>
                                         
                                     </div>
@@ -143,9 +143,9 @@
                     <div class="text-buttom">
                         <p style="padding-bottom: 5px; border-bottom: 2px solid;"><strong>{% trans 'Dish Total' %}</strong></p>
                         {% if cart %}
-                        <p>$ {{cart.total}}</p>
+                        <p>{% trans 'R.O' %}  {{cart.total}}</p>
                         {% else %}
-                        <p>$ 00.0</p>
+                        <p>{% trans 'R.O' %}  00.0</p>
                         {% endif %}
                         {% if cart.resturantmenucart_set.all %}
                         <div class="row">
