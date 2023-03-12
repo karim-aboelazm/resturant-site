@@ -11,6 +11,7 @@ from django.conf import settings
 from resturant.models import * 
 from django.views import View
 from .forms import *
+from decimal import Decimal
 
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -504,7 +505,7 @@ class CheckOutView(RestMixin, FormView):
         # Find the input element for the target currency (USD)
         target_currency_input = soup.find('input', {'class': 'a61j6'})
         if target_currency_input:
-            return target_currency_input.get('value')
+            return Decimal(target_currency_input.get('value'))
         else:
             return 0.000
         
