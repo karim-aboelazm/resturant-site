@@ -37,6 +37,8 @@ class ResturantAdmins(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=_('username'))
     full_name = models.CharField(_('full name'),max_length=100)
     mobile = models.CharField(_('phone number'),max_length=20)
+    class Meta:
+            verbose_name_plural = _('Resturant Admins')
     def __str__(self):
         return f"Resturant Admin : {self.user.username}"
 
@@ -231,8 +233,8 @@ class ResturantMenuOrder(models.Model):
     last_name = models.CharField(_('last name'),max_length=200,null=True) 
     phone_num = models.CharField(_('phone number'),max_length=15)
     email = models.EmailField(_('email address'),null=True , blank = True)
-    subtotal = models.PositiveIntegerField(_('subtotal'))
-    total = models.DecimalField(_('total'),max_digits=6,decimal_places=3,default=0.0)
+    subtotal = models.DecimalField(_('subtotal'),max_digits=6,decimal_places=3)
+    total = models.DecimalField(_('total'),default=0.000,max_digits=6,decimal_places=3)
     order_status = models.CharField(_('order status'),max_length=50,choices = ORDER_STATUS,default=_("Order Received"))
     created_at = models.DateTimeField(_('created at'),auto_now_add = True)
     payment_mode = models.CharField(_('payment mode'),max_length=200,null=True)  

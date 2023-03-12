@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 00:28+0200\n"
+"POT-Creation-Date: 2023-03-13 01:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,455 +30,460 @@ msgstr "مسؤول المطعم"
 msgid "Welcome to Our Admin"
 msgstr "مرحبا بكم"
 
-#: .\resturant\models.py:6
+#: .\resturant\models.py:11
 msgid "Resturant english title"
 msgstr "اسم المطعم باللغة الانجليزية"
 
-#: .\resturant\models.py:7
+#: .\resturant\models.py:12
 msgid "Resturant english description"
 msgstr "وصف المطعم باللغة الانجليزية"
 
-#: .\resturant\models.py:8
+#: .\resturant\models.py:13
 msgid "opening sentence english title"
 msgstr "الحملة الافتتاحية باللغة الانجليزية"
 
-#: .\resturant\models.py:9
+#: .\resturant\models.py:14
 msgid "Resturant english address"
 msgstr "عنوان المطعم باللغة الانجليزية"
 
-#: .\resturant\models.py:10 .\resturant\models.py:33 .\resturant\models.py:211
+#: .\resturant\models.py:15 .\resturant\models.py:39 .\resturant\models.py:234
 msgid "phone number"
 msgstr "رقم الهاتف"
 
-#: .\resturant\models.py:11
+#: .\resturant\models.py:16
 msgid "logo Image"
 msgstr "صورة الشعار "
 
-#: .\resturant\models.py:12
+#: .\resturant\models.py:17
 msgid "demo url"
 msgstr "رابط الفيديو التعريفي"
 
-#: .\resturant\models.py:13 .\resturant\templates\home.html:462
-#: .\resturant\templates\home.html:498 .\templates\snippets\footer.html:46
-#: .\templates\snippets\footer.html:83
+#: .\resturant\models.py:18 .\resturant\templates\Resturant\home.html:462
+#: .\resturant\templates\Resturant\home.html:498
+#: .\templates\snippets\footer.html:46 .\templates\snippets\footer.html:83
 msgid "Resturant Email Address"
 msgstr "البريد الالكتروني الخاص بالمطعم"
 
-#: .\resturant\models.py:15 .\resturant\models.py:55
+#: .\resturant\models.py:20 .\resturant\models.py:66
 msgid "facebook url"
 msgstr "رابط صفحة الفيسبوك"
 
-#: .\resturant\models.py:16 .\resturant\models.py:56
+#: .\resturant\models.py:21 .\resturant\models.py:67
 msgid "twitter url"
 msgstr "رابط صفحة التويتر"
 
-#: .\resturant\models.py:17 .\resturant\models.py:57
+#: .\resturant\models.py:22 .\resturant\models.py:68
 msgid "instgram url"
 msgstr "رابط صفحة الانستجرام"
 
-#: .\resturant\models.py:18
+#: .\resturant\models.py:23
 msgid "youtube url"
 msgstr "رابط صفحة اليوتيوب"
 
-#: .\resturant\models.py:20
+#: .\resturant\models.py:25
 msgid "Resturant arabic title"
 msgstr "اسم المطعم باللغة العربية"
 
-#: .\resturant\models.py:21
+#: .\resturant\models.py:26
 msgid "Resturant arabic description"
 msgstr "وصف المطعم باللغة العربية"
 
-#: .\resturant\models.py:22
+#: .\resturant\models.py:27
 msgid "opening sentence arabic title"
 msgstr "الجملة الافتتاحية باللغة العربية"
 
-#: .\resturant\models.py:23
+#: .\resturant\models.py:28
 msgid "Resturant arabic address"
 msgstr "عنوان المطعم بالغة العربية"
 
-#: .\resturant\models.py:26 .\resturant\templates\home.html:5
+#: .\resturant\models.py:31
 msgid "Resturant"
 msgstr "المطعم"
 
-#: .\resturant\models.py:31
+#: .\resturant\models.py:37
 msgid "username"
 msgstr "اسم المستخدم"
 
-#: .\resturant\models.py:32
+#: .\resturant\models.py:38
 msgid "full name"
 msgstr "الاسم بالكامل"
 
-#: .\resturant\models.py:38 .\resturant\models.py:40
+#: .\resturant\models.py:41
+msgid "Resturant Admins"
+msgstr "مسؤولين المطعم"
+
+#: .\resturant\models.py:47 .\resturant\models.py:49
 msgid "Resturant Site Images"
 msgstr "خلفيات موقع المطعم"
 
-#: .\resturant\models.py:45 .\resturant\models.py:47
+#: .\resturant\models.py:55 .\resturant\models.py:57
 msgid "Resturant Galary Images"
 msgstr "معرض صور المطعم"
 
-#: .\resturant\models.py:52
+#: .\resturant\models.py:63
 msgid "chif english name"
 msgstr "اسم الطاهي  بالغة الانجليزية"
 
-#: .\resturant\models.py:53
+#: .\resturant\models.py:64
 msgid "chif english proffesion"
 msgstr "مهمة الطاهي  بالغة الانجليزية"
 
-#: .\resturant\models.py:54
+#: .\resturant\models.py:65
 msgid "chif profile"
 msgstr "صورة الطاهي "
 
-#: .\resturant\models.py:58
+#: .\resturant\models.py:69
 msgid "linkedIn url"
 msgstr "رابط لينكيدان"
 
-#: .\resturant\models.py:60
+#: .\resturant\models.py:71
 msgid "chif arabic name"
 msgstr "اسم الطاهي  بالغة العربية"
 
-#: .\resturant\models.py:61
+#: .\resturant\models.py:72
 msgid "chif arabic proffesion"
 msgstr "مهمة الطاهي  بالغة العربية"
 
-#: .\resturant\models.py:64
+#: .\resturant\models.py:75
 msgid "Resturant Chifs"
 msgstr "طهاه  المطعم"
 
-#: .\resturant\models.py:69
+#: .\resturant\models.py:81
 msgid "english name"
 msgstr "الاسم باللغة الانجليزية"
 
-#: .\resturant\models.py:70
+#: .\resturant\models.py:82
 msgid "english proffesion"
 msgstr "المهمة باللغة الانجليزية"
 
-#: .\resturant\models.py:71
+#: .\resturant\models.py:83
 msgid "profile"
 msgstr "صورة"
 
-#: .\resturant\models.py:72
+#: .\resturant\models.py:84
 msgid "english quote"
 msgstr "العبارة باللغة الانجليزية"
 
-#: .\resturant\models.py:73
+#: .\resturant\models.py:85
 msgid "arabic name"
 msgstr "الاسم باللغة العربية"
 
-#: .\resturant\models.py:74
+#: .\resturant\models.py:86
 msgid "arabic proffesion"
 msgstr "المهمة بالغة العربية"
 
-#: .\resturant\models.py:75
+#: .\resturant\models.py:87
 msgid "arabic quote"
 msgstr "العبارة باللغة العربية"
 
-#: .\resturant\models.py:77
+#: .\resturant\models.py:89
 msgid "ResturantTestimonials"
 msgstr "اراء الاخرين في المطعم"
 
-#: .\resturant\models.py:83 .\resturant\models.py:178
-#: .\resturant\models.py:208
+#: .\resturant\models.py:96 .\resturant\models.py:199
+#: .\resturant\models.py:231
 msgid "client"
 msgstr "العميل"
 
-#: .\resturant\models.py:84
+#: .\resturant\models.py:97
 msgid "full_name"
 msgstr "الاسم بالكامل"
 
-#: .\resturant\models.py:85
+#: .\resturant\models.py:98
 msgid "address"
 msgstr "العنوان"
 
-#: .\resturant\models.py:86 .\resturant\models.py:126
+#: .\resturant\models.py:99 .\resturant\models.py:142
 msgid "image"
 msgstr "الصورة"
 
-#: .\resturant\models.py:87
+#: .\resturant\models.py:100
 msgid "phone"
 msgstr "الهاتف"
 
-#: .\resturant\models.py:88
+#: .\resturant\models.py:101
 msgid "join_on"
 msgstr "انضم في"
 
-#: .\resturant\models.py:90
+#: .\resturant\models.py:103
 msgid "Resturant Client"
 msgstr "عملاء المطعم"
 
-#: .\resturant\models.py:96 .\resturant\templates\signup.html:26
+#: .\resturant\models.py:110 .\resturant\templates\Clients\signup.html:26
 msgid "Full Name"
 msgstr "الاسم بالكامل"
 
-#: .\resturant\models.py:97
+#: .\resturant\models.py:111
 msgid "Email Adress"
 msgstr "البريد الالكتروني"
 
-#: .\resturant\models.py:98 .\resturant\templates\Admins\admin_home.html:56
+#: .\resturant\models.py:112 .\resturant\templates\Admins\admin_home.html:56
 #: .\resturant\templates\Admins\admin_tables_list.html:18
-#: .\resturant\templates\check_out.html:43
-#: .\resturant\templates\check_out.html:44
-#: .\resturant\templates\check_out.html:112
-#: .\resturant\templates\check_out.html:113
-#: .\resturant\templates\home.html:350
+#: .\resturant\templates\Menu\check_out.html:43
+#: .\resturant\templates\Menu\check_out.html:44
+#: .\resturant\templates\Menu\check_out.html:113
+#: .\resturant\templates\Menu\check_out.html:114
+#: .\resturant\templates\Resturant\home.html:350
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: .\resturant\models.py:99
+#: .\resturant\models.py:113
 #: .\resturant\templates\Admins\admin_table_detail.html:38
-#: .\resturant\templates\home.html:354
+#: .\resturant\templates\Resturant\home.html:354
 msgid "Date"
 msgstr "التاريخ"
 
-#: .\resturant\models.py:100
+#: .\resturant\models.py:114
 #: .\resturant\templates\Admins\admin_table_detail.html:46
-#: .\resturant\templates\home.html:358
+#: .\resturant\templates\Resturant\home.html:358
 msgid "Time"
 msgstr "الوقت"
 
-#: .\resturant\models.py:101 .\resturant\templates\home.html:362
+#: .\resturant\models.py:115 .\resturant\templates\Resturant\home.html:362
 msgid "Number of people"
 msgstr "عدد الاشخاص"
 
-#: .\resturant\models.py:102 .\resturant\templates\home.html:367
-#: .\resturant\templates\home.html:535
+#: .\resturant\models.py:116 .\resturant\templates\Resturant\home.html:367
+#: .\resturant\templates\Resturant\home.html:535
 msgid "Message"
 msgstr "الرسالة"
 
-#: .\resturant\models.py:103 .\resturant\templates\Admins\admin_home.html:72
+#: .\resturant\models.py:117 .\resturant\templates\Admins\admin_home.html:72
 msgid "Confirm"
 msgstr "تأكيد الحجز"
 
-#: .\resturant\models.py:105
+#: .\resturant\models.py:119
 msgid "Resturant Table Reservasion"
 msgstr "حجز سفرة في المطعم"
 
-#: .\resturant\models.py:111
+#: .\resturant\models.py:126
 msgid "Resturant event english title"
 msgstr "عنوان المناسبة في المطعم بالغة الانجليزية"
 
-#: .\resturant\models.py:112
+#: .\resturant\models.py:127
 msgid "Resturant event english description"
 msgstr "عنوان المطعم باللغة الانجليزية"
 
-#: .\resturant\models.py:113
+#: .\resturant\models.py:128
 msgid "Resturant event arabic title"
 msgstr "عنوان المناسبة في المطعم باللغة العربية"
 
-#: .\resturant\models.py:114
+#: .\resturant\models.py:129
 msgid "Resturant event arabic description"
 msgstr "وصف المطعم بالغة العربية"
 
-#: .\resturant\models.py:115
+#: .\resturant\models.py:130
 msgid "event image"
 msgstr "صورة المناسبة"
 
-#: .\resturant\models.py:116
+#: .\resturant\models.py:131
 msgid "Resturant event price"
 msgstr "سعر المناسبة"
 
-#: .\resturant\models.py:118
+#: .\resturant\models.py:133
 msgid "Resturant Events"
 msgstr "مناسبات المطعم"
 
-#: .\resturant\models.py:123
+#: .\resturant\models.py:139
 msgid "Resturant special english category"
 msgstr "قسم التخصص باللغة الانجليزية"
 
-#: .\resturant\models.py:124
+#: .\resturant\models.py:140
 msgid "Resturant special english title"
 msgstr "اسم التخصص باللغة الانجليزية"
 
-#: .\resturant\models.py:125
+#: .\resturant\models.py:141
 msgid "Resturant special english description"
 msgstr "وصف التخصص باللغة الانجليزية"
 
-#: .\resturant\models.py:127
+#: .\resturant\models.py:143
 msgid "Resturant special arabic category"
 msgstr "اسم التخصص باللغة العربية"
 
-#: .\resturant\models.py:128
+#: .\resturant\models.py:144
 msgid "Resturant special arabic title"
 msgstr "اسم التخصص باللغة العربية"
 
-#: .\resturant\models.py:129
+#: .\resturant\models.py:145
 msgid "Resturant special arabic description"
 msgstr "وصف التخصص باللغة العربية"
 
-#: .\resturant\models.py:131
+#: .\resturant\models.py:147
 msgid "Resturant Specials"
 msgstr "تخصصات المطعم"
 
-#: .\resturant\models.py:136
+#: .\resturant\models.py:153
 msgid "Resturant WhyUs english title"
 msgstr "عنوان خدمات المطعم بالغة الانجليزية"
 
-#: .\resturant\models.py:137
+#: .\resturant\models.py:154
 msgid "Resturant WhyUs english description"
 msgstr "وصف خدمات المطعم بالغة الانجليزية"
 
-#: .\resturant\models.py:138
+#: .\resturant\models.py:155
 msgid "Resturant WhyUs arabic title"
 msgstr "عنوان خدمات المطعم بالغة العربية"
 
-#: .\resturant\models.py:139
+#: .\resturant\models.py:156
 msgid "Resturant WhyUs arabic description"
 msgstr "وصف خدمات المطعم بالغة العربية"
 
-#: .\resturant\models.py:141
+#: .\resturant\models.py:158
 msgid "Resturant WhyUs"
 msgstr "خدمات المطعم"
 
-#: .\resturant\models.py:146
+#: .\resturant\models.py:164
 msgid "Resturant About Place english title"
 msgstr "عنوان عن مكان المطعم بالغة الانجليزية"
 
-#: .\resturant\models.py:147
+#: .\resturant\models.py:165
 msgid "Resturant About Place english description"
 msgstr "وصف عن مكان المطعم بالغة الانجليزية"
 
-#: .\resturant\models.py:148
+#: .\resturant\models.py:166
 msgid "Resturant About Place arabic title"
 msgstr "عنوان عن مكان المطعم بالغة العربية"
 
-#: .\resturant\models.py:149
+#: .\resturant\models.py:167
 msgid "Resturant About Place arabic description"
 msgstr "وصف عن مكان المطعم بالغة العربية"
 
-#: .\resturant\models.py:150
+#: .\resturant\models.py:168
 msgid "About Place image"
 msgstr "صورة عن المكان"
 
-#: .\resturant\models.py:152
+#: .\resturant\models.py:170
 msgid "Resturant About Place"
 msgstr "عن مكان المطعم"
 
-#: .\resturant\models.py:157
+#: .\resturant\models.py:176
 msgid "menu category english title"
 msgstr "قسم القائمة باللغة العربية"
 
-#: .\resturant\models.py:158
+#: .\resturant\models.py:177
 msgid "menu category arabic title"
 msgstr "قسم القائمة بالغة الانجليزية"
 
-#: .\resturant\models.py:160
+#: .\resturant\models.py:179
 msgid "Resturant Menu Category"
 msgstr "اقسام القائمة"
 
-#: .\resturant\models.py:166
+#: .\resturant\models.py:186
 msgid "menu category"
 msgstr "قسم القائمة"
 
-#: .\resturant\models.py:167
+#: .\resturant\models.py:187
 msgid "menu item english title"
 msgstr "عنوان منتج  في القائمة بالغة الانجليزية"
 
-#: .\resturant\models.py:168
+#: .\resturant\models.py:188
 msgid "menu item english description"
 msgstr "وصف منتج  في القائمة بالغة الانجليزية"
 
-#: .\resturant\models.py:169
+#: .\resturant\models.py:189
 msgid "menu item arabic title"
 msgstr "عنوان منتج  في القائمة بالغة العربية"
 
-#: .\resturant\models.py:170
+#: .\resturant\models.py:190
 msgid "menu item arabic description"
 msgstr "وصف منتج  في القائمة بالغة العربية"
 
-#: .\resturant\models.py:171
+#: .\resturant\models.py:191
 msgid "menu item price"
 msgstr "سعر منتج  في القائمة"
 
-#: .\resturant\models.py:173
+#: .\resturant\models.py:193
 msgid "Resturant Menu"
 msgstr "قائمة المطعم"
 
-#: .\resturant\models.py:179 .\resturant\models.py:214
+#: .\resturant\models.py:200 .\resturant\models.py:237
 #: .\resturant\templates\Admins\admin_order_detail.html:96
 msgid "total"
 msgstr "السعر الكلي"
 
-#: .\resturant\models.py:180 .\resturant\models.py:216
+#: .\resturant\models.py:201 .\resturant\models.py:239
 msgid "created at"
 msgstr "تمت في"
 
-#: .\resturant\models.py:182
+#: .\resturant\models.py:203
 msgid "Resturant Cart"
 msgstr " اطباق المطعم"
 
-#: .\resturant\models.py:187 .\resturant\models.py:207
+#: .\resturant\models.py:209 .\resturant\models.py:230
 msgid "cart"
 msgstr "طبق"
 
-#: .\resturant\models.py:188
+#: .\resturant\models.py:210
 #: .\resturant\templates\Admins\admin_order_detail.html:73
-#: .\resturant\templates\cart.html:113
+#: .\resturant\templates\Menu\cart.html:40
+#: .\resturant\templates\Menu\cart.html:113
 msgid "item"
 msgstr "وحدة"
 
-#: .\resturant\models.py:189
+#: .\resturant\models.py:211
 msgid "rate"
 msgstr "السعر"
 
-#: .\resturant\models.py:190
+#: .\resturant\models.py:212
 #: .\resturant\templates\Admins\admin_order_detail.html:75
 msgid "quantity"
 msgstr "الكمية"
 
-#: .\resturant\models.py:191 .\resturant\models.py:213
+#: .\resturant\models.py:213 .\resturant\models.py:236
 #: .\resturant\templates\Admins\admin_order_detail.html:76
 msgid "subtotal"
 msgstr "السعر الجزئي"
 
-#: .\resturant\models.py:193
+#: .\resturant\models.py:215
 msgid "Resturant Menu Cart"
 msgstr "اطباق قائمة المطعم"
 
-#: .\resturant\models.py:200 .\resturant\models.py:215 .\resturant\views.py:63
+#: .\resturant\models.py:223 .\resturant\models.py:238 .\resturant\views.py:65
 msgid "Order Received"
 msgstr "تم استقبال الطلب"
 
-#: .\resturant\models.py:201 .\resturant\views.py:64
+#: .\resturant\models.py:224 .\resturant\views.py:66
 msgid "Order Processing"
 msgstr "الطلب يتم تجهيزه"
 
-#: .\resturant\models.py:202 .\resturant\views.py:65
+#: .\resturant\models.py:225 .\resturant\views.py:67
 msgid "Order On The Way"
 msgstr "الطلب في الطريق"
 
-#: .\resturant\models.py:203 .\resturant\views.py:66
+#: .\resturant\models.py:226 .\resturant\views.py:68
 msgid "Order Completed"
 msgstr "الطلب تم بنجاح"
 
-#: .\resturant\models.py:204 .\resturant\views.py:67
+#: .\resturant\models.py:227 .\resturant\views.py:69
 msgid "Order Canceled"
 msgstr "تم إلغاء الطلب"
 
-#: .\resturant\models.py:209
+#: .\resturant\models.py:232
 msgid "first name"
 msgstr "الاسم الاول"
 
-#: .\resturant\models.py:210
+#: .\resturant\models.py:233
 msgid "last name"
 msgstr "الاسم الاخير"
 
-#: .\resturant\models.py:212
+#: .\resturant\models.py:235
 msgid "email address"
 msgstr "البريد الالكتروني"
 
-#: .\resturant\models.py:215
+#: .\resturant\models.py:238
 #: .\resturant\templates\Admins\admin_all_order.html:20
 msgid "order status"
 msgstr "حالة الطلب"
 
-#: .\resturant\models.py:217
+#: .\resturant\models.py:240
 msgid "payment mode"
 msgstr "حالة الدفع"
 
-#: .\resturant\models.py:218
+#: .\resturant\models.py:241
 msgid "payment id"
 msgstr "كود الدفع"
 
-#: .\resturant\models.py:223
+#: .\resturant\models.py:246
 msgid "Resturant Menu Order"
 msgstr "طلب طبق من المطعم"
 
@@ -516,7 +521,7 @@ msgid "Admin All Orders"
 msgstr "كل الطلبات"
 
 #: .\resturant\templates\Admins\admin_all_order.html:11
-#: .\templates\admin_base.html:97
+#: .\templates\admin_base.html:93
 msgid "All Orders"
 msgstr "جميع الطلبات"
 
@@ -526,8 +531,8 @@ msgstr "جميع الطلبات"
 #: .\resturant\templates\Admins\admin_menu_list.html:18
 #: .\resturant\templates\Admins\admin_order_detail.html:72
 #: .\resturant\templates\Admins\admin_tables_list.html:15
-#: .\resturant\templates\check_out.html:55
-#: .\resturant\templates\check_out.html:124
+#: .\resturant\templates\Menu\check_out.html:55
+#: .\resturant\templates\Menu\check_out.html:125
 msgid "SN"
 msgstr "الرقم"
 
@@ -571,6 +576,11 @@ msgstr "منذ "
 #: .\resturant\templates\Admins\admin_order_detail.html:90
 #: .\resturant\templates\Admins\admin_order_detail.html:92
 #: .\resturant\templates\Admins\admin_order_detail.html:97
+#: .\resturant\templates\Menu\cart.html:73
+#: .\resturant\templates\Menu\cart.html:75
+#: .\resturant\templates\Menu\cart.html:116
+#: .\resturant\templates\Menu\cart.html:146
+#: .\resturant\templates\Menu\cart.html:148
 msgid "R.O"
 msgstr "ريال "
 
@@ -612,33 +622,32 @@ msgid "Admin Login"
 msgstr "تسجيل دخول المسؤول"
 
 #: .\resturant\templates\Admins\admin_login.html:18
-#: .\resturant\templates\login.html:18 .\resturant\templates\login.html:29
-#: .\templates\snippets\header.html:26
-msgid "Login"
-msgstr "تسجيل الدخول"
+#: .\resturant\templates\Admins\admin_login.html:29
+#: .\templates\snippets\header.html:32
+msgid "Login as admin"
+msgstr "تسجيل دخول كمسؤول"
 
 #: .\resturant\templates\Admins\admin_login.html:23
-#: .\resturant\templates\login.html:23 .\resturant\templates\signup.html:23
+#: .\resturant\templates\Clients\login.html:23
+#: .\resturant\templates\Clients\signup.html:23
 msgid "Username"
 msgstr "اسم المستخدم"
 
 #: .\resturant\templates\Admins\admin_login.html:26
-#: .\resturant\templates\login.html:26 .\resturant\templates\signup.html:32
+#: .\resturant\templates\Clients\login.html:26
+#: .\resturant\templates\Clients\signup.html:32
 msgid "Your password"
 msgstr "كلمة المرور"
-
-#: .\resturant\templates\Admins\admin_login.html:29
-msgid "Login as admin"
-msgstr "تسجيل دخول كمسؤول"
 
 #: .\resturant\templates\Admins\admin_menu_list.html:4
 msgid "Admin Menu"
 msgstr "القائمة"
 
 #: .\resturant\templates\Admins\admin_menu_list.html:9
-#: .\resturant\templates\cart.html:26 .\resturant\templates\cart.html:99
-#: .\resturant\templates\home.html:119 .\templates\admin_base.html:98
-#: .\templates\snippets\header.html:106
+#: .\resturant\templates\Menu\cart.html:26
+#: .\resturant\templates\Menu\cart.html:99
+#: .\resturant\templates\Resturant\home.html:119
+#: .\templates\admin_base.html:94 .\templates\snippets\header.html:106
 msgid "Menu"
 msgstr "القائمة"
 
@@ -704,8 +713,8 @@ msgid "Order Items"
 msgstr "وحدات الطلب"
 
 #: .\resturant\templates\Admins\admin_order_detail.html:74
-#: .\resturant\templates\check_out.html:57
-#: .\resturant\templates\check_out.html:126
+#: .\resturant\templates\Menu\check_out.html:57
+#: .\resturant\templates\Menu\check_out.html:127
 msgid "Price"
 msgstr "السعر"
 
@@ -743,7 +752,7 @@ msgid "Admin All Tables"
 msgstr "جميع السفر"
 
 #: .\resturant\templates\Admins\admin_tables_list.html:11
-#: .\templates\admin_base.html:99
+#: .\templates\admin_base.html:95
 msgid "All Tables"
 msgstr "جميع السفر"
 
@@ -755,383 +764,423 @@ msgstr "تم تأكيد الحجز"
 msgid "had not confirmed yet"
 msgstr "لم يتم تأكيد الحجز"
 
-#: .\resturant\templates\add_to_cart.html:4
-msgid "Add to Dish"
-msgstr "اضف الي الطبق"
-
-#: .\resturant\templates\add_to_cart.html:19
-#: .\resturant\templates\check_out.html:229
-msgid "Congratulations"
-msgstr "تهنيئا"
-
-#: .\resturant\templates\add_to_cart.html:26
-msgid "  added to your food desh successfully"
-msgstr "تم اضافته الي طبقك بنجاح"
-
-#: .\resturant\templates\add_to_cart.html:31
-msgid "Check Desh"
-msgstr "طبقك"
-
-#: .\resturant\templates\add_to_cart.html:34
-msgid "Add More"
-msgstr "اضف المزيد"
-
-#: .\resturant\templates\cart.html:4
-msgid "my dish"
-msgstr "طبقي"
-
-#: .\resturant\templates\cart.html:30 .\resturant\templates\cart.html:103
-msgid "Your dish content"
-msgstr "محتوي الطبق الخاص بكم"
-
-#: .\resturant\templates\cart.html:64 .\resturant\templates\cart.html:137
-msgid "There are no Items in your Dish"
-msgstr "لا يوجد اي شئ في طبقكم"
-
-#: .\resturant\templates\cart.html:71 .\resturant\templates\cart.html:144
-msgid "Dish Total"
-msgstr "السعر النهائي للطبق"
-
-#: .\resturant\templates\cart.html:80 .\resturant\templates\cart.html:153
-msgid "Check Out"
-msgstr "ادفع"
-
-#: .\resturant\templates\cart.html:83
-msgid "Empty Cart"
-msgstr "افرغ الطبق"
-
-#: .\resturant\templates\cart.html:156
-msgid "Empty Dish"
-msgstr "افرغ الطبق"
-
-#: .\resturant\templates\change_password.html:4
-#: .\resturant\templates\change_password.html:17
+#: .\resturant\templates\Clients\change_password.html:4
+#: .\resturant\templates\Clients\change_password.html:17
 msgid "Change password"
 msgstr "كلمة المرور الجديدة"
 
-#: .\resturant\templates\change_password.html:22
+#: .\resturant\templates\Clients\change_password.html:22
 msgid "Old password"
 msgstr "كلمة المرور القديمة"
 
-#: .\resturant\templates\change_password.html:25
-#: .\resturant\templates\reset_password.html:23
+#: .\resturant\templates\Clients\change_password.html:25
+#: .\resturant\templates\Clients\reset_password.html:23
 msgid "New password"
 msgstr "كلمة المرور الجديدة"
 
-#: .\resturant\templates\change_password.html:28
+#: .\resturant\templates\Clients\change_password.html:28
 msgid "New password Confirmation"
 msgstr "تأكيد كلمة المرور"
 
-#: .\resturant\templates\change_password.html:31
-#: .\resturant\templates\reset_password.html:29
+#: .\resturant\templates\Clients\change_password.html:31
+#: .\resturant\templates\Clients\reset_password.html:29
 msgid "Save"
 msgstr "احفظ"
 
-#: .\resturant\templates\change_password.html:32
-#: .\resturant\templates\forgot_password.html:37
-#: .\resturant\templates\reset_password.html:30
+#: .\resturant\templates\Clients\change_password.html:32
+#: .\resturant\templates\Clients\forgot_password.html:37
+#: .\resturant\templates\Clients\reset_password.html:30
 msgid "If you remember your password "
 msgstr "اذا تذكرت كلمة المرور الخاصة بكم "
 
-#: .\resturant\templates\change_password.html:32
-#: .\resturant\templates\forgot_password.html:37
-#: .\resturant\templates\reset_password.html:30
-#: .\resturant\templates\signup.html:39
+#: .\resturant\templates\Clients\change_password.html:32
+#: .\resturant\templates\Clients\forgot_password.html:37
+#: .\resturant\templates\Clients\reset_password.html:30
+#: .\resturant\templates\Clients\signup.html:39
 msgid " login now "
 msgstr "قم بتسجيل الدخول الأن"
 
-#: .\resturant\templates\check_out.html:4
-#: .\resturant\templates\check_out.html:28
-#: .\resturant\templates\check_out.html:97
-msgid "Checkout Now"
-msgstr "ادفع الان"
-
-#: .\resturant\templates\check_out.html:31
-#: .\resturant\templates\check_out.html:32
-#: .\resturant\templates\check_out.html:100
-#: .\resturant\templates\check_out.html:101
-msgid "First Name"
-msgstr "الاسم الاول"
-
-#: .\resturant\templates\check_out.html:35
-#: .\resturant\templates\check_out.html:36
-#: .\resturant\templates\check_out.html:104
-#: .\resturant\templates\check_out.html:105
-msgid "Last Name"
-msgstr "الاسم الاخير"
-
-#: .\resturant\templates\check_out.html:39
-#: .\resturant\templates\check_out.html:40
-#: .\resturant\templates\check_out.html:108
-#: .\resturant\templates\check_out.html:109
-#: .\resturant\templates\forgot_password.html:33
-#: .\resturant\templates\signup.html:29
-msgid "Email Address"
-msgstr "البريد الالكتروني"
-
-#: .\resturant\templates\check_out.html:48
-#: .\resturant\templates\check_out.html:117
-msgid "Order Summary"
-msgstr "ملخص الطلب"
-
-#: .\resturant\templates\check_out.html:56
-#: .\resturant\templates\check_out.html:125
-msgid "Name"
-msgstr "الاسم"
-
-#: .\resturant\templates\check_out.html:73
-#: .\resturant\templates\check_out.html:142
-msgid "Grand Total"
-msgstr "السعر النهائي"
-
-#: .\resturant\templates\check_out.html:85
-msgid "Your dish is empty"
-msgstr "طبقك فارغ الان"
-
-#: .\resturant\templates\check_out.html:153
-msgid "Your cart is empty"
-msgstr "طبقك فارغ الان"
-
-#: .\resturant\templates\check_out.html:184
-msgid "alart"
-msgstr "تنبيه"
-
-#: .\resturant\templates\check_out.html:184
-msgid "All Fields Are Mandatory"
-msgstr "جميع الحقول مطلوبة"
-
-#: .\resturant\templates\check_out.html:229
-msgid "Your order has been paid successfully"
-msgstr "تم دفع طلبك بنجاح"
-
-#: .\resturant\templates\forgot_password.html:4
-#: .\resturant\templates\forgot_password.html:28
+#: .\resturant\templates\Clients\forgot_password.html:4
+#: .\resturant\templates\Clients\forgot_password.html:28
 msgid "Forget Password"
 msgstr "نسيت كلمة المرور"
 
-#: .\resturant\templates\forgot_password.html:20
+#: .\resturant\templates\Clients\forgot_password.html:20
 msgid "Password reset link is sent to your email check your inbox immediately"
 msgstr ""
 "تم ارسال رابط إعادة تعين كلمة المرور الي بريدك الالكتروني ، تحقق من صندوق "
 "الوارد الخاص بكم "
 
-#: .\resturant\templates\forgot_password.html:24
+#: .\resturant\templates\Clients\forgot_password.html:24
 msgid "Someting went wrong please enter your email again"
 msgstr "حدث خطأ ما الرجاء إدخال البريد الإلكتروني الخاص بك مرة أخرى"
 
-#: .\resturant\templates\forgot_password.html:36
+#: .\resturant\templates\Clients\forgot_password.html:33
+#: .\resturant\templates\Clients\signup.html:29
+#: .\resturant\templates\Menu\check_out.html:39
+#: .\resturant\templates\Menu\check_out.html:40
+#: .\resturant\templates\Menu\check_out.html:109
+#: .\resturant\templates\Menu\check_out.html:110
+msgid "Email Address"
+msgstr "البريد الالكتروني"
+
+#: .\resturant\templates\Clients\forgot_password.html:36
 msgid "Reset"
 msgstr "اعادة"
 
-#: .\resturant\templates\home.html:42
+#: .\resturant\templates\Clients\login.html:4
+msgid "client Login"
+msgstr "تسجيل دخول العميل"
+
+#: .\resturant\templates\Clients\login.html:18
+#: .\resturant\templates\Clients\login.html:29
+#: .\templates\snippets\header.html:26
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: .\resturant\templates\Clients\login.html:30
+msgid "If you don't have an account "
+msgstr "اذا لم يكن لديكم حساب"
+
+#: .\resturant\templates\Clients\login.html:30
+msgid " sign up now "
+msgstr "قم بإنشاء حساب جديد"
+
+#: .\resturant\templates\Clients\login.html:31
+msgid "If you forgot your password "
+msgstr "اذا نسيت كلمة المرور الخاصة بكم"
+
+#: .\resturant\templates\Clients\login.html:31
+msgid " reset it now "
+msgstr " اعادة كلمة المرور الأن"
+
+#: .\resturant\templates\Clients\reset_password.html:4
+msgid "Reset password"
+msgstr "اعادة كلمة المرور"
+
+#: .\resturant\templates\Clients\reset_password.html:18
+msgid "Reset Password"
+msgstr "اعادة كلمة المرور"
+
+#: .\resturant\templates\Clients\reset_password.html:26
+msgid "New password confirmation"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+#: .\resturant\templates\Clients\signup.html:4
+msgid "client Signup"
+msgstr "انشاء حساب للعميل"
+
+#: .\resturant\templates\Clients\signup.html:18
+msgid "Sign Up"
+msgstr "انشاء حساب"
+
+#: .\resturant\templates\Clients\signup.html:35
+msgid "Your Address"
+msgstr "عنوانك"
+
+#: .\resturant\templates\Clients\signup.html:38
+msgid "Sign up"
+msgstr "انشاء حساب"
+
+#: .\resturant\templates\Clients\signup.html:39
+msgid "If you already have an account "
+msgstr "اذا كلن لديك حساب بالفعل "
+
+#: .\resturant\templates\Menu\add_to_cart.html:4
+msgid "Add to Dish"
+msgstr "اضف الي الطبق"
+
+#: .\resturant\templates\Menu\add_to_cart.html:19
+#: .\resturant\templates\Menu\check_out.html:230
+msgid "Congratulations"
+msgstr "تهنيئا"
+
+#: .\resturant\templates\Menu\add_to_cart.html:26
+msgid "  added to your food desh successfully"
+msgstr "تم اضافته الي طبقك بنجاح"
+
+#: .\resturant\templates\Menu\add_to_cart.html:31
+msgid "Check Desh"
+msgstr "طبقك"
+
+#: .\resturant\templates\Menu\add_to_cart.html:34
+msgid "Add More"
+msgstr "اضف المزيد"
+
+#: .\resturant\templates\Menu\cart.html:4
+msgid "my dish"
+msgstr "طبقي"
+
+#: .\resturant\templates\Menu\cart.html:30
+#: .\resturant\templates\Menu\cart.html:103
+msgid "Your dish content"
+msgstr "محتوي الطبق الخاص بكم"
+
+#: .\resturant\templates\Menu\cart.html:43
+msgid "O.R"
+msgstr ""
+
+#: .\resturant\templates\Menu\cart.html:64
+#: .\resturant\templates\Menu\cart.html:137
+msgid "There are no Items in your Dish"
+msgstr "لا يوجد اي شئ في طبقكم"
+
+#: .\resturant\templates\Menu\cart.html:71
+#: .\resturant\templates\Menu\cart.html:144
+msgid "Dish Total"
+msgstr "السعر النهائي للطبق"
+
+#: .\resturant\templates\Menu\cart.html:80
+#: .\resturant\templates\Menu\cart.html:153
+msgid "Check Out"
+msgstr "ادفع"
+
+#: .\resturant\templates\Menu\cart.html:83
+msgid "Empty Cart"
+msgstr "افرغ الطبق"
+
+#: .\resturant\templates\Menu\cart.html:156
+msgid "Empty Dish"
+msgstr "افرغ الطبق"
+
+#: .\resturant\templates\Menu\check_out.html:4
+#: .\resturant\templates\Menu\check_out.html:28
+#: .\resturant\templates\Menu\check_out.html:98
+msgid "Checkout Now"
+msgstr "ادفع الان"
+
+#: .\resturant\templates\Menu\check_out.html:31
+#: .\resturant\templates\Menu\check_out.html:32
+#: .\resturant\templates\Menu\check_out.html:101
+#: .\resturant\templates\Menu\check_out.html:102
+msgid "First Name"
+msgstr "الاسم الاول"
+
+#: .\resturant\templates\Menu\check_out.html:35
+#: .\resturant\templates\Menu\check_out.html:36
+#: .\resturant\templates\Menu\check_out.html:105
+#: .\resturant\templates\Menu\check_out.html:106
+msgid "Last Name"
+msgstr "الاسم الاخير"
+
+#: .\resturant\templates\Menu\check_out.html:48
+#: .\resturant\templates\Menu\check_out.html:118
+msgid "Order Summary"
+msgstr "ملخص الطلب"
+
+#: .\resturant\templates\Menu\check_out.html:56
+#: .\resturant\templates\Menu\check_out.html:126
+msgid "Name"
+msgstr "الاسم"
+
+#: .\resturant\templates\Menu\check_out.html:73
+#: .\resturant\templates\Menu\check_out.html:143
+msgid "Grand Total"
+msgstr "السعر النهائي"
+
+#: .\resturant\templates\Menu\check_out.html:86
+msgid "Your dish is empty"
+msgstr "طبقك فارغ الان"
+
+#: .\resturant\templates\Menu\check_out.html:154
+msgid "Your cart is empty"
+msgstr "طبقك فارغ الان"
+
+#: .\resturant\templates\Menu\check_out.html:185
+msgid "alart"
+msgstr "تنبيه"
+
+#: .\resturant\templates\Menu\check_out.html:185
+msgid "All Fields Are Mandatory"
+msgstr "جميع الحقول مطلوبة"
+
+#: .\resturant\templates\Menu\check_out.html:230
+msgid "Your order has been paid successfully"
+msgstr "تم دفع طلبك بنجاح"
+
+#: .\resturant\templates\Resturant\home.html:5
+msgid "BABA VOSS"
+msgstr ""
+
+#: .\resturant\templates\Resturant\home.html:42
 msgid "Resturant Title Place"
 msgstr "عنوان مكان المطعم"
 
-#: .\resturant\templates\home.html:47
+#: .\resturant\templates\Resturant\home.html:47
 msgid "Resturant Place Description"
 msgstr "وصف مكان المطعم"
 
-#: .\resturant\templates\home.html:63
+#: .\resturant\templates\Resturant\home.html:63
 msgid "Why Us"
 msgstr "لماذا نحن"
 
-#: .\resturant\templates\home.html:64
+#: .\resturant\templates\Resturant\home.html:64
 msgid "Why Choose Our Restaurant"
 msgstr "لماذا يجب عليك اختيار مطعمنا"
 
-#: .\resturant\templates\home.html:88 .\resturant\templates\home.html:103
+#: .\resturant\templates\Resturant\home.html:88
+#: .\resturant\templates\Resturant\home.html:103
 msgid "why us quote title"
 msgstr "عنوان احد خدماتنا"
 
-#: .\resturant\templates\home.html:93 .\resturant\templates\home.html:104
+#: .\resturant\templates\Resturant\home.html:93
+#: .\resturant\templates\Resturant\home.html:104
 msgid "why us quote description"
 msgstr "وصف احد خدماتنا"
 
-#: .\resturant\templates\home.html:120
+#: .\resturant\templates\Resturant\home.html:120
 msgid "Check Our Tasty Menu"
 msgstr "قائمتنا اللذيذة"
 
-#: .\resturant\templates\home.html:126
+#: .\resturant\templates\Resturant\home.html:126
 msgid "All"
 msgstr "الكل"
 
-#: .\resturant\templates\home.html:133 .\resturant\templates\home.html:141
+#: .\resturant\templates\Resturant\home.html:133
+#: .\resturant\templates\Resturant\home.html:141
 msgid "Category"
 msgstr "قسم القائمة"
 
-#: .\resturant\templates\home.html:155 .\resturant\templates\home.html:173
+#: .\resturant\templates\Resturant\home.html:155
+#: .\resturant\templates\Resturant\home.html:173
 msgid "Menu Item Title"
 msgstr "اسم منتج  في القائمة"
 
-#: .\resturant\templates\home.html:159 .\resturant\templates\home.html:177
+#: .\resturant\templates\Resturant\home.html:159
+#: .\resturant\templates\Resturant\home.html:177
 msgid "Menu Item Description"
 msgstr "وصف منتج  في القائمة "
 
-#: .\resturant\templates\home.html:195 .\templates\snippets\header.html:107
+#: .\resturant\templates\Resturant\home.html:195
+#: .\templates\snippets\header.html:107
 msgid "Specials"
 msgstr "تخصصات"
 
-#: .\resturant\templates\home.html:196
+#: .\resturant\templates\Resturant\home.html:196
 msgid "Check Our Specials"
 msgstr "تخصصات المطعم"
 
-#: .\resturant\templates\home.html:211 .\resturant\templates\home.html:229
+#: .\resturant\templates\Resturant\home.html:211
+#: .\resturant\templates\Resturant\home.html:229
 msgid "Special English Category"
 msgstr "اقسام تخصصنا بالغة العربية"
 
-#: .\resturant\templates\home.html:221 .\resturant\templates\home.html:233
+#: .\resturant\templates\Resturant\home.html:221
+#: .\resturant\templates\Resturant\home.html:233
 msgid "Special Arabic Category"
 msgstr "اقسام تخصصنا بالغة الانجليزية"
 
-#: .\resturant\templates\home.html:250 .\resturant\templates\home.html:298
+#: .\resturant\templates\Resturant\home.html:250
+#: .\resturant\templates\Resturant\home.html:298
 msgid "Special English Title"
 msgstr "اسم التخصص باللغة الانجليزية"
 
-#: .\resturant\templates\home.html:255 .\resturant\templates\home.html:299
+#: .\resturant\templates\Resturant\home.html:255
+#: .\resturant\templates\Resturant\home.html:299
 msgid "Special English Description"
 msgstr "وصف التخصص باللغة الانجليزية"
 
-#: .\resturant\templates\home.html:274 .\resturant\templates\home.html:310
+#: .\resturant\templates\Resturant\home.html:274
+#: .\resturant\templates\Resturant\home.html:310
 msgid "Special Arabic Title"
 msgstr "اسم التخصص باللغة العربية"
 
-#: .\resturant\templates\home.html:279 .\resturant\templates\home.html:311
+#: .\resturant\templates\Resturant\home.html:279
+#: .\resturant\templates\Resturant\home.html:311
 msgid "Special Arabic Description"
 msgstr "وصف التخصص باللغة العربية"
 
-#: .\resturant\templates\home.html:334
+#: .\resturant\templates\Resturant\home.html:334
 msgid "Reservation"
 msgstr "الحجز"
 
-#: .\resturant\templates\home.html:335 .\resturant\templates\home.html:371
+#: .\resturant\templates\Resturant\home.html:335
+#: .\resturant\templates\Resturant\home.html:371
 #: .\templates\snippets\header.html:137 .\templates\snippets\header.html:156
 msgid "Book a Table"
 msgstr "حجز سفرة"
 
-#: .\resturant\templates\home.html:342 .\resturant\templates\home.html:525
+#: .\resturant\templates\Resturant\home.html:342
+#: .\resturant\templates\Resturant\home.html:525
 msgid "Your Name"
 msgstr "الاسم"
 
-#: .\resturant\templates\home.html:346 .\resturant\templates\home.html:528
+#: .\resturant\templates\Resturant\home.html:346
+#: .\resturant\templates\Resturant\home.html:528
 msgid "Your Email"
 msgstr "بريدك الالكتروني"
 
-#: .\resturant\templates\home.html:384 .\templates\snippets\header.html:108
+#: .\resturant\templates\Resturant\home.html:384
+#: .\templates\snippets\header.html:108
 msgid "Gallery"
 msgstr "معرض الصور"
 
-#: .\resturant\templates\home.html:385
+#: .\resturant\templates\Resturant\home.html:385
 msgid "Some photos from Our Restaurant"
 msgstr "بعض الصور من مطعمنا"
 
-#: .\resturant\templates\home.html:431 .\templates\snippets\header.html:109
+#: .\resturant\templates\Resturant\home.html:431
+#: .\templates\snippets\header.html:109
 msgid "Contact"
 msgstr "التواصل"
 
-#: .\resturant\templates\home.html:432
+#: .\resturant\templates\Resturant\home.html:432
 msgid "Contact Us"
 msgstr "التواصل"
 
-#: .\resturant\templates\home.html:449 .\resturant\templates\home.html:485
+#: .\resturant\templates\Resturant\home.html:449
+#: .\resturant\templates\Resturant\home.html:485
 msgid "Location"
 msgstr "العنوان"
 
-#: .\resturant\templates\home.html:450 .\resturant\templates\home.html:486
+#: .\resturant\templates\Resturant\home.html:450
+#: .\resturant\templates\Resturant\home.html:486
 msgid "Resturant Location"
 msgstr "مكان المطعم"
 
-#: .\resturant\templates\home.html:461 .\resturant\templates\home.html:497
+#: .\resturant\templates\Resturant\home.html:461
+#: .\resturant\templates\Resturant\home.html:497
 #: .\templates\snippets\footer.html:81 .\templates\snippets\footer.html:83
 msgid "Email"
 msgstr "البريد الالكتروني"
 
-#: .\resturant\templates\home.html:473 .\resturant\templates\home.html:509
+#: .\resturant\templates\Resturant\home.html:473
+#: .\resturant\templates\Resturant\home.html:509
 msgid "Call"
 msgstr "الاتصال"
 
-#: .\resturant\templates\home.html:474 .\resturant\templates\home.html:510
+#: .\resturant\templates\Resturant\home.html:474
+#: .\resturant\templates\Resturant\home.html:510
 #: .\templates\snippets\footer.html:40 .\templates\snippets\footer.html:77
 msgid "Resturant Phone Number"
 msgstr "رقم الهاتف للمطعم"
 
-#: .\resturant\templates\home.html:532
+#: .\resturant\templates\Resturant\home.html:532
 msgid "Subject"
 msgstr "الموضوع"
 
-#: .\resturant\templates\home.html:537
+#: .\resturant\templates\Resturant\home.html:537
 msgid "Send Message"
 msgstr "ارسال الرسالة"
 
-#: .\resturant\templates\login.html:4
-msgid "client Login"
-msgstr "تسجيل دخول العميل"
-
-#: .\resturant\templates\login.html:30
-msgid "If you don't have an account "
-msgstr "اذا لم يكن لديكم حساب"
-
-#: .\resturant\templates\login.html:30
-msgid " sign up now "
-msgstr "قم بإنشاء حساب جديد"
-
-#: .\resturant\templates\login.html:31
-msgid "If you forgot your password "
-msgstr "اذا نسيت كلمة المرور الخاصة بكم"
-
-#: .\resturant\templates\login.html:31
-msgid " reset it now "
-msgstr " اعادة كلمة المرور الأن"
-
-#: .\resturant\templates\reset_password.html:4
-msgid "Reset password"
-msgstr "اعادة كلمة المرور"
-
-#: .\resturant\templates\reset_password.html:18
-msgid "Reset Password"
-msgstr "اعادة كلمة المرور"
-
-#: .\resturant\templates\reset_password.html:26
-msgid "New password confirmation"
-msgstr "تأكيد كلمة المرور الجديدة"
-
-#: .\resturant\templates\signup.html:4
-msgid "client Signup"
-msgstr "انشاء حساب للعميل"
-
-#: .\resturant\templates\signup.html:18
-msgid "Sign Up"
-msgstr "انشاء حساب"
-
-#: .\resturant\templates\signup.html:35
-msgid "Your Address"
-msgstr "عنوانك"
-
-#: .\resturant\templates\signup.html:38
-msgid "Sign up"
-msgstr "انشاء حساب"
-
-#: .\resturant\templates\signup.html:39
-msgid "If you already have an account "
-msgstr "اذا كلن لديك حساب بالفعل "
-
-#: .\templates\admin_base.html:76 .\templates\admin_base.html:88
+#: .\templates\admin_base.html:72 .\templates\admin_base.html:84
 #: .\templates\snippets\header.html:88 .\templates\snippets\header.html:96
 msgid "Resturant Logo"
 msgstr "رمز المطعم"
 
-#: .\templates\admin_base.html:96 .\templates\snippets\header.html:104
+#: .\templates\admin_base.html:92 .\templates\snippets\header.html:104
 msgid "Home"
 msgstr "الرئيسية"
 
-#: .\templates\admin_base.html:100
+#: .\templates\admin_base.html:96
 msgid "Add Menu Items"
 msgstr "اضافة وحدة للقائمة"
 
-#: .\templates\admin_base.html:101
+#: .\templates\admin_base.html:97
 msgid "Add Menu Category"
 msgstr "اضافة قسم للقائمة"
 
-#: .\templates\admin_base.html:102
+#: .\templates\admin_base.html:98
 msgid "Visit Site"
 msgstr "زيارة الموقع"
 
@@ -1160,12 +1209,6 @@ msgstr "الهاتف"
 msgid "Register"
 msgstr "انشاء حساب"
 
-#: .\templates\snippets\header.html:32
-#, fuzzy
-#| msgid "Login as admin"
-msgid "Login as Admin"
-msgstr "تسجيل دخول كمسؤول"
-
 #: .\templates\snippets\header.html:105
 msgid "About"
 msgstr "عن المطعم"
@@ -1185,6 +1228,11 @@ msgstr "قائمة المطعم"
 #: .\templates\snippets\header.html:140
 msgid "Welcome to "
 msgstr "مرحبا بكم"
+
+#, fuzzy
+#~| msgid "Login as admin"
+#~ msgid "Login as Admin"
+#~ msgstr "تسجيل دخول كمسؤول"
 
 #~ msgid "السفر الغير مؤكدة الحجز"
 #~ msgstr "اخر الطلبات"
