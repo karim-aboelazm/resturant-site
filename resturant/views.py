@@ -506,7 +506,7 @@ class CheckOutView(RestMixin, FormView):
         if target_currency_input:
             return float(target_currency_input.get('value'))
         else:
-            return 1.0
+            return 0.000
         
     
     def get_context_data(self, **kwargs):
@@ -520,7 +520,7 @@ class CheckOutView(RestMixin, FormView):
         else:
             cart_obj = None
         context["cart"] = cart_obj
-        context["price_in_usd"] = float(context["cart"].total*self.convert_omr_to_usd())
+        context["price_in_usd"] = context["cart"].total*self.convert_omr_to_usd()
         return context
     
     def form_valid(self,form):
