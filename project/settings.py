@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "dj_rest_auth",
     "django.contrib.sites",
     "dj_rest_auth.registration",
+    "storages",
     
 ]
 
@@ -88,6 +89,9 @@ WSGI_APPLICATION = "project.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+import dj_database_url
+DATABASES_URL = env('DATABASE_URI')
+
 
 DATABASES = {
    'default': {
