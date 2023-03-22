@@ -188,7 +188,7 @@
       </section><!-- End Menu Section -->
   
       <!-- ======= Specials Section ======= -->
-      <section id="specials" class="specials">
+      {% comment %} <section id="specials" class="specials">
         <div class="container" data-aos="fade-up">
   
           <div class="section-title">
@@ -322,7 +322,7 @@
           </div>
   
         </div>
-      </section>
+      </section> {% endcomment %}
       <!-- End Specials Section -->
   
   
@@ -395,7 +395,7 @@
                 <div class="gallery-item">
                   {% if galary.image %}
                     <a href="{{galary.image.url}}" class="gallery-lightbox" data-gall="gallery-item">
-                      <img src="{{galary.image.url}}" alt="" style="height:250px" class="img-fluid">
+                      <img src="{{galary.image.url}}" alt="" style="height:250px;width:100%" class="img-fluid">
                     </a>
                   {% else %}
                     <a href="{% static '' %}img/gallery/gallery-1.jpg" class="gallery-lightbox" data-gall="gallery-item">
