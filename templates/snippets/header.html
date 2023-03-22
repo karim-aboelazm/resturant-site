@@ -1,11 +1,11 @@
 {% load static i18n %}
  <!-- ======= Top Bar ======= -->
   <div id="topbar" class="d-flex align-items-center fixed-top">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-
-      <div class="contact-info d-flex align-items-center">
-        <div class="user_option_box">
-          {% if request.user.resturantclient %}
+    <div class="container ">
+   
+          <div class="row">
+            <div class="col-md-10">
+              {% if request.user.resturantclient %}
           <a href="" class="account-link mx-3 text-white">
             <i class="fa fa-user text-white" aria-hidden="true"></i>
             <span class="">
@@ -16,23 +16,23 @@
 
             <a href="{% url 'restu:client_register'%}" class="account-link text-white">
               <i class="fas fa-user-plus text-white"></i>
-            <span class="mx-3">
+            <span class="mx-1">
                 {% trans 'Register' %}
             </span>
             </a>
             <a href="{% url 'restu:client_login'%}" class="account-link">
                <i class="fas fa-sign-in-alt text-white"></i>
-                <span class="mx-3 text-white">
+                <span class="mx-1 text-white">
                     {% trans 'Login' %}
                 </span>
             </a>
             <a href="{% url 'restu:admin_login'%}" class="account-link">
               <i class="fas fa-sign-in-alt text-white"></i>
-               <span class="mx-3 text-white">
+               <span class="mx-1 text-white">
                    {% trans 'Login as admin' %}
                </span>
            </a>
-          {%endif%}
+           {%endif%}
           
           {% if user.is_authenticated and request.user.resturantclient%}
             <a href="{% url 'restu:my_cart' %}" class="cart-link">
@@ -43,34 +43,37 @@
             </a>
             <a href="{% url 'restu:client_logout' %}"><i class="fas fa-power-off text-white"></i></a>
           {%endif%}
+            </div>
+            <div class="col-md-2 text-center">
+              <div class="languages">
+                <ul style="display:flex;position:relative;top:10px;">
+                  {% if LANGUAGE_CODE == 'en' %}
+                  <li><form  action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for available_languages as languages %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                    <input name="language" type="hidden" value="ar" />
+                    <button type="submit" style="background: none;outline: none;border: none;color:#fff;position: relative;bottom: 10px;left: 10px;" class="">Ar</button>
+                  </form></li>
+                  {% else %}
+                  <li><form  action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for available_languages as languages %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                    <input name="language" type="hidden" value="en" />
+                    <button type="submit" style="background: none;outline: none;border: none;color:#fff;position: relative;bottom: 10px;" class="">En</button>
+                  </form></li>
+                  {% endif %}
+                </ul>
+                </div>
         </div>
       </div>
 
-      <div class="languages d-none d-md-flex align-items-center">
-        <ul style="display:flex;position:relative;top:10px;">
-          {% if LANGUAGE_CODE == 'en' %}
-          <li><form  action="{% url 'set_language' %}" method="post">
-            {% csrf_token %}
-            {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for available_languages as languages %}
-            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
-            <input name="language" type="hidden" value="ar" />
-            <button type="submit" style="background: none;outline: none;border: none;color:#fff;position: relative;bottom: 10px;left: 10px;" class="">Ar</button>
-          </form></li>
-          {% else %}
-          <li><form  action="{% url 'set_language' %}" method="post">
-            {% csrf_token %}
-            {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for available_languages as languages %}
-            <input name="next" type="hidden" value="{{ request.get_full_path }}" />
-            <input name="language" type="hidden" value="en" />
-            <button type="submit" style="background: none;outline: none;border: none;color:#fff;position: relative;bottom: 10px;" class="">En</button>
-          </form></li>
-          {% endif %}
-        </ul>
-      </div>
+      
     </div>
   </div>
   {% get_current_language as LANGUAGE_CODE %}
