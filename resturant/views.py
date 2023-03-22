@@ -185,6 +185,7 @@ class HomePageView(FormView):
         context["galary_resturant"]  = ResturantGalaryImages.objects.all().order_by('-id')
         context["chifs_resturant"]   = ResturantChifs.objects.all().order_by('-id')
         context["category_menu_rest"]= ResturantMenuCategory.objects.all()
+        context["home_bg"] = ResturantGalaryImages.objects.latest('id')
         return context
    
     def post(self, request, *args, **kwargs):
