@@ -155,6 +155,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_DIRS = (os.path.join(BASE_DIR,'mediafiles'),)
 
+AWS_ACCESS_KEY_ID = 'AKIASDM5QDFBG7CO676T'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'babavoss-site'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'eu-west-3'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 if os.getcwd() == '/resturant':
