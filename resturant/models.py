@@ -189,6 +189,7 @@ class ResturantMenu(models.Model):
     title_ar        = models.CharField(_('menu item arabic title'),max_length=255)
     description_ar  = models.TextField(_('menu item arabic description'))
     price           = models.DecimalField(_('menu item price'),max_digits=6,decimal_places=3)
+    image           = models.ImageField(_('menu item image'),upload_to='menu-item/images/',null=True, blank=True)
     class Meta:
         verbose_name_plural = _('Resturant Menu')
     def __str__(self):
