@@ -12,6 +12,7 @@ from resturant.models import *
 from django.views import View
 from .forms import *
 from decimal import Decimal
+from datetime import datetime
 
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -186,6 +187,7 @@ class HomePageView(FormView):
         context["chifs_resturant"]   = ResturantChifs.objects.all().order_by('-id')
         context["category_menu_rest"]= ResturantMenuCategory.objects.all()
         context["home_bg"] = ResturantSiteImages.objects.latest('id')
+        
         return context
    
     def post(self, request, *args, **kwargs):
