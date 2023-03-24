@@ -144,41 +144,59 @@
               </ul>
             </div>
           </div>
-  
-          {% if LANGUAGE_CODE == 'en' %}
+          
+          <div class="row">
+            <div class="col-md-10 mx-auto">
+              {% if LANGUAGE_CODE == 'en' %}
             {% if category_menu_rest|length > 0 %}
               <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
                 {% for cat in category_menu_rest  %}
                 
                   {% for item in cat.resturantmenu_set.all  %}
-                      <div class="col-lg-6 menu-item filter-{{cat.title_en}} ">
+                      <div class="col-lg-6 menu-item filter-{{cat.title_en}}">
                         <div class="row">
-                          <div class="col-md-2">
-                            {% if item.image %}
-                            <img src="{{item.image.url}}" class="mx-2" style="width:50px;height:50px;border-radius:50%"/>
-                            {% endif %}
-                          </div>
-                          <div class="col-md-7">
+                          
+                          <div class="col-md-12 mx-3 pt-3">
                             {% if request.user.is_superuser %}
-                              <a href="{% url 'restu:client_register' %}" class="text-left" >
-                                <span class="text-left text-white" style="text-align:left;font-size:18px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</span>
-                              </a>
+                            <div class="row">
+                              <div class="col-md-10" style="display:flex">
+                                <div class="right mx-3">
+                                  {% if item.image %}
+                                <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
+                                {% endif %}
+                                </div>
+                                <div class="left pt-3">
+                                  <a href="{% url 'restu:client_register' %}" class="" >
+                                    <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
+                                    <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</p>
+                                    </p> 
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="col-md-2"></div>
+                            </div>
+                              
                             {% else %}
-                              <a href="{% url 'restu:add_to_cart' item.id %}" class="text-left" >
-                                <span class="text-left text-white" style="text-align:left;font-size:18px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</span>
-                              </a>
+                                <div class="row">
+                                  <div class="col-md-10" style="display:flex">
+                                    <div class="right mx-3">
+                                      {% if item.image %}
+                                    <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
+                                    {% endif %}
+                                    </div>
+                                    <div class="left pt-3">
+                                      <a href="{% url 'restu:add_to_cart' item.id %}" class="" >
+                                        <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
+                                        <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</p>
+                                        </p> 
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2"></div>
+                                </div>
                             {% endif %}
                           </div>
-                          <div class="col-md-3">
-                            <span class="mt-3" style="color: #cda45e;font-size:18px;font-weight: 600;">{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</span>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-2"></div>
-                          <div class="col-md-7 text-muted">
-                           <p> {% if item.description_en %}{{item.description_en}}{% else %}{% trans 'Menu Item Description' %}{% endif %}</p>
-                          </div>
-                          <div class="col-md-3"></div>
+                          
                         </div>
                       </div>
                   {% endfor %}
@@ -189,35 +207,52 @@
             {% if category_menu_rest|length > 0 %}
               <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
                 {% for cat in category_menu_rest  %}
+                
                   {% for item in cat.resturantmenu_set.all  %}
-                      <div class="col-lg-6 menu-item filter-{{cat.title_en}} ">
+                      <div class="col-lg-6 menu-item filter-{{cat.title_en}}">
                         <div class="row">
-                          <div class="col-md-2">
-                            {% if item.image %}
-                            <img src="{{item.image.url}}" class="mx-2" style="width:50px;height:50px;border-radius:50%"/>
-                            {% endif %}
-                          </div>
-                          <div class="col-md-7">
+                          
+                          <div class="col-md-12 mx-3 pt-3">
                             {% if request.user.is_superuser %}
-                            <a href="{% url 'restu:client_register' %}" class="text-right" >
-                              <span class="text-left text-white" style="text-align:right;font-size:18px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</span>
-                            </a>
+                            <div class="row">
+                              <div class="col-md-10" style="display:flex">
+                                <div class="right mx-3">
+                                  {% if item.image %}
+                                <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
+                                {% endif %}
+                                </div>
+                                <div class="left pt-3">
+                                  <a href="{% url 'restu:client_register' %}" class="" >
+                                    <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
+                                      <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                    </p> 
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="col-md-2"></div>
+                            </div>
+                              
                             {% else %}
-                            <a href="{% url 'restu:add_to_cart' item.id %}" class="text-right">
-                              <span class="text-left text-white" style="text-align:right;font-size:18px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}</span>
-                            </a>
+                                <div class="row">
+                                  <div class="col-md-10" style="display:flex">
+                                    <div class="right mx-3">
+                                      {% if item.image %}
+                                    <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
+                                    {% endif %}
+                                    </div>
+                                    <div class="left pt-3">
+                                      <a href="{% url 'restu:add_to_cart' item.id %}" class="" >
+                                        <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
+                                        <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                        </p> 
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2"></div>
+                                </div>
                             {% endif %}
                           </div>
-                          <div class="col-md-3">
-                            <span>{% if item.price %}{{item.price}} ريال {% else %}ريال 0.000 {% endif %}</span>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-2"></div>
-                          <div class="col-md-7 text-muted">
-                           <p> {% if item.description_ar %}{{item.description_ar}}{% else %}{% trans 'Menu Item Description' %}{% endif %}</p>
-                          </div>
-                          <div class="col-md-3"></div>
+                          
                         </div>
                       </div>
                   {% endfor %}
@@ -225,8 +260,8 @@
               </div>
             {% endif %}
           {% endif %}
-  
-  
+            </div>
+          </div>
         </div>
       </section><!-- End Menu Section -->
   

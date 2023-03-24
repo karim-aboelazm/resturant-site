@@ -393,6 +393,8 @@ class AddToCartView(RestMixin,TemplateView):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated and request.user.resturantclient:
             pass
+        elif request.user.is_superuser:
+            return redirect("/client-register/")
         else:
             return redirect("/client-login/?next=/")
         return super().dispatch(request, *args, **kwargs)
