@@ -190,8 +190,8 @@ class ResturantMenu(models.Model):
     description_ar  = models.TextField(_('menu item arabic description'),null=True)
     price           = models.DecimalField(_('menu item price'),max_digits=6,decimal_places=3)
     image           = models.ImageField(_('menu item image'),upload_to='menu-item/images/',null=True, blank=True)
-    small_price     = models.DecimalField(_('menu item small price'),max_digits=6,decimal_places=3,null=True,default=0.000)
-    mediam_price    = models.DecimalField(_('menu item mediam price'),max_digits=6,decimal_places=3,null=True,default=0.000)
+    small_price     = models.DecimalField(_('menu item small price'),max_digits=6,decimal_places=3,null=True,default=0)
+    mediam_price    = models.DecimalField(_('menu item mediam price'),max_digits=6,decimal_places=3,null=True,default=0)
     class Meta:
         verbose_name_plural = _('Resturant Menu')
     def __str__(self):
