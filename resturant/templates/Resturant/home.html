@@ -148,62 +148,68 @@
           <div class="row">
             <div class="col-md-10 mx-auto">
               {% if LANGUAGE_CODE == 'en' %}
-            {% if category_menu_rest|length > 0 %}
-              <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-                {% for cat in category_menu_rest  %}
-                
-                  {% for item in cat.resturantmenu_set.all  %}
-                      <div class="col-lg-6 menu-item filter-{{cat.title_en}}">
-                        <div class="row">
-                          
-                          <div class="col-md-12 mx-3 pt-3">
-                            {% if request.user.is_superuser %}
+                {% if category_menu_rest|length > 0 %}
+                  <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+                    {% for cat in category_menu_rest  %}
+                    
+                      {% for item in cat.resturantmenu_set.all  %}
+                          <div class="col-lg-6 menu-item filter-{{cat.title_en}}">
                             <div class="row">
-                              <div class="col-md-10" style="display:flex">
-                                <div class="right mx-3">
-                                  {% if item.image %}
-                                <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
-                                {% endif %}
-                                </div>
-                                <div class="left pt-3">
-                                  <a href="{% url 'restu:client_register' %}" class="" >
-                                    <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
-                                    <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</p>
-                                    </p> 
-                                  </a>
-                                </div>
-                              </div>
-                              <div class="col-md-2"></div>
-                            </div>
                               
-                            {% else %}
+                              <div class="col-md-12 mx-3 pt-3">
+                                {% if request.user.is_superuser %}
                                 <div class="row">
                                   <div class="col-md-10" style="display:flex">
-                                    <div class="right mx-3">
+                                    <div class="right mx-3 mt-3">
                                       {% if item.image %}
-                                    <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
+                                    <img src="{{item.image.url}}" class="" style="width:100px;height:100px;"/>
                                     {% endif %}
                                     </div>
-                                    <div class="left pt-3">
-                                      <a href="{% url 'restu:add_to_cart' item.id %}" class="" >
+                                    <div class="left pt-2">
+                                      <a href="{% url 'restu:client_register' %}" class="" >
                                         <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
-                                        <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</p>
+                                          <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px">{% trans 'Large  Size : ' %}{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</p>
+                                          <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px">{% trans 'Mediam Size : ' %}{% if item.mediam_price %}{{item.mediam_price}} R.O {% else %} 0.000 R.O{% endif %}</p>
+                                          <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px">{% trans 'Small  Size : ' %}{% if item.small_price %}{{item.small_price}} R.O {% else %} 0.000 R.O{% endif %}</p>
+                                          <p class="text-muted" style="font-size:15px;font-weight: 600;margin-top:-15px">{% if item.description_en %}{{item.description_en}}{% endif %}</p>
                                         </p> 
                                       </a>
                                     </div>
                                   </div>
                                   <div class="col-md-2"></div>
                                 </div>
-                            {% endif %}
+                                  
+                                {% else %}
+                                    <div class="row">
+                                      <div class="col-md-10" style="display:flex">
+                                        <div class="right mx-3 mt-3">
+                                          {% if item.image %}
+                                          <img src="{{item.image.url}}" class="" style="width:100px;height:100px;"/>
+                                        {% endif %}
+                                        </div>
+                                        <div class="left pt-3">
+                                          <a href="" class="" >
+                                            <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
+                                              <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=l" type="button">{% trans 'Large  Size : ' %}{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</a></p>
+                                              <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=m" type="button">{% trans 'Mediam Size : ' %}{% if item.mediam_price %}{{item.mediam_price}} R.O {% else %} 0.000 R.O{% endif %}</a></p>
+                                              <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=s" type="button">{% trans 'Small  Size : ' %}{% if item.small_price %}{{item.small_price}} R.O {% else %} 0.000 R.O{% endif %}</a></p> 
+                                              <p class="text-muted" style="font-size:15px;font-weight: 600;margin-top:-15px">{% if item.description_en %}{{item.description_en}}{% endif %}</p>     
+                                            </p> 
+                                          </a>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-2"></div>
+                                    </div>
+                                {% endif %}
+                              </div>
+                              
+                            </div>
                           </div>
-                          
-                        </div>
-                      </div>
-                  {% endfor %}
-                {% endfor %}
-              </div>
-            {% endif %}
-          {% else %}
+                      {% endfor %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% else %}
             {% if category_menu_rest|length > 0 %}
               <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
                 {% for cat in category_menu_rest  %}
@@ -216,15 +222,18 @@
                             {% if request.user.is_superuser %}
                             <div class="row">
                               <div class="col-md-10" style="display:flex">
-                                <div class="right mx-3">
+                                <div class="right mx-3 mt-4">
                                   {% if item.image %}
-                                <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
+                                  <img src="{{item.image.url}}" class="" style="width:100px;height:100px;"/>
                                 {% endif %}
                                 </div>
                                 <div class="left pt-3">
                                   <a href="{% url 'restu:client_register' %}" class="" >
-                                    <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
-                                      <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                    <p class="text-white text-right" style="font-size:20px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
+                                      <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px">{% trans 'Large  Size : ' %}{% if item.price %}{{item.price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                      <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px">{% trans 'Mediam Size : ' %}{% if item.mediam_price %}{{item.mediam_price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                      <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px">{% trans 'Small  Size : ' %}{% if item.small_price %}{{item.small_price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                      <p class="text-muted" style="font-size:15px;font-weight: 600;margin-top:-15px">{% if item.description_ar %}{{item.description_ar}}{% endif %}</p>             
                                     </p> 
                                   </a>
                                 </div>
@@ -235,15 +244,18 @@
                             {% else %}
                                 <div class="row">
                                   <div class="col-md-10" style="display:flex">
-                                    <div class="right mx-3">
+                                    <div class="right mx-3 mt-4">
                                       {% if item.image %}
-                                    <img src="{{item.image.url}}" class="" style="width:90px;height:90px;border-radius:50%"/>
+                                      <img src="{{item.image.url}}" class="" style="width:100px;height:100px;"/>
                                     {% endif %}
                                     </div>
                                     <div class="left pt-3">
-                                      <a href="{% url 'restu:add_to_cart' item.id %}" class="" >
-                                        <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
-                                        <p class="" style="color: #cda45e;font-size:18px;font-weight: 600;margin-top:-15px">{% if item.price %}{{item.price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                      <a href="" class="" >
+                                        <p class="text-right text-white" style="font-size:20px;font-weight: 600;"> {% if item.title_ar %}{{item.title_ar}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
+                                          <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=l" type="button">{% trans 'Large  Size : ' %}{% if item.price %}{{item.price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                          <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=m" type="button">{% trans 'Mediam Size : ' %}{% if item.mediam_price %}{{item.mediam_price}} ريال {% else %} 0.000 ريال{% endif %}</p>
+                                          <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=s" type="button">{% trans 'Small  Size : ' %}{% if item.small_price %}{{item.small_price}} ريال {% else %} 0.000 ريال{% endif %}</p>     
+                                            <p class="text-muted" style="font-size:15px;font-weight: 600;margin-top:-15px">{% if item.description_en %}{{item.description_en}}{% endif %}</p>    
                                         </p> 
                                       </a>
                                     </div>

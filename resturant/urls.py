@@ -17,7 +17,7 @@ urlpatterns = [
     path('reset-password/<email>/<token>/'   ,ResetPasswordView.as_view()               ,name="reset_password"              ),
     # cart urls
     path('my-dish/'                          ,CartView.as_view()                        ,name='my_cart'                     ),
-    path('add-to-dish/<int:pk>/'             ,AddToCartView.as_view()                   ,name='add_to_cart'                 ),
+    path('add-to-dish/<int:pk>'  ,AddToCartView.as_view()                   ,name='add_to_cart'                 ),
     path('manage-dish/<int:pk>/'             ,ManageCartView.as_view()                  ,name='manage_cart'                 ),
     path('empty-dish/'                       ,EmptyCartView.as_view()                   ,name='empty_cart'                  ),
     # check out url

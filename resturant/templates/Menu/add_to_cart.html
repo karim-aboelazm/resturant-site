@@ -19,9 +19,17 @@
                     <p class="text-center php-email-form">{% trans 'Congratulations' %}</p>
                     <p class="text-center php-email-form">
                         {% if LANGUAGE_CODE == 'en' %}
-                        {{item.title_en}}
+                            {{item.title_en}}
                         {% else %}
-                        {{item.title_ar}}
+                            {{item.title_ar}}
+                        {% endif %}
+
+                        {% if action == "l" %}
+                        {% trans ' with Large Size ' %}
+                        {% elif action == "m" %}
+                        {% trans ' with Mediam Size ' %}
+                        {% elif action == "s" %}
+                        {% trans ' with Small Size ' %}
                         {% endif %}
                         {% trans '  added to your food desh successfully' %}
                     </p>

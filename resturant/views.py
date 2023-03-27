@@ -388,7 +388,7 @@ class ChangePasswordView(PasswordChangeView):
         context["resturant"]         = Resturant.objects.latest('id')
         return context
 
-class AddToCartView(RestMixin,TemplateView):
+class AddToCartView(RestMixin,TemplateView,View):
     template_name = "Menu/add_to_cart.html"
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated and request.user.resturantclient:
@@ -405,6 +405,7 @@ class AddToCartView(RestMixin,TemplateView):
         item_id = kwargs['pk']
         item_obj = ResturantMenu.objects.get(id=item_id)
         context["item"] = item_obj
+        action = self.request.GET.get('action')
         cart_id = self.request.session.get('cart_id',None)
         if cart_id:
             cart = ResturantCart.objects.get(id = cart_id)
@@ -412,26 +413,62 @@ class AddToCartView(RestMixin,TemplateView):
             if this_item_in_cart.exists():
                 cartitem = this_item_in_cart.last()
                 cartitem.quantity += 1
-                cartitem.subtotal += item_obj.price
-                cartitem.save()
-                cart.total += item_obj.price
-                cart.save()
+                if action == "l":
+                    cartitem.subtotal += item_obj.price
+                    cartitem.save()
+                    cart.total += item_obj.price
+                    cart.save()
+                elif action == "m":
+                    cartitem.subtotal += item_obj.mediam_price
+                    cartitem.save()
+                    cart.total += item_obj.mediam_price
+                    cart.save()
+                elif action == "s":
+                    cartitem.subtotal += item_obj.small_price
+                    cartitem.save()
+                    cart.total += item_obj.small_price
+                    cart.save()
+                else:
+                    pass
             else:
-                cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,
-                                                         rate=item_obj.price,quantity=1,
-                                                         subtotal=item_obj.price)
-                cart.total += item_obj.price
-                cart.user = self.request.user
-                cart.save()
+                if action == "l":
+                    cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,rate=item_obj.price,quantity=1,subtotal=item_obj.price)
+                    cart.total += item_obj.price
+                    cart.user = self.request.user
+                    cart.save()
+                elif action == "m":
+                    cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,rate=item_obj.mediam_price,quantity=1,subtotal=item_obj.mediam_price)
+                    cart.total += item_obj.mediam_price
+                    cart.user = self.request.user
+                    cart.save()
+                elif action == "s":
+                    cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,rate=item_obj.small_price,quantity=1,subtotal=item_obj.small_price)
+                    cart.total += item_obj.small_price
+                    cart.user = self.request.user
+                    cart.save()
+                else:
+                    pass 
         else:
             cart = ResturantCart.objects.create(total=0)
             self.request.session['cart_id'] = cart.id
-            cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,
-                                                         rate=item_obj.price,quantity=1,
-                                                         subtotal=item_obj.price)
-            cart.total += item_obj.price
-            cart.user = self.request.user
-            cart.save()
+            if action == "l":
+                cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,rate=item_obj.price,quantity=1,subtotal=item_obj.price)
+                cart.total += item_obj.price
+                cart.user = self.request.user
+                cart.save()
+            elif action == "m":
+                cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,rate=item_obj.mediam_price,quantity=1,subtotal=item_obj.mediam_price)
+                cart.total += item_obj.mediam_price
+                cart.user = self.request.user
+                cart.save()
+            elif action == "s":
+                cartitem = ResturantMenuCart.objects.create(cart=cart,item=item_obj,rate=item_obj.small_price,quantity=1,subtotal=item_obj.small_price)
+                cart.total += item_obj.small_price
+                cart.user = self.request.user
+                cart.save()
+            else:
+                pass
+        context['action'] = action
         return context
 
 class CartView(RestMixin,TemplateView):
