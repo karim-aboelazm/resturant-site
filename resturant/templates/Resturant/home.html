@@ -170,10 +170,10 @@
                                         <p class="text-left text-white" style="text-align:left;font-size:20px;font-weight: 600;"> {% if item.title_en %}{{item.title_en}}{% else %}{% trans 'Menu Item Title' %}{% endif %}
                                           <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px">{% trans 'Large  Size : ' %}{% if item.price %}{{item.price}} R.O {% else %} 0.000 R.O{% endif %}</p>
                                           {% if item.mediam_price > 0.000 %}
-                                            <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=m" type="button">{% trans 'Mediam Size : ' %}{{item.mediam_price}} R.O</a></p>
+                                            <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:client_register' %}">{% trans 'Mediam Size : ' %}{{item.mediam_price}} R.O</a></p>
                                           {% endif %}
                                           {% if item.small_price > 0.000 %}
-                                            <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:add_to_cart' item.id %}?action=s" type="button">{% trans 'Small  Size : ' %}{{item.small_price}} R.O</a></p> 
+                                            <p class="" style="color: #cda45e;font-size:15px;font-weight: 600;margin-top:-15px"><a href="{% url 'restu:client_register' %}">{% trans 'Small  Size : ' %}{{item.small_price}} R.O</a></p> 
                                           {%endif%}                                          
                                           <p class="text-muted" style="font-size:15px;font-weight: 600;margin-top:-15px">{% if item.description_en %}{{item.description_en}}{% endif %}</p>
                                         </p> 
