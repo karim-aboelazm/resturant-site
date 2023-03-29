@@ -185,9 +185,9 @@ class ResturantMenuCategory(models.Model):
 class ResturantMenu(models.Model):
     category        = models.ForeignKey(ResturantMenuCategory,on_delete=models.CASCADE,verbose_name=_('menu category'))
     title_en        = models.CharField(_('menu item english title'),max_length=255)
-    description_en  = models.TextField(_('menu item english description'),null=True)
+    description_en  = models.TextField(_('menu item english description'),null=True,blank=True)
     title_ar        = models.CharField(_('menu item arabic title'),max_length=255)
-    description_ar  = models.TextField(_('menu item arabic description'),null=True)
+    description_ar  = models.TextField(_('menu item arabic description'),null=True,blank=True)
     price           = models.DecimalField(_('menu item price'),max_digits=6,decimal_places=3)
     image           = models.ImageField(_('menu item image'),upload_to='menu-item/images/',null=True, blank=True)
     small_price     = models.DecimalField(_('menu item small price'),max_digits=6,decimal_places=3,null=True,default=0)
